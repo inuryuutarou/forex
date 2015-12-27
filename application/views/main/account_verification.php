@@ -102,6 +102,12 @@
                         <input type="text" class="form-control" id="id_card_number" name="id_card_number" placeholder="ID Card (KTP)">
                       </div>
                     </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">ID Card (KTP) File</label>
+                      <div class="col-sm-7">
+                        <input type="file" class="form-control" id="ktp_file" name="ktp_file" placeholder="ID Card (KTP) File">
+                      </div>
+                    </div>
                     <div class="call">
                     	<h5 class="col-sm-12">Bank Data</h5>
                         <div class="form-group">
