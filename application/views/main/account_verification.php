@@ -20,12 +20,12 @@
                         <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                       </div>
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                       <label class="col-sm-2 control-label">Password</label>
                       <div class="col-sm-7">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                       </div>
-                    </div>
+                    </div>-->
                     <div class="form-group">
                       <label class="col-sm-2 control-label">PIN Deposit/Withdraw</label>
                       <div class="col-sm-7">

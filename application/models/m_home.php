@@ -8,17 +8,21 @@ class M_home extends CI_Model
     }
     
     public function register($data){
-		$q1=$this->db->insert('member',$data);
-		$id_member=$this->db->insert_id();
-		$upd['flag']=$this->db->where('id_member',$data['id_refferer'])->get('member')->row()->flag;
-		$upd['flag']=$upd['flag']-1;
-		$q2=$this->update_member($data['id_refferer'],$upd);
-		if($q1 and $q2)
-			return true;
-		else
-			return false;
+		return $this->db->insert('member',$data);
 	}
-        
+	
+	public function get_ib($id_member){
+		return $this->db->where('id_member',$id_member)
+						->get('vw_member');
+	}
+	
+	public function sign_in($username,$password){
+		return $this->db->where("username",$username)
+						->or_where("email",$username)
+						->where("password",md5($password))
+						->get('vw_member');
+	}
+	
     public function update_member($id_member, $data){
 		return $this->db->where('id_member',$id_member)
 						->update('member',$data);
@@ -27,13 +31,13 @@ class M_home extends CI_Model
 		return $this->db->where('`flag` >',0)
 						->order_by('rand()')
 						->limit(1)
-						->get('member');
+						->get('vw_member');
 	}
     public function cek_username_email($check,$type='mail'){
 		if($type=='mail')
 			$this->db->where('email',$check);
 		else if($type=='username')
 			$this->db->where('username',$check);
-		return $this->db->get('member');
+		return $this->db->get('vw_member');
     }
 }
