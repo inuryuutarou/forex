@@ -2,9 +2,15 @@
     <div class="advertising">
         <div class="container" style="padding:0">
             <div class="info">
-                <div class="text">
-                    <a href="<?=site_url()?>/home/sign_in" style="text-decoration:none" data-toggle="modal" data-target="#sign_in"> Sign In/Register </a>
+                <!--<div class="text">
+                    <a href="<?=site_url()?>/home/signin_form" style="text-decoration:none" data-toggle="modal" data-target="#sign_in"> Sign In/Register </a>
                     &nbsp;&nbsp;&nbsp;<a style="text-decoration:none"> Forgot Password ? </a>
+                </div>-->
+                <!--If user is logged in-->
+                <div class="text">
+                    <a href="<?=site_url()?>/home/my_profile" style="text-decoration:none; font-weight:600">Username</a>
+                    &nbsp;&nbsp;&nbsp;<a style="text-decoration:none"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> 0</a>
+                    &nbsp;&nbsp;&nbsp;<a style="text-decoration:none"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> 0</a>
                 </div>
             </div>
             <div class="variants">
