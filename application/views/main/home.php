@@ -7,10 +7,12 @@
 <div class="content">
     <div class="container">
         <div class="row">
+        
+        <?php if( ! $this->session->userdata('forex_login') ) { ?>
             <div class="col-md-12 main-el">
                 <div class="call">
                     <h3>Register Now !</h3>
-                    <form class="form-inline" action="#" method="post">
+                    <form class="form-inline" action="<?=site_url('home/save');?>" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" name="username" id="username" placeholder="Username">
                         </div>
@@ -30,6 +32,7 @@
                     </form>
                 </div>
             </div>
+        <?php } ?>
         </div>
     </div>
 </div>
