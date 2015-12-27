@@ -88,7 +88,7 @@ CREATE TABLE `member` (
   `valid` tinyint(1) NOT NULL DEFAULT '0',
   `register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
-  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_update` timestamp NULL DEFAULT NULL,
   `valid_date` timestamp NULL DEFAULT NULL,
   `level_status` tinyint(1) DEFAULT '0' COMMENT '0->member | 1->super admin',
   PRIMARY KEY (`id_member`),
