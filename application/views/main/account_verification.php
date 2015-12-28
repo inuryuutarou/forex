@@ -7,25 +7,19 @@
         	<div class="call">
             	<h4>Account Verification</h4>
                 <br>
-                <form class="form-horizontal" action="#" method="post">
+                <form class="form-horizontal" enctype="multipart/form-data" action="<?=site_url("member/update_profile")?>" method="post">
                 	<div class="form-group">
                       <label class="col-sm-2 control-label">Username</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" disabled readonly>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Email</label>
                       <div class="col-sm-7">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" disabled readonly>
                       </div>
                     </div>
-                    <!--<div class="form-group">
-                      <label class="col-sm-2 control-label">Password</label>
-                      <div class="col-sm-7">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                      </div>
-                    </div>-->
                     <div class="form-group">
                       <label class="col-sm-2 control-label">PIN Deposit/Withdraw</label>
                       <div class="col-sm-7">
@@ -35,11 +29,11 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">First Name</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" value="<?=$member->first_name?>">
                       </div>
                       <label class="col-sm-2 control-label">Last Name</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name"  value="<?=$member->last_name?>">
                       </div>
                     </div>
                     <div class="form-group">
@@ -97,7 +91,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="col-sm-2 control-label">ID Card (KTP)</label>
+                      <label class="col-sm-2 control-label">ID Card Number (KTP)</label>
                       <div class="col-sm-7">
                         <input type="text" class="form-control" id="id_card_number" name="id_card_number" placeholder="ID Card (KTP)">
                       </div>
