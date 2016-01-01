@@ -27,6 +27,12 @@
     <script type="text/javascript" src="<?=base_url()?>/media/includes/respond/respond.min.js"></script>
     <![endif]-->
     <link rel="icon" type="image/png" href="<?=base_url()?>/media/favicon.png">
+
+    <script type="text/javascript" src="<?=base_url()?>/media/vendors/jquery/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>/media/vendors/jquery/jquery-ui-1.10.4.min.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>/media/includes/ajax/ajax-post-loader.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>/media/includes/bootstrap/js/bootstrap.min.js"></script>
+    
 </head>
 <body>
     <div id="main">
@@ -34,10 +40,8 @@
     <?php isset($content)?$this->load->view($content):'no_content'?>
     <?php isset($footer)?$this->load->view($footer):'no_footer'?>
 
-    <script type="text/javascript" src="<?=base_url()?>/media/vendors/jquery/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>/media/vendors/jquery/jquery-ui-1.10.4.min.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>/media/includes/ajax/ajax-post-loader.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>/media/includes/bootstrap/js/bootstrap.min.js"></script>
+    </div>
+    
     
     
     <script type="text/javascript" src="<?=base_url()?>/media/vendors/isotope/jquery.isotope.min.js"></script>
@@ -63,6 +67,5 @@
     <!--additional script by par-->
     <script type="text/javascript" src="<?=base_url()?>/media/js/par.js"></script>
     <!---->
-    </div>
 </body>
 </html>

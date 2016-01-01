@@ -65,7 +65,16 @@ class Member extends Secure_area {
 		$data['footer']='comp/footer';
 		$data['side_menu']='comp/side_menu';
 		$data['content']='main/account_verification';
-		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'));
+		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
+		$this->load->view('main/template',$data);
+	}
+	
+	public function broker_verification(){
+		$data['active']='account_verification';
+		$data['header']='comp/header';
+		$data['footer']='comp/footer';
+		$data['side_menu']='comp/side_menu';
+		$data['content']='main/broker_verification';
 		$this->load->view('main/template',$data);
 	}
 }
