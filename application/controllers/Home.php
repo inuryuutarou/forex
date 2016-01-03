@@ -96,4 +96,15 @@ class Home extends CI_Controller {
 		redirect('home');
 	}
 	
+	public function referral($id_referral=-1) {
+		$cookie = array(
+			'name'   => 'id_referral',
+			'value'  => "$id_referral",
+			'expire' => '0'
+		);
+		
+		$this->input->set_cookie($cookie);
+		redirect('home');
+	}
+	
 }
