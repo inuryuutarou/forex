@@ -1,6 +1,10 @@
 <div class="bannercontainer">
     <div class="banner shop-slider">
-        
+        <ul>
+            <li id="slide1" data-transition="fade" data-slotamount="1">
+                <img src="<?=base_url()?>/media/images/banner.jpg" alt="">
+            </li>
+        </ul>
     </div>
 </div>
 
@@ -38,8 +42,14 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-12 main-el hidden-xs">
-            
+        <div class="col-md-12 text-center main-el">
+            <h2 class="main-text-color">Forex Global Service (FGS) ?  </h2>
+            <div class="divider divider-3"></div>
+            <p>Forex Global Service (FGS) adalah sebuah program yang memiliki sistem jangka panjang yang berantai yang memiliki potensi bisnis yang sangat besar untuk para member FGS. Sebuah program terbaru yang menggunakan sistem jaringan / network marketing dalam dunia forex yang akan melibatkan ribuan trader yang ada di dalam program ini. Program ini adalah sebuah terobosan besar dalam dunia Forex saat ini.
+			<br><br>
+Pada dasarnya FGS didirikan berdasarkan sebuah mimpi besar tentang adanya sebuah wadah bagi para pelaku trading forex di Indonesia yang memberikan segala fasilitas yang dibutuhkan dalam melakukan aktivitas trading forex secara gratis dalam jangka waktu yang panjang. Dan dengan pelayanan yang maksimal. FGS dibangun dengan konsep multi level marketing dalam hal ini jaringan FGS memiliki kedalaman yang tidak terbatas, fungsi dari metode jaringan ini di buat tidak lain adalah demi memberi pelayanan yang maksimal dalam hal pembagian Bonus rebates, edukasi dll kepada seluruh member FGS dan memperbesar jaringan FGS kedepannya. Sistem ini akan saling memberi keuntungan baik untuk semua member dalam jangka panjang.
+
+            </p>
         </div>
         <div class="col-xs-12 visible-xs main-el">
             

@@ -11,13 +11,7 @@
                     </div>
                     
                     <p>
-               Lorem ipsum dolor sit amet, consetetur
-vidunt ut labore et dolore Donec id elit
-llus ac cursus commodo, tortor mauris
-s et accusam et justo duo dolores et ea
-sum dolor sit amet, consectetur
-nvallis egestas rhoncus. Donec facilisis
-viverra anteluctus vel.
+               Forex Global Service (FGS) adalah sebuah program yang memiliki sistem jangka panjang yang berantai yang memiliki potensi bisnis yang sangat besar untuk para member FGS. Sebuah program terbaru yang menggunakan sistem jaringan / network marketing dalam dunia forex yang akan melibatkan ribuan trader yang ada di dalam program ini. Program ini adalah sebuah terobosan besar dalam dunia Forex saat ini.
                     </p>
                 </div>
                 <div class="col-sm-6 col-md-3 main-el">
