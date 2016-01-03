@@ -18,13 +18,16 @@ DROP TABLE IF EXISTS `broker`;
 
 CREATE TABLE `broker` (
   `id_broker` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
   `link_ib` varchar(300) NOT NULL,
   `link_client` varchar(300) DEFAULT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_broker`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `broker` */
+
+insert  into `broker`(`id_broker`,`name`,`link_ib`,`link_client`,`deleted`) values (1,'HotForex','somelink',NULL,0);
 
 /*Table structure for table `config` */
 
@@ -100,7 +103,7 @@ CREATE TABLE `member` (
 
 /*Data for the table `member` */
 
-insert  into `member`(`id_member`,`id_refferer`,`username`,`email`,`password`,`pin`,`flag`,`first_name`,`last_name`,`country`,`province`,`city`,`address`,`postal`,`id_card_number`,`phone`,`bank_name`,`bank_branch`,`bank_acc_name`,`bank_acc_num`,`im`,`fb_username`,`fb_link`,`valid`,`register_date`,`deleted`,`last_update`,`valid_date`,`level_status`) values (4,NULL,'chico','inumaru.ryuusuke@gmail.com','034559aa5996026a68d79128251887ee','',2,'chico','naga','Indonesia','Bali','Denpasar',NULL,'80223',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 20:46:10',0,'2015-12-27 20:46:10',NULL,0),(6,4,'gungdp','gungdp@example.com','123456',NULL,NULL,'Dharma','Putra',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 20:49:26',0,'2015-12-27 20:49:26',NULL,0),(7,4,'parwita','parwita@example.com','123456',NULL,NULL,'Parwita','Cole',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:10:24',0,'2015-12-27 21:10:24',NULL,0),(8,4,'ransdwi','ransdwi@example.com','123456',NULL,NULL,'Dwi','Ningsih',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:17:17',0,'2015-12-27 21:17:17',NULL,0);
+insert  into `member`(`id_member`,`id_refferer`,`username`,`email`,`password`,`pin`,`flag`,`first_name`,`last_name`,`country`,`province`,`city`,`address`,`postal`,`id_card_number`,`phone`,`bank_name`,`bank_branch`,`bank_acc_name`,`bank_acc_num`,`im`,`fb_username`,`fb_link`,`valid`,`register_date`,`deleted`,`last_update`,`valid_date`,`level_status`) values (4,NULL,'chico','inumaru.ryuusuke@gmail.com','034559aa5996026a68d79128251887ee','',0,'chico','naga','Indonesia','Bali','Denpasar',NULL,'80223',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 20:46:10',0,'2015-12-27 20:46:10',NULL,1),(6,4,'gungdp','gungdp@example.com','123456',NULL,2,'Dharma','Putra',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 20:49:26',0,'2015-12-27 20:49:26',NULL,0),(7,4,'parwita','parwita@example.com','123456',NULL,2,'Parwita','Cole',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:10:24',0,'2015-12-27 21:10:24',NULL,0),(8,4,'ransdwi','ransdwi@example.com','123456',NULL,2,'Dwi','Ningsih',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:17:17',0,'2015-12-27 21:17:17',NULL,0);
 
 /*Table structure for table `member_broker` */
 
@@ -206,6 +209,7 @@ DROP TABLE IF EXISTS `vw_member_broker`;
 /*!50001 DROP TABLE IF EXISTS `vw_member_broker` */;
 
 /*!50001 CREATE TABLE  `vw_member_broker`(
+ `name` varchar(200) ,
  `link_ib_main` varchar(300) ,
  `link_client_main` varchar(300) ,
  `id_member` int(11) ,
@@ -214,6 +218,7 @@ DROP TABLE IF EXISTS `vw_member_broker`;
  `link_client` varchar(300) ,
  `broker_username` varchar(300) ,
  `real_account` varchar(300) ,
+ `deleted_broker` tinyint(1) ,
  `id_refferer` int(11) ,
  `username` varchar(500) ,
  `email` varchar(500) ,
@@ -256,7 +261,7 @@ DROP TABLE IF EXISTS `vw_member_broker`;
 /*!50001 DROP TABLE IF EXISTS `vw_member_broker` */;
 /*!50001 DROP VIEW IF EXISTS `vw_member_broker` */;
 
-/*!50001 CREATE VIEW `vw_member_broker` AS (select `b`.`link_ib` AS `link_ib_main`,`b`.`link_client` AS `link_client_main`,`mb`.`id_member` AS `id_member`,`mb`.`id_broker` AS `id_broker`,`mb`.`link_ib` AS `link_ib`,`mb`.`link_client` AS `link_client`,`mb`.`broker_username` AS `broker_username`,`mb`.`real_account` AS `real_account`,`m`.`id_refferer` AS `id_refferer`,`m`.`username` AS `username`,`m`.`email` AS `email`,`m`.`password` AS `password`,`m`.`pin` AS `pin`,`m`.`flag` AS `flag`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`m`.`country` AS `country`,`m`.`province` AS `province`,`m`.`city` AS `city`,`m`.`address` AS `address`,`m`.`postal` AS `postal`,`m`.`id_card_number` AS `id_card_number`,`m`.`phone` AS `phone`,`m`.`bank_name` AS `bank_name`,`m`.`bank_branch` AS `bank_branch`,`m`.`bank_acc_name` AS `bank_acc_name`,`m`.`bank_acc_num` AS `bank_acc_num`,`m`.`im` AS `im`,`m`.`fb_username` AS `fb_username`,`m`.`fb_link` AS `fb_link`,`m`.`valid` AS `valid`,`m`.`register_date` AS `register_date`,`m`.`deleted` AS `deleted`,`m`.`last_update` AS `last_update`,`m`.`valid_date` AS `valid_date`,`m`.`level_status` AS `level_status` from ((`broker` `b` left join `member_broker` `mb` on(((`b`.`id_broker` = `mb`.`id_broker`) and (`b`.`deleted` = 0)))) left join `member` `m` on((`mb`.`id_member` = `m`.`id_member`)))) */;
+/*!50001 CREATE VIEW `vw_member_broker` AS (select `b`.`name` AS `name`,`b`.`link_ib` AS `link_ib_main`,`b`.`link_client` AS `link_client_main`,`mb`.`id_member` AS `id_member`,`mb`.`id_broker` AS `id_broker`,`mb`.`link_ib` AS `link_ib`,`mb`.`link_client` AS `link_client`,`mb`.`broker_username` AS `broker_username`,`mb`.`real_account` AS `real_account`,`b`.`deleted` AS `deleted_broker`,`m`.`id_refferer` AS `id_refferer`,`m`.`username` AS `username`,`m`.`email` AS `email`,`m`.`password` AS `password`,`m`.`pin` AS `pin`,`m`.`flag` AS `flag`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`m`.`country` AS `country`,`m`.`province` AS `province`,`m`.`city` AS `city`,`m`.`address` AS `address`,`m`.`postal` AS `postal`,`m`.`id_card_number` AS `id_card_number`,`m`.`phone` AS `phone`,`m`.`bank_name` AS `bank_name`,`m`.`bank_branch` AS `bank_branch`,`m`.`bank_acc_name` AS `bank_acc_name`,`m`.`bank_acc_num` AS `bank_acc_num`,`m`.`im` AS `im`,`m`.`fb_username` AS `fb_username`,`m`.`fb_link` AS `fb_link`,`m`.`valid` AS `valid`,`m`.`register_date` AS `register_date`,`m`.`deleted` AS `deleted`,`m`.`last_update` AS `last_update`,`m`.`valid_date` AS `valid_date`,`m`.`level_status` AS `level_status` from ((`broker` `b` left join `member_broker` `mb` on(((`b`.`id_broker` = `mb`.`id_broker`) and (`b`.`deleted` = 0)))) left join `member` `m` on((`mb`.`id_member` = `m`.`id_member`)))) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
