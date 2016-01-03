@@ -47,7 +47,8 @@ class Member extends Secure_area {
 			"bank_branch" => $this->input->post('bank_branch'),
 			"bank_acc_name" => $this->input->post('bank_acc_name'),
 			"fb_username" => $this->input->post('fb_username'),
-			"fb_link" => $this->input->post('fb_link')
+			"fb_link" => $this->input->post('fb_link'),
+			"last_update" => date('Y-m-d H:i:s')
 			);
 		if($_FILES['ktp_file']['tmp_name']!=''){
 			//buatin fungsi upload gung jadiin jpg taro di media/img/member_id
@@ -56,25 +57,56 @@ class Member extends Secure_area {
 		}
 		
 		$this->m_member->update_member($this->input->post('id_member'),$data);
-		redirect("member/my_profile");
+		if(!isset($_POST['verify']))
+			redirect("member/my_profile");
+		else
+			redirect("member/broker_verification");
 	}
 	
 	public function account_verification(){
+		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
+		if($data['member']->valid!=0){
+			redirect('member/my_profile');
+		}
 		$data['active']='account_verification';
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
 		$data['side_menu']='comp/side_menu';
 		$data['content']='main/account_verification';
-		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
 		$this->load->view('main/template',$data);
 	}
 	
 	public function broker_verification(){
+		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
+		if($data['member']->valid!=0){
+			redirect('member/my_profile');
+		}
+		$broker=$this->m_member->get_broker_refferal($data['member']->id_member);
+		if($broker->num_rows()==0)
+			$broker=$this->m_member->get_broker();
+		$data['broker'] = $broker;
 		$data['active']='account_verification';
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
 		$data['side_menu']='comp/side_menu';
 		$data['content']='main/broker_verification';
 		$this->load->view('main/template',$data);
+	}
+	public function broker_batch(){
+		extract($_POST);
+		$i=0;
+		foreach($id_broker as $id_br){
+			$data[]=array(
+						'id_member'=>$this->session->userdata('id_member'),
+						'id_broker'=>$id_br,
+						'link_ib'=>$link_ib[$i],
+						'link_client'=>$link_client[$i],
+						'broker_username'=>$broker_username[$i],
+						'real_account'=>$real_account[$i],
+					);
+			$i++;
+		}
+		$this->m_member->insert_batch_broker($data);
+		redirect("member/my_profile");
 	}
 }

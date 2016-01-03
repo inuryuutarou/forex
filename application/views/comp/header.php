@@ -4,7 +4,7 @@
             <div class="info">
                 <?php if($this->session->userdata('forex_login') == TRUE){?>
                 <div class="text">
-                    <a href="<?=site_url()?>/home/my_profile" style="text-decoration:none; font-weight:600">Username</a>
+                    <a href="<?=site_url()?>/member/my_profile" style="text-decoration:none; font-weight:600">Username</a>
                     &nbsp;&nbsp;&nbsp;<a style="text-decoration:none"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> 0</a>
                     &nbsp;&nbsp;&nbsp;<a style="text-decoration:none"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> 0</a>
                 </div>

@@ -13,85 +13,42 @@
         </div> 
         <div class="col-md-9">
         	<div class="call">
-                <form class="form-horizontal" action="#" method="post">
-                    <div id="broker1">
-                        <h4>Broker 1</h4>
+                <form class="form-horizontal" action="<?=site_url("member/broker_batch")?>" method="post">
+                	<?php $i=0;foreach($broker->result() as $brkr){$i++;?>
+                    <div id="broker<?=$i?>" class="broker_progress">
+                        <h4><?=$brkr->name?></h4>
+                        <br>
+                        <h4><?=$brkr->link_ib?></h4>
+                        <br>
+                        <h4><?=$brkr->link_client?></h4>
                         <br>
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Affiliation Link</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="link_ib" name="link_ib" placeholder="Affiliation Link">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Broker Username</label>
-                          <div class="col-sm-7">
-                            <input type="text" class="form-control" id="broker_username" name="broker_username" placeholder="Broker Username">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Real Account</label>
-                          <div class="col-sm-7">
-                            <input type="text" class="form-control" id="real_account" name="real_account" placeholder="Real Account">
-                          </div>
-                        </div>
-                    </div>
-                    <div id="broker2">
-                        <h4>Broker 2</h4>
-                        <br>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Affiliation Link</label>
-                          <div class="col-sm-7">
-                            <input type="text" class="form-control" id="link_ib" name="link_ib" placeholder="Affiliation Link">
+                            <input type="text" class="form-control" id="link_ib" name="link_ib[]" placeholder="Affiliation Link">
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Client Link</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="link_client" name="link_client" placeholder="Client Link">
+                            <input type="text" class="form-control" id="link_client" name="link_client[]" placeholder="Client Link">
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Broker Username</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="broker_username" name="broker_username" placeholder="Broker Username">
+                            <input type="text" class="form-control" id="broker_username" name="broker_username[]" placeholder="Broker Username">
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Real Account</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="real_account" name="real_account" placeholder="Real Account">
+                            <input type="text" class="form-control" id="real_account" name="real_account[]" placeholder="Real Account">
+                            <input type="hidden" name="id_broker[]" value="<?=$brkr->id_broker?>">
                           </div>
                         </div>
                     </div>
-                    <div id="broker3">
-                        <h4>Broker 3</h4>
-                        <br>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Affiliation Link</label>
-                          <div class="col-sm-7">
-                            <input type="text" class="form-control" id="link_ib" name="link_ib" placeholder="Affiliation Link">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Client Link</label>
-                          <div class="col-sm-7">
-                            <input type="text" class="form-control" id="link_client" name="link_client" placeholder="Client Link">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Broker Username</label>
-                          <div class="col-sm-7">
-                            <input type="text" class="form-control" id="broker_username" name="broker_username" placeholder="Broker Username">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Real Account</label>
-                          <div class="col-sm-7">
-                            <input type="text" class="form-control" id="real_account" name="real_account" placeholder="Real Account">
-                          </div>
-                        </div>
-                    </div>
+                    <?php }?>
 
                     <br>
                     <div class="form-group">
@@ -113,23 +70,22 @@
 		var i=1;
 		var j=1;
 		$("#next").click(function(){
-			$("#back").css("display", "block");
-			$("#broker"+(i)).css("display","none");
-			$("#broker"+(i+1)).css("display","block");
 			i=i+1;
-			j=i;
+			$("#back").css("display", "block");
+			$(".broker_progress").css("display","none");
+			$("#broker"+i).css("display","block");
+			i=i+1;
 			if(i>2){
 				$("#next").css("display","none");
 				$("#finish").css("display","block");
 			}
 		});
 		$("#back").click(function(){
+			i=i-1;
 			$("#finish").css("display","none");
 			$("#next").css("display","block");
 			$("#broker"+(j)).css("display","none");
 			$("#broker"+(j-1)).css("display","block");
-			j=j-1;
-			i=j;
 			if(j<2){
 				$("#back").css("display","none");	
 			}

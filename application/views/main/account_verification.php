@@ -11,13 +11,13 @@
                 	<div class="form-group">
                       <label class="col-sm-2 control-label">Username</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" disabled readonly>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?=$member->username?>" disabled readonly>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Email</label>
                       <div class="col-sm-7">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" disabled readonly>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?=$member->email?>" disabled readonly>
                       </div>
                     </div>
                     <div class="form-group">
@@ -39,61 +39,61 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Facebook Name</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="fb_username" name="fb_username" placeholder="Facebook Name">
+                        <input type="text" class="form-control" id="fb_username" name="fb_username" value="<?=$member->fb_username?>" placeholder="Facebook Name">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Facebook URL</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="fb_link" name="fb_link" placeholder="Facebook Link">
+                        <input type="text" class="form-control" id="fb_link" name="fb_link" value="<?=$member->fb_link?>" placeholder="Facebook Link">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Address</label>
                       <div class="col-sm-7">
-                        <textarea class="form-control" id="address" name="address" placeholder="Address"></textarea>
+                        <textarea class="form-control" id="address" name="address" placeholder="Address"><?=$member->address?></textarea>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">City</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="city" name="city" placeholder="City">
+                        <input type="text" class="form-control" id="city" name="city" value="<?=$member->city?>" placeholder="City">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Province</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="province" name="province" placeholder="Province">
+                        <input type="text" class="form-control" id="province" name="province" value="<?=$member->province?>" placeholder="Province">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Postal Code</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="postal" name="postal" placeholder="Postal">
+                        <input type="text" class="form-control" id="postal" name="postal" value="<?=$member->postal?>" placeholder="Postal">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Country</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="country" name="country" placeholder="Country">
+                        <input type="text" class="form-control" id="country" name="country" value="<?=$member->country?>" placeholder="Country">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Phone Number</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
+                        <input type="text" class="form-control" id="phone" name="phone" value="<?=$member->phone?>" placeholder="Phone">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Instant Messenger</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="im" name="im" placeholder="Instant Messenger">
+                        <input type="text" class="form-control" id="im" name="im" value="<?=$member->im?>" placeholder="Instant Messenger">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">ID Card Number (KTP)</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="id_card_number" name="id_card_number" placeholder="ID Card (KTP)">
+                        <input type="text" class="form-control" id="id_card_number" name="id_card_number" value="<?=$member->id_card_number?>" placeholder="ID Card (KTP)">
                       </div>
                     </div>
                     <div class="form-group">
@@ -108,34 +108,35 @@
                         
                           <label class="col-sm-2 control-label">Bank Name</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="bank_name" name="bank_name" placeholder="Bank Name">
+                            <input type="text" class="form-control" id="bank_name" name="bank_name" value="<?=$member->bank_name?>" placeholder="Bank Name">
                           </div>
                         </div>
                         <div class="form-group">
                         
                           <label class="col-sm-2 control-label">Bank Account Name</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="bank_acc_name" name="bank_acc_name" placeholder="Bank Account Name">
+                            <input type="text" class="form-control" id="bank_acc_name" name="bank_acc_name" value="<?=$member->bank_acc_name?>" placeholder="Bank Account Name">
                           </div>
                         </div>
                         <div class="form-group">
                         
                           <label class="col-sm-2 control-label">Bank Account Number</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="bank_acc_num" name="bank_acc_num" placeholder="Bank Account Number">
+                            <input type="text" class="form-control" id="bank_acc_num" name="bank_acc_num" value="<?=$member->bank_acc_num?>" placeholder="Bank Account Number">
                           </div>
                         </div>
                         <div class="form-group">
                         
                           <label class="col-sm-2 control-label">Bank Branch</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="bank_branch" name="bank_branch" placeholder="Bank Branch">
+                            <input type="text" class="form-control" id="bank_branch" name="bank_branch" value="<?=$member->bank_branch?>" placeholder="Bank Branch">
                           </div>
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                       <div class="col-sm-12">
+                      	<input type="hidden" name="verify" value="<?=$member->id_member?>">
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </div>
                     </div>
