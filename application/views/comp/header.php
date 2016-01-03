@@ -26,7 +26,7 @@
         <div class="large-header">
             <div class="logo-wrapper">
                 <a class="logo-box" href="<?=site_url()?>">
-                    <!--<img class="img-responsive" alt="Corex" src="<?=base_url()?>/media/images/logo.png">-->NO LOGO
+                    <img class="img-responsive" alt="FXGlobal" src="<?=base_url()?>/media/images/logo.png">
                 </a>
             </div>
 
@@ -62,8 +62,8 @@
 
         <div class="mobile-header">
             <div class="logo-wrapper">
-                <a class="logo-box" href="../homepages/home-corp1.php">
-                    <!--<img class="img-responsive" alt="Corex" src="<?=base_url()?>/media/images/logo.png">-->NO LOGO
+                <a class="logo-box" href="<?=site_url()?>">
+                    <img class="img-responsive" alt="FXGlobal" src="<?=base_url()?>/media/images/logo.png">
                 </a>
             </div>
 

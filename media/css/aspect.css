@@ -364,7 +364,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 header {
-    background-color: #fff;
+    background-color: #2A2A2A;
 }
 
 .main-menu li.main {
@@ -880,11 +880,11 @@ a.list-group-item {
 }
 
 .advertising {
-    background: #2a2a2a;
+    background: #FAFAFA;
 }
 
 .advertising .info {
-    background: #2a2a2a;
+    background: #FAFAFA;
 }
 
 .advertising .info .title {
@@ -892,7 +892,7 @@ a.list-group-item {
 }
 
 .advertising .info .text {
-    color: #d6d6d6;
+    color: #2A2A2A;
 }
 
 .advertising .variants .element .inside {
@@ -960,7 +960,7 @@ header.head-1 .menu-bar .utilities-buttons a.collapsed i, header.custom-1 .utili
 }
 
 header .navbar-nav a {
-    color: #444444;
+    color: #fff;
     font-family: 'Roboto', sans-serif;
 }
 
