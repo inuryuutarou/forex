@@ -6,9 +6,9 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.4 -->
-    <link href="<?=base_url()?>/media/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>/media/includes/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>media/resources/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="<?=base_url()?>/media/css/AdminLTE.css" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
@@ -23,7 +23,7 @@
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <b>Admin</b>Sistem Penjurian
+        <b>Admin</b>FGS
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Log in untuk masuk ke halaman admin</p>
@@ -51,6 +51,6 @@
     <!-- jQuery 2.1.4 -->
     <script src="<?=base_url()?>/media/js/jQuery-2.1.4.min.js" type="text/javascript"></script>
     <!-- Bootstrap 3.3.2 JS -->
-    <script src="<?=base_url()?>/media/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<?=base_url()?>/media/includes/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
   </body>
 </html>
