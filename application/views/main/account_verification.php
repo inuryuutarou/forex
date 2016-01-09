@@ -23,17 +23,17 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">PIN Deposit/Withdraw</label>
                       <div class="col-sm-7">
-                        <input type="password" class="form-control" id="pin" name="pin" placeholder="PIN">
+                        <input type="password" class="form-control" id="pin" name="pin" placeholder="PIN" maxlength="4" required>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">First Name</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" value="<?=$member->first_name?>">
+                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" value="<?=$member->first_name?>" required>
                       </div>
                       <label class="col-sm-2 control-label">Last Name</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name"  value="<?=$member->last_name?>">
+                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name"  value="<?=$member->last_name?>" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -51,19 +51,19 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Address</label>
                       <div class="col-sm-7">
-                        <textarea class="form-control" id="address" name="address" placeholder="Address"><?=$member->address?></textarea>
+                        <textarea class="form-control" id="address" name="address" placeholder="Address" required><?=$member->address?></textarea>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">City</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="city" name="city" value="<?=$member->city?>" placeholder="City">
+                        <input type="text" class="form-control" id="city" name="city" value="<?=$member->city?>" placeholder="City" required>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Province</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="province" name="province" value="<?=$member->province?>" placeholder="Province">
+                        <input type="text" class="form-control" id="province" name="province" value="<?=$member->province?>" placeholder="Province" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -75,13 +75,13 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Country</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="country" name="country" value="<?=$member->country?>" placeholder="Country">
+                        <input type="text" class="form-control" id="country" name="country" value="<?=$member->country?>" placeholder="Country" required>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Phone Number</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="phone" name="phone" value="<?=$member->phone?>" placeholder="Phone">
+                        <input type="text" class="form-control" id="phone" name="phone" value="<?=$member->phone?>" placeholder="Phone" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -93,7 +93,7 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">ID Card Number (KTP)</label>
                       <div class="col-sm-7">
-                        <input type="text" class="form-control" id="id_card_number" name="id_card_number" value="<?=$member->id_card_number?>" placeholder="ID Card (KTP)">
+                        <input type="text" class="form-control" id="id_card_number" name="id_card_number" value="<?=$member->id_card_number?>" placeholder="ID Card (KTP)" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -108,28 +108,28 @@
                         
                           <label class="col-sm-2 control-label">Bank Name</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="bank_name" name="bank_name" value="<?=$member->bank_name?>" placeholder="Bank Name">
+                            <input type="text" class="form-control" id="bank_name" name="bank_name" value="<?=$member->bank_name?>" placeholder="Bank Name" required>
                           </div>
                         </div>
                         <div class="form-group">
                         
                           <label class="col-sm-2 control-label">Bank Account Name</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="bank_acc_name" name="bank_acc_name" value="<?=$member->bank_acc_name?>" placeholder="Bank Account Name">
+                            <input type="text" class="form-control" id="bank_acc_name" name="bank_acc_name" value="<?=$member->bank_acc_name?>" placeholder="Bank Account Name" required>
                           </div>
                         </div>
                         <div class="form-group">
                         
                           <label class="col-sm-2 control-label">Bank Account Number</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="bank_acc_num" name="bank_acc_num" value="<?=$member->bank_acc_num?>" placeholder="Bank Account Number">
+                            <input type="text" class="form-control" id="bank_acc_num" name="bank_acc_num" value="<?=$member->bank_acc_num?>" placeholder="Bank Account Number" required>
                           </div>
                         </div>
                         <div class="form-group">
                         
                           <label class="col-sm-2 control-label">Bank Branch</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="bank_branch" name="bank_branch" value="<?=$member->bank_branch?>" placeholder="Bank Branch">
+                            <input type="text" class="form-control" id="bank_branch" name="bank_branch" value="<?=$member->bank_branch?>" placeholder="Bank Branch" required>
                           </div>
                         </div>
                     </div>

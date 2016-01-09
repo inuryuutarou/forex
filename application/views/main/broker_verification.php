@@ -25,25 +25,27 @@
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Affiliation Link</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="link_ib" name="link_ib[]" placeholder="Affiliation Link">
+                            <input type="text" class="form-control" id="link_ib" name="link_ib[]" placeholder="Affiliation Link" required>
                           </div>
                         </div>
+                        <?php if($brkr->link_client!=""){?>
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Client Link</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="link_client" name="link_client[]" placeholder="Client Link">
+                            <input type="text" class="form-control" id="link_client" name="link_client[]" placeholder="Client Link" required>
                           </div>
                         </div>
+                        <?php }?>
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Broker Username</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="broker_username" name="broker_username[]" placeholder="Broker Username">
+                            <input type="text" class="form-control" id="broker_username" name="broker_username[]" placeholder="Broker Username" required>
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Real Account</label>
                           <div class="col-sm-7">
-                            <input type="text" class="form-control" id="real_account" name="real_account[]" placeholder="Real Account">
+                            <input type="text" class="form-control" id="real_account" name="real_account[]" placeholder="Real Account" required>
                             <input type="hidden" name="id_broker[]" value="<?=$brkr->id_broker?>">
                           </div>
                         </div>
@@ -51,6 +53,7 @@
                     <?php }?>
 
                     <br>
+                    <div id="alert"></div>
                     <div class="form-group">
                       <div class="col-sm-6" align="left">
                         <a href="#" id="back" class="btn btn-primary" style="width:80px">Back</a>
@@ -68,27 +71,37 @@
 <script>
 	$(document).ready(function(){
 		var i=1;
-		var j=1;
 		$("#next").click(function(){
 			i=i+1;
-			$("#back").css("display", "block");
+			check_pos(i);
 			$(".broker_progress").css("display","none");
 			$("#broker"+i).css("display","block");
-			i=i+1;
-			if(i>2){
-				$("#next").css("display","none");
-				$("#finish").css("display","block");
-			}
 		});
 		$("#back").click(function(){
 			i=i-1;
-			$("#finish").css("display","none");
-			$("#next").css("display","block");
-			$("#broker"+(j)).css("display","none");
-			$("#broker"+(j-1)).css("display","block");
-			if(j<2){
-				$("#back").css("display","none");	
-			}
+			check_pos(i);
+			$(".broker_progress").css("display","none");
+			$("#broker"+i).css("display","block");
 		});
+		$("#finish").click(function(){
+			$("#alert").html("Please FILL ALL data before clicking finish");
+		});
+
+		function check_pos(i){
+			if(i!=1){
+				$("#back").css("display", "block");
+			}
+			else{
+				$("#back").css("display", "none");
+			}
+			if(i!=<?=$broker->num_rows()?>){
+				$("#finish").css("display","none");
+				$("#next").css("display","block");
+			}
+			else{
+				$("#finish").css("display","block");
+				$("#next").css("display","none");
+			}
+		}
 	});
 </script>

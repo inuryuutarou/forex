@@ -29,7 +29,7 @@ class Home extends CI_Controller {
 			$session_data = array(
 				"forex_login" => TRUE,
 				"id_member" => $user_data->id_member,
-				"member_last_name" => $user_data->last_name
+				"username" => $user_data->username
 			);
 			$this->session->set_userdata($session_data);
 			redirect('member/account_verification');
@@ -59,9 +59,14 @@ class Home extends CI_Controller {
 		}
 		
 		if(! $this->input->cookie('id_refferer')){
-			$id_refferer=$this->m_home->refferer()->row();
-			$this->m_home->update_member($id_refferer->id_member, array('flag'=>($id_refferer->flag-1)));
-			$id_refferer=$id_refferer->id_member;
+			$id_refferer=$this->m_home->refferer();
+			if($id_refferer->num_rows()!=0){
+				$id_refferer=$id_refferer->row();
+				$this->m_home->update_member($id_refferer->id_member, array('flag'=>($id_refferer->flag-1)));
+				$id_refferer=$id_refferer->id_member;
+			}
+			else
+				$id_refferer=NULL;
 		}else{
 			$id_refferer=$this->input->cookie('id_refferer');
 		}

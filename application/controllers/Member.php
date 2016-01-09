@@ -11,7 +11,14 @@ class Member extends Secure_area {
     }
 	
 	public function index(){
-		
+		$member = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
+		if($member->valid==0){
+			redirect('member/account_verification');
+		}
+		else if($member->valid==1){
+			redirect('member/broker_verification');
+		}
+		redirect('member/my_profile');
 	}
 	
 	public function my_profile(){
@@ -50,13 +57,26 @@ class Member extends Secure_area {
 			"fb_link" => $this->input->post('fb_link'),
 			"last_update" => date('Y-m-d H:i:s')
 			);
+		if(isset($_POST['verify']) and $_FILES['ktp_file']['tmp_name']==''){
+			$this->session->set_flashdata('error',"KTP harus di upload untuk proses verifikasi");
+			redirect("member/account_verification");
+		}
+		if(isset($_POST['verify'])){
+			$data["valid"]=1;
+		}
 		if($_FILES['ktp_file']['tmp_name']!=''){
-			//buatin fungsi upload gung jadiin jpg taro di media/img/member_id
-			//nama file nya "id_card_".$this->input->post('id_member') .".jpg" atau dibalik jadi ID di depan jg gpp
-			//:D
+			$path="media/img/member_id/";
+			$tmp = $_FILES['ktp_file']['tmp_name'];
+			$size = getimagesize($tmp);
+			$img_name ="id_card_".$this->session->userdata('id_member').".jpg";
+			$image = new SimpleImage();
+			$image->load($tmp);
+			if($size[0] > 535)
+			{$image->resizeToWidth(535);}
+			$image->save($path.$img_name);
 		}
 		
-		$this->m_member->update_member($this->input->post('id_member'),$data);
+		$this->m_member->update_member($this->session->userdata('id_member'),$data);
 		if(!isset($_POST['verify']))
 			redirect("member/my_profile");
 		else
@@ -66,7 +86,7 @@ class Member extends Secure_area {
 	public function account_verification(){
 		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
 		if($data['member']->valid!=0){
-			redirect('member/my_profile');
+			redirect('member/broker_verification');
 		}
 		$data['active']='account_verification';
 		$data['header']='comp/header';
@@ -78,11 +98,12 @@ class Member extends Secure_area {
 	
 	public function broker_verification(){
 		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
-		if($data['member']->valid!=0){
+		if($data['member']->valid!=1){
 			redirect('member/my_profile');
 		}
-		$broker=$this->m_member->get_broker_refferal($data['member']->id_member);
-		if($broker->num_rows()==0)
+		if($data['member']->id_refferer!='')
+			$broker=$this->m_member->get_broker_refferal($data['member']->id_refferer);
+		else
 			$broker=$this->m_member->get_broker();
 		$data['broker'] = $broker;
 		$data['active']='account_verification';
@@ -110,3 +131,4 @@ class Member extends Secure_area {
 		redirect("member/my_profile");
 	}
 }
+include_once('simpleimage.php');
