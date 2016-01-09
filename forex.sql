@@ -23,11 +23,11 @@ CREATE TABLE `broker` (
   `link_client` varchar(300) DEFAULT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_broker`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `broker` */
 
-insert  into `broker`(`id_broker`,`name`,`link_ib`,`link_client`,`deleted`) values (1,'HotForex','somelink',NULL,0);
+insert  into `broker`(`id_broker`,`name`,`link_ib`,`link_client`,`deleted`) values (1,'XM ','http://clicks.pipaffiliates.com/afs/come.php?cid=65890&ctgid=16&atype=1&brandid=3','http://clicks.pipaffiliates.com/afs/come.php?cid=65934&ctgid=0&atype=2&brandid=1',0),(2,'orbex','http://www.orbex.com/en/?ref_id=102013',NULL,0);
 
 /*Table structure for table `config` */
 
@@ -88,7 +88,7 @@ CREATE TABLE `member` (
   `im` varchar(100) DEFAULT NULL,
   `fb_username` varchar(100) DEFAULT NULL,
   `fb_link` varchar(200) DEFAULT NULL,
-  `valid` tinyint(1) NOT NULL DEFAULT '0',
+  `valid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=profile, 1=broker, 2=admin valid, 3=valid',
   `register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `last_update` timestamp NULL DEFAULT NULL,
@@ -103,7 +103,7 @@ CREATE TABLE `member` (
 
 /*Data for the table `member` */
 
-insert  into `member`(`id_member`,`id_refferer`,`username`,`email`,`password`,`pin`,`flag`,`first_name`,`last_name`,`country`,`province`,`city`,`address`,`postal`,`id_card_number`,`phone`,`bank_name`,`bank_branch`,`bank_acc_name`,`bank_acc_num`,`im`,`fb_username`,`fb_link`,`valid`,`register_date`,`deleted`,`last_update`,`valid_date`,`level_status`) values (4,NULL,'chico','inumaru.ryuusuke@gmail.com','034559aa5996026a68d79128251887ee','',0,'chico','naga','Indonesia','Bali','Denpasar',NULL,'80223',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 20:46:10',0,'2015-12-27 20:46:10',NULL,1),(6,4,'gungdp','gungdp@example.com','123456',NULL,2,'Dharma','Putra',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 20:49:26',0,'2015-12-27 20:49:26',NULL,0),(7,4,'parwita','parwita@example.com','123456',NULL,2,'Parwita','Cole',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:10:24',0,'2015-12-27 21:10:24',NULL,0),(8,4,'ransdwi','ransdwi@example.com','123456',NULL,2,'Dwi','Ningsih',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:17:17',0,'2015-12-27 21:17:17',NULL,0);
+insert  into `member`(`id_member`,`id_refferer`,`username`,`email`,`password`,`pin`,`flag`,`first_name`,`last_name`,`country`,`province`,`city`,`address`,`postal`,`id_card_number`,`phone`,`bank_name`,`bank_branch`,`bank_acc_name`,`bank_acc_num`,`im`,`fb_username`,`fb_link`,`valid`,`register_date`,`deleted`,`last_update`,`valid_date`,`level_status`) values (4,NULL,'chico','inumaru.ryuusuke@gmail.com','034559aa5996026a68d79128251887ee','d41d8cd98f00b204e9800998ecf8427e',0,'chico','naga','Indonesia','Bali','Denpasar','test','80223','1234','08563790471','1234','1234','12423','1234',NULL,'','',2,'2015-12-27 20:46:10',0,'2016-01-09 16:20:13',NULL,1),(6,4,'gungdp','gungdp@example.com','123456',NULL,2,'Dharma','Putra',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 20:49:26',0,'2015-12-27 20:49:26',NULL,0),(7,4,'parwita','parwita@example.com','123456',NULL,2,'Parwita','Cole',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:10:24',0,'2015-12-27 21:10:24',NULL,0),(8,6,'ransdwi','ransdwi@example.com','123456',NULL,2,'Dwi','Ningsih',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:17:17',0,'2015-12-27 21:17:17',NULL,0);
 
 /*Table structure for table `member_broker` */
 
@@ -120,6 +120,8 @@ CREATE TABLE `member_broker` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `member_broker` */
+
+insert  into `member_broker`(`id_member`,`id_broker`,`link_ib`,`link_client`,`broker_username`,`real_account`) values (4,1,'test','test','test','test'),(4,2,'test','','test','test');
 
 /*Table structure for table `message` */
 
