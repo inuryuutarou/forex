@@ -29,7 +29,7 @@ class M_home extends CI_Model
     }
     public function refferer(){
 		return $this->db->where('`flag` >',0)
-						->where('valid',2)
+						->where('valid',3)
 						->order_by('rand()')
 						->limit(1)
 						->get('vw_member');

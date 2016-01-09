@@ -88,7 +88,7 @@ class Home extends CI_Controller {
 				$session_data = array(
 					"forex_login" => TRUE,
 					"id_member" => $user_data->id_member,
-					"member_last_name" => $user_data->last_name
+					"username" => $user_data->username
 				);
 				$this->session->set_userdata($session_data);
 				redirect('member/account_verification');

@@ -5,5 +5,6 @@
         <li class="element <?=($active=='my_profile')?'active':''?>"><a href="<?=site_url()?>/member/my_profile">My Profile</a></li>
         <li class="element"><a>Inbox</a></li>
         <li class="element <?=($active=='my_client')?'active':''?>"><a href="<?=site_url()?>/member/my_client">My Clients</a></li>
+        <li class="element"><a href="<?=site_url()?>/home/sign_out">Sign Out</a></li>
     </ul>
 </div>

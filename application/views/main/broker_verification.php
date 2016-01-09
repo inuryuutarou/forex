@@ -1,7 +1,6 @@
 <style>
+	.broker_progress{display:none;}
 	#broker1{display:block;}
-	#broker2{display:none;}
-	#broker3{display:none;}
 	#next{display:block}
 	#back{display:none}
 	#finish{display:none}
@@ -18,10 +17,14 @@
                     <div id="broker<?=$i?>" class="broker_progress">
                         <h4><?=$brkr->name?></h4>
                         <br>
-                        <h4><?=$brkr->link_ib?></h4>
+                        <p>Masuk melalui semua link berikut ini ketika mendaftar</p>
+                        <a href="<?=$brkr->link_ib?>" target="_blank"><h4><?=$brkr->link_ib?></h4></a>
                         <br>
-                        <h4><?=$brkr->link_client?></h4>
+                        <a href="<?=$brkr->link_client?>" target="_blank"><h4><?=$brkr->link_client?></h4></a>
                         <br>
+                        <p>Setelah melakukan daftar, pastikan akun IB dan Akun trading anda telah diverifikasi oleh broker, 
+                        dan pastikan Link IB dan data akun trading yang anda masukkan benar pada form dibawah</p>
+						<br>
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Affiliation Link</label>
                           <div class="col-sm-7">
@@ -35,6 +38,8 @@
                             <input type="text" class="form-control" id="link_client" name="link_client[]" placeholder="Client Link" required>
                           </div>
                         </div>
+                        <?php }else{?>
+                            <input type="hidden" value="" readonly class="form-control" name="link_client[]">
                         <?php }?>
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Broker Username</label>
@@ -84,7 +89,7 @@
 			$("#broker"+i).css("display","block");
 		});
 		$("#finish").click(function(){
-			$("#alert").html("Please FILL ALL data before clicking finish");
+			$("#alert").html("Pastikan SEMUA DATA telah terisi sebelum klik finish");
 		});
 
 		function check_pos(i){

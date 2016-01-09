@@ -22,6 +22,7 @@ class Member extends Secure_area {
 	}
 	
 	public function my_profile(){
+		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
 		$data['active']='my_profile';
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
@@ -39,6 +40,22 @@ class Member extends Secure_area {
 		$data['list_client'] = $this->m_member->list_client($this->session->userdata('id_member'));
 		$this->load->view('main/template',$data);	
 	}
+	public function ajax_grandchild($id_member){
+		$list_client= $this->m_member->list_client($id_member);
+		foreach($list_client->result() as $clt)
+		echo "
+		<tr>
+			<td>$clt->username</td>
+			<td>$clt->first_name $clt->last_name</td>
+			<td>$clt->id_member</td>
+			<td><a href='".site_url('/member/detail_client/'.$clt->id_member)."' data-toggle='modal' data-target='#detail_client' title='detail client'>View Detail</a></td>
+		</tr>";	
+	}
+	
+	public function detail_client($id_member){
+		$data['member'] = $this->m_member->get_ib($id_member)->row();
+		$this->load->view('main/detail_client',$data);	
+	}
 	
 	public function update_profile(){
 		$data=array(
@@ -52,6 +69,7 @@ class Member extends Secure_area {
 			"phone" => $this->input->post('phone'),
 			"bank_name" => $this->input->post('bank_name'),
 			"bank_branch" => $this->input->post('bank_branch'),
+			"bank_acc_num" => $this->input->post('bank_acc_num'),
 			"bank_acc_name" => $this->input->post('bank_acc_name'),
 			"fb_username" => $this->input->post('fb_username'),
 			"fb_link" => $this->input->post('fb_link'),
@@ -121,13 +139,14 @@ class Member extends Secure_area {
 						'id_member'=>$this->session->userdata('id_member'),
 						'id_broker'=>$id_br,
 						'link_ib'=>$link_ib[$i],
-						'link_client'=>$link_client[$i],
+						'link_client'=>(isset($link_client[$i])?$link_client[$i]:''),
 						'broker_username'=>$broker_username[$i],
 						'real_account'=>$real_account[$i],
 					);
 			$i++;
 		}
 		$this->m_member->insert_batch_broker($data);
+		$this->m_member->update_member($this->session->userdata('id_member'),array('valid'=>2));
 		redirect("member/my_profile");
 	}
 }
