@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Forex</title>
+    <title>FX Global Service</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="<?=base_url()?>/media/includes/html5shiv/html5shiv.js"></script>
     <script type="text/javascript" src="<?=base_url()?>/media/includes/respond/respond.min.js"></script>
     <![endif]-->
-    <link rel="icon" type="image/png" href="<?=base_url()?>/media/favicon.png">
+    <link rel="icon" type="image/png" href="<?=base_url()?>/media/images/logo.png">
 
     <script type="text/javascript" src="<?=base_url()?>/media/vendors/jquery/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="<?=base_url()?>/media/vendors/jquery/jquery-ui-1.10.4.min.js"></script>

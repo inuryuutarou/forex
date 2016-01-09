@@ -1,4 +1,3 @@
-<div class="hidden-sm hidden-xs">
     <div class="advertising">
         <div class="container" style="padding:0">
             <div class="info">
@@ -20,7 +19,6 @@
             </div>
         </div>
     </div>
-</div>
 <header class="head-1">
     <div class="container menu-bar" role="navigation">
         <div class="large-header">
@@ -31,10 +29,30 @@
             </div>
 
             <ul class="nav navbar-nav">
-                <li><a>Forex Broker</a></li>
-                <li><a>Bonus & Promotions</a></li>
-                <li><a>Affiliate Program</a></li>
-                <li><a>About Us</a></li>
+                <li class="uber-dropdown dropdown">
+                	<a>Forex Broker<span class="main-text-color light"></span> </a>
+                    <div id="uber-menu-2" class="uber-menu panel-collapse">
+                        <div class="container">
+                            <div class="main-wrap">
+                                <div class="items-wrap clearfix">
+                                    <div class="col-xs-3 col">
+                                        <h3>Forex Broker</h3>
+                                        <p style="line-height:15px">Berikut adalah menu yang menampilkan detail Broker</p>
+                                    </div>
+
+                                    <div class="col-xs-3 col">
+                                        <h4></h4>
+                                        <a href="<?=site_url()?>/xm"><span class="main-text-color"></span>XM</a>
+                                        <a href="<?=site_url()?>/hotforex"><span class="main-text-color"></span>HotForex</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="<?=site_url()?>/bonus_and_promotions">Bonus & Promotions</a></li>
+                <li><a href="<?=site_url()?>/affiliate_program">Affiliate Program</a></li>
+                <li><a href="<?=site_url()?>/about_us">About Us</a></li>
                 <li class="uber-dropdown dropdown">
                     <a> Support <span class="main-text-color light"></span> </a>
                     <div id="uber-menu-2" class="uber-menu panel-collapse">
@@ -48,15 +66,15 @@
 
                                     <div class="col-xs-3 col">
                                         <h4>Support Options</h4>
-                                        <a href="#"><span class="main-text-color"></span>Contact Us</a>
-                                        <a href="#"><span class="main-text-color"></span>FAQ</a>
+                                        <a href="<?=site_url()?>/contact_us"><span class="main-text-color"></span>Contact Us</a>
+                                        <a href="<?=site_url()?>/faq"><span class="main-text-color"></span>FAQ</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li><a>Webinar</a></li>
+                <li><a href="<?=site_url()?>/webinar">Webinar</a></li>
             </ul>
         </div>
 
@@ -78,18 +96,22 @@
                 <li class="main alt-bg-color">
                     <button type="button" class="collapsed fa fa-times" data-toggle="collapse" data-target="#navbar-collapse-1"></button>
                 </li>
-
-                <li>
-                    <a>About Us</a>
-                </li>
-
-                <li>
-                    <a>Support</a>
+				<li>Forex Broker
                     <ul class="submenu">
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">FAQ</a></li>
+                    	<li><a href="<?=site_url()?>/xm"><span class="main-text-color"></span>XM</a></li>
+                        <li><a href="<?=site_url()?>/hotforex"><span class="main-text-color"></span>HotForex</a></li>
+					</ul>
+                </li>
+                <li><a href="<?=site_url()?>/bonus_and_promotions">Bonus & Promotions</a></li>
+                <li><a href="<?=site_url()?>/affiliate_program">Affiliate Program</a></li>
+                <li><a href="<?=site_url()?>/about_us">About Us</a></li>
+                <li>Support
+                    <ul class="submenu">
+                    	<li><a href="<?=site_url()?>/contact_us"><span class="main-text-color"></span>Contact Us</a></li>
+                        <li><a href="<?=site_url()?>/faq"><span class="main-text-color"></span>FAQ</a></li>
                     </ul>
                 </li>
+                <li><a href="<?=site_url()?>/webinar">Webinar</a></li>
             </ul>
         </div>
     </div>

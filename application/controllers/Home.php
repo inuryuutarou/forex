@@ -105,6 +105,5 @@ class Home extends CI_Controller {
 		
 		$this->input->set_cookie($cookie);
 		redirect('home');
-	}
-	
+	}	
 }
