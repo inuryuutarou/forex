@@ -55,7 +55,25 @@ Pada dasarnya FGS didirikan berdasarkan sebuah mimpi besar tentang adanya sebuah
             
         </div>
     </div>
-    <div class="row">
-        
+</div>
+<div id="parteners">
+    <div class="parteners carousel content">
+        <div class="container">
+            <div class="feed cycle-slideshow" data-cycle-carousel-fluid="true" data-cycle-fx="carousel" data-cycle-timeout="2000" style="height:210px">
+                <img src="<?=base_url()?>/media/images/logo_broker/download.jpe" class="img-responsive" alt="" data-toggle="tooltip" title="hotforex">
+                <img src="<?=base_url()?>/media/images/logo_broker/hotforex.jpe" class="img-responsive" alt="" data-toggle="tooltip" title="hotforex">
+                <img src="<?=base_url()?>/media/images/logo_broker/hotforex-debit-card.jpg" class="img-responsive" alt="" data-toggle="tooltip" title="hotforex">
+                <img src="<?=base_url()?>/media/images/logo_broker/HotForex-logo.png" class="img-responsive" alt="" data-toggle="tooltip" title="hotforex">
+                <img src="<?=base_url()?>/media/images/logo_broker/images.jpe" class="img-responsive" alt="" data-toggle="tooltip" title="hotforex">
+                <img src="<?=base_url()?>/media/images/logo_broker/Logo_of_financial_services_firm_XM.png" class="img-responsive" alt="" data-toggle="tooltip" title="hotforex">
+                <img src="<?=base_url()?>/media/images/logo_broker/xm.jpg" class="img-responsive" alt="" data-toggle="tooltip" title="hotforex">
+            </div>
+    
+            <div class="fade-l">
+            </div>
+            <div class="fade-r">
+            </div>
+    
+        </div>
     </div>
 </div>

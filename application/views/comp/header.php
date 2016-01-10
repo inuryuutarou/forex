@@ -30,7 +30,7 @@
 
             <ul class="nav navbar-nav">
                 <li class="uber-dropdown dropdown">
-                	<a>Forex Broker<span class="main-text-color light"></span> </a>
+                	<a>Forex Broker <span class="main-text-color light"></span> </a>
                     <div id="uber-menu-2" class="uber-menu panel-collapse">
                         <div class="container">
                             <div class="main-wrap">
