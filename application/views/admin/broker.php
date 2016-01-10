@@ -29,12 +29,20 @@
             </tr>
           </thead>
           <tbody>
+          <?php
+		  if($broker->num_rows() > 0) {
+			  foreach($broker->result() as $row) {
+			  ?>
             <tr>
-                <td>Tes</td>
-                <td>Tes</td>
-                <td>Tes</td>
-                <td align="center"><a href="<?=site_url()?>/admin/update_broker" data-toggle="modal" data-target="#update_broker"><span><i class="glyphicon glyphicon-pencil"></i></span> Update Broker</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="return confirm('Yakin akan menghapus broker ini ?')"><span><i class="glyphicon glyphicon-trash"></i></span> Delete</a></td>
+                <td><?=$row->name;?></td>
+                <td><?=$row->link_ib;?></td>
+                <td><?=$row->link_client;?></td>
+                <td align="left"><a href="<?=site_url()?>/admin/update_broker/<?=$row->id_broker;?>" data-toggle="modal" data-target="#update_broker"><span><i class="glyphicon glyphicon-pencil"></i></span> Update Broker</a><br />
+                <a href="<?=site_url()?>/admin/delete_broker/<?=$row->id_broker;?>" class="link-delete-broker" onclick="return confirm('Yakin akan menghapus broker ini ?')"><span><i class="glyphicon glyphicon-trash"></i></span> Delete</a></td>
             </tr>
+            <?php
+			  }
+		  } ?>
           </tbody>
         </table>
       </div><!-- /.box-body -->
@@ -64,6 +72,13 @@
   $(document).ready(function(){   
 	 $('#insert_broker, #update_broker').on('hidden.bs.modal', function() {  
 		  $(this).removeData('bs.modal');  
+	 });
+	 $(".link-delete-broker").click(function(event){
+		 event.preventDefault();
+		  var e = $(this);
+		  var url = e.attr('href');
+		  $.post(url);
+		  e.parent().parent().remove();
 	 });
   });		 
 </script>

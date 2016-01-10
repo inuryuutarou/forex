@@ -30,13 +30,32 @@
             </tr>
           </thead>
           <tbody>
+          <?php
+		  if($member->num_rows() > 0) {
+			  foreach($member->result() as $row) { 
+			  $disabled = "disabled";
+			  if($row->valid == '0')
+			  $valid = "New";
+			  if($row->valid == '1')
+			  $valid = "Update Profile";
+			  if($row->valid == '2')
+			  $valid = "Update Broker";
+			  if($row->valid == '3')
+			  $valid = "Valid";
+			  ?>
             <tr>
-                <td>Tes</td>
-                <td>Tes</td>
-                <td>Tes</td>
-                <td>Waiting Approval</td>
-                <td align="center"><a href="<?=site_url()?>/admin/detail_member" data-toggle="modal" data-target="#detail_member"><span><i class="glyphicon glyphicon-list-alt"></i></span> Lihat Detail</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><button class="btn btn-primary btn-md btn-par">Approve</button></a></td>
-            </tr>
+                <td><?=$row->username;?></td>
+                <td><?=$row->first_name.' '.$row->last_name;?></td>
+                <td><?=$row->id_member;?></td>
+                <td><?=$valid;?></td>
+                <td align="right">
+                <?php if($row->valid == '2') { $disabled = ''; } ?>
+                <a href="<?=site_url()?>/admin/approve/<?=$row->id_member;?>" class="link-approve" style="margin-right: 10px">
+                	<button <?=$disabled;?> class="btn btn-primary btn-md btn-par">Approve</button></a>
+                <a href="<?=site_url()?>/admin/detail_member/<?=$row->id_member;?>" data-toggle="modal" data-target="#detail_member"><span><i class="glyphicon glyphicon-list-alt"></i></span> Lihat Detail</a>
+            </tr></td><?php
+			  }
+		  } ?>
           </tbody>
         </table>
       </div><!-- /.box-body -->
@@ -59,6 +78,17 @@
   $(document).ready(function(){   
 	 $('#detail_member').on('hidden.bs.modal', function() {  
 		  $(this).removeData('bs.modal');  
+	 });
+	 $(".link-approve").click(function(event){
+		  event.preventDefault();
+		  var confirmApprove = confirm('Approve member ini?');
+		  if(confirmApprove === false)
+		  return false;
+		  
+		  var url = $(this).attr('href');
+		  $.post(url,function(){
+			  document.location.reload();
+		  });
 	 });
   });		 
 </script>

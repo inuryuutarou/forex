@@ -30,11 +30,11 @@
         <form action="<?=site_url()?>/login/authenticate" method="post">
           <div class="form-group has-feedback">
             <input type="text" name="username" class="form-control" placeholder="Username" required />
-            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            <span class="glyphicon glyphicon-user form-control-feedback" style="top:0"></span>
           </div>
           <div class="form-group has-feedback">
             <input type="password" name="password" class="form-control" placeholder="Password" required/>
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <span class="glyphicon glyphicon-lock form-control-feedback" style="top:0"></span>
           </div>
           <div class="row">
             <div class="col-xs-8">
