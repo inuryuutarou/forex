@@ -18,19 +18,19 @@
                     <h3>Register Now !</h3>
                     <form class="form-inline" action="<?=site_url('home/save');?>" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name">
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name">
+                            <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                         </div>
                         <button type="submit" class="btn btn-default">Sign Up</button>
                     </form>
