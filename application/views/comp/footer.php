@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-sm-7">
                     <p>
-               &#169; Copyright 2015 - All Rights reserved
+               &#169; Copyright 2016 - All Rights reserved
                     </p>
                 </div>
                 <div class="col-sm-5" align="right">

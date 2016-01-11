@@ -11,9 +11,16 @@
             <div class="form form-1" style="padding:20px" align="justify">
                 <div class="row">
                 	<div class="col-md-8">
-                    	<h3>Siapa kami ?</h3>
-                        <p style="text-indent:20px">HotForex adalah broker forex dan komoditas yang telah menerima berbagai penghargaan, memberikan layanan dan fasilitas trading untuk klien ritel dan institusional. Dengan kebijakan memberi kondisi trading terbaik untuk klien dan memberi akses tanpa batas ke likuiditas untuk para trader dan scalper yang menggunakan expert advisor, HotForex telah menempatkan diri sebagai broker forex pilihan trader di seluruh dunia.
-                        </p>
+                    	<div class="row">
+                        	<div class="col-md-3">
+                            	<img src="<?=base_url()?>/media/images/logo_broker/HotForex-logo.png" class="img-responsive" alt="" data-toggle="tooltip" title="HotForex" width="100%">
+                            </div>
+                            <div class="col-md-9">
+                                <h3>Siapa kami ?</h3>
+                                <p style="text-indent:20px">HotForex adalah broker forex dan komoditas yang telah menerima berbagai penghargaan, memberikan layanan dan fasilitas trading untuk klien ritel dan institusional. Dengan kebijakan memberi kondisi trading terbaik untuk klien dan memberi akses tanpa batas ke likuiditas untuk para trader dan scalper yang menggunakan expert advisor, HotForex telah menempatkan diri sebagai broker forex pilihan trader di seluruh dunia.
+                                </p>
+                            </div>
+                        </div>
                         <br>
                         <h3>Layanan kami</h3>
                         <p style="text-indent:20px">HotForex menawarkan berbagai jenis akun, software trading, dan perangkat untuk memfasilitasi klien individu dan institusional untuk berdagang Forex dan Komoditas online. Seluruh klien Ritel, Afiliasi dan White Label berkesempatan untuk mengakses spread interbank dan likuiditas menggunakan platform trading otomatis yang canggih. HotForex memberikan berbagai opsi akun tak tertandingi yang dapat dipilih klien untuk menikmati pengalaman trading yang sesuai dan tepat dengan kebutuhan mereka. Ditambah dengan kondisi trading unggulan dan eksekusi secepat kilat, HotForex menyediakan segalaperangkat dan layanan yang dibutuhkan untuk klien dengan level apa pun untuk mencapai ambisi trading mereka.
@@ -38,7 +45,7 @@
                         <h3>Tipe Akun HotForex</h3>
                         <div class="row">
                         	<div class="col-md-12">
-                                <div class="tablewrap">
+                                <div class="tablewrap table-responsive">
                                     <table class="table table-bordered" style="background-color:#fff">
                                         <thead>
                                         	<th style="border-top:solid 3px #FDEA00; border-left:1px; border-right:1px; text-align:center; font-size:13px"></th>

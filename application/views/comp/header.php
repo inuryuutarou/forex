@@ -14,7 +14,7 @@
                 </div>
                 <?php }?>
             </div>
-            <div class="variants">
+            <div class="variants hidden-xs">
                 
             </div>
         </div>

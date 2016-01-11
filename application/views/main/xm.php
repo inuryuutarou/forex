@@ -11,9 +11,16 @@
             <div class="form form-1" style="padding:20px" align="justify">
                 <div class="row">
                 	<div class="col-md-8">
-                    	<h3>Kenapa memilih XM?</h3>
-                        <p style="text-indent:20px">XM menumbuhkan pengembangan tenaga kerja berkelanjutan melalui spektrum yang luas dari budaya, dan pendekatan kebutuhan Anda dengan keterbukaan terhadap keragaman budaya, nasional, etnis dan agama. Platform trading kami yang canggih dan kondisi trading yang fleksibel sesuai dengan keragaman klien. Pengetahuan kami beragam mulai dari pengalaman yang luas dan pengetahuan mendalam akan pasar finansial. Kami berdedikasi untuk memberikan layanan terbaik dalam trading mata uang, juga dengan CFD, indeks ekuitas, logam mulia, dan energi.
-                        </p>
+                    	<div class="row">
+                        	<div class="col-md-3">
+                            	<img src="<?=base_url()?>/media/images/logo_broker/unnamed.png" class="img-responsive" alt="" data-toggle="tooltip" title="XM" width="100%">
+                            </div>
+                            <div class="col-md-9">
+                                <h3>Kenapa memilih XM?</h3>
+                                <p style="text-indent:20px">XM menumbuhkan pengembangan tenaga kerja berkelanjutan melalui spektrum yang luas dari budaya, dan pendekatan kebutuhan Anda dengan keterbukaan terhadap keragaman budaya, nasional, etnis dan agama. Platform trading kami yang canggih dan kondisi trading yang fleksibel sesuai dengan keragaman klien. Pengetahuan kami beragam mulai dari pengalaman yang luas dan pengetahuan mendalam akan pasar finansial. Kami berdedikasi untuk memberikan layanan terbaik dalam trading mata uang, juga dengan CFD, indeks ekuitas, logam mulia, dan energi.
+                                </p>
+                            </div>
+                        </div>
                         <p style="text-indent:20px">Filosofi operasional yang kami ikuti sederhana: dengan memastikan kepuasaan klien, kami mendapat loyalitas mereka. Reputasi kami selalu berhubungan dengan kredibilitas kami, keduanya merupakan hasil dari kemampuan kami untuk melayani klien kami sesuai harapan mereka. Dengan terus mengawasi tren di industri dan dengan mengikuti teknologi terbaru, kami selalu dapat beradaptasi dengan keinginan klien karena mereka semakin rumit dan lebih meminta. Kami tidak pernah berkompromi pada faktor yang dapat mempengaruhi performa klien, sehingga kami menawarkan spread ketat dan eksekusi terbaik yang pernah ada.
                         </p>
                         <ol style="list-style:lower-alpha">
@@ -42,7 +49,7 @@
                         <h3>Tipe Akun XM</h3>
                         <div class="row">
                         	<div class="col-md-12">
-                                <div class="tablewrap">
+                                <div class="tablewrap table-responsive">
                                     <table class="table table-bordered" style="background-color:#fff">
                                         <thead>
                                         	<th style="border-top:solid 3px #FDEA00; border-left:1px; border-right:1px; text-align:center; font-size:13px"></th>
@@ -132,7 +139,7 @@
                         <h3>SPREAD</h3>
                         <div class="row">
                         	<div class="col-md-12">
-                                <div class="tablewrap">
+                                <div class="tablewrap table-responsive">
                                     <table class="table table-bordered" style="background-color:#fff">
                                         <thead>
                                             <tr>
@@ -1654,7 +1661,7 @@
                         </div>
                         <br>
                         <br>
-                        <div class="tablewrap">
+                        <div class="tablewrap table-responsive">
                             <table class="table table-bordered" style="background-color:#fff">
                                 <thead>
                                     <th colspan="2" align="center" style="border-top:solid 3px #FDEA00; border-left:1px; border-right:1px; text-align:center; font-size:13px">Regulatory Agencies of Trading Point of Financial Instruments Ltd</th>
