@@ -18,7 +18,11 @@
                       <label>ID Member</label>
                       <input type="text" class="form-control" value="<?=$member->id_member?>" disabled/>
                     </div>
-                    <div class="form-group">
+                     <div class="form-group">
+                      <label>Staus registrasi</label>
+                      <input type="text" class="form-control" value="<?=($member->valid==3)?"valid":"invalid"?>" disabled/>
+                    </div>
+                   <div class="form-group">
                       <label>Facebook Name</label>
                       <input type="text" class="form-control" value="<?=$member->fb_username?>" disabled>
                     </div>

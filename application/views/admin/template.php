@@ -105,6 +105,11 @@
                 <i class="fa fa-users"></i><span>Broker</span>
               </a>
             </li>
+            <li class="<?=($aktif=='config')?'active':''?>">
+              <a href="<?=site_url()?>/admin/config">
+                <i class="fa fa-users"></i><span>Config</span>
+              </a>
+            </li>
           </ul>
         </section>
         <!-- /.sidebar -->
