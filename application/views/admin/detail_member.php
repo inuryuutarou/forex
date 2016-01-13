@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                       <label>Nomor Identitas</label>
-                      <input type="text" class="form-control" value="<?=$member->id_card_member;?>" disabled/>
+                      <input type="text" class="form-control" value="<?=$member->id_card_number;?>" disabled/>
                     </div>
                     <div class="form-group">
                       <label>Alamat</label>
