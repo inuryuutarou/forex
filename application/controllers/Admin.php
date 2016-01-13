@@ -16,6 +16,39 @@ class Admin extends Admin_secure_area {
 		$this->load->view('admin/template',$data);
 	}
 	
+	
+	public function suggest_member()
+	{
+		$data = array(
+		'error' => 'no',
+		'response' => array()
+		);
+		
+		$keyword = $this->input->post('term');
+		$q = "SELECT * FROM
+				(
+				SELECT *, CONCAT( first_name, ' ', last_name) AS member_name FROM `vw_member`
+				) AS member
+				WHERE member_name LIKE '%$keyword%'";
+		
+		$get_anggota = $this->db->query($q);
+		
+		if($get_anggota->num_rows() > 0)
+		{
+			foreach($get_anggota->result() as $row)
+			{
+				$data['response'][] = array(
+				'label' => $row->member_name,
+				'value' => $row->member_name,
+				'id_member' => $row->id_member,
+				'nomor_telepon' => $row->phone,
+				'nomor_identitas' => $row->id_card_number
+				);
+			}
+		}
+		echo json_encode($data);
+	}
+	
 	public function member(){
 		$data['aktif']	= 'member';
 		$data['member'] = $this->m_admin->get_data('*','vw_member','level_status = 0');
@@ -78,6 +111,15 @@ class Admin extends Admin_secure_area {
 	public function config(){
 		$data['aktif']='config';
 		$data['view']='admin/config';
+		$get_ref_config = $this->m_admin->get_data('*','config',"config_name = 'auto_refferal'")->row();
+		$auto_member_ref = $this->m_admin->get_data('*','vw_member',"id_member = '".$get_ref_config->value."'");
+		if($auto_member_ref->num_rows() == 1)
+		$member_ref_data = $auto_member_ref->row();
+		else
+		$member_ref_data = FALSE;
+		
+		$data['auto_member_ref_id'] = ($member_ref_data !== FALSE) ? $member_ref_data->id_member : '';
+		$data['auto_member_ref'] = ($member_ref_data !== FALSE) ? $member_ref_data->first_name.' '.$member_ref_data->last_name : '';
 		$this->load->view('admin/template',$data);
 	}
 	public function save_config(){
@@ -85,7 +127,7 @@ class Admin extends Admin_secure_area {
 		if($auto_refferal=="fgs" or $auto_refferal=="random")
 			$value=$auto_refferal;
 		else
-			$value=$auto_refferal_text;
+			$value=$hdn_ref_member_id;
 		$this->m_admin->update_data('auto_refferal','config_name',array("value"=>$value),"config");
 		redirect('admin/config');
 	}
