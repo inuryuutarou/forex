@@ -35,6 +35,7 @@ class Home extends CI_Controller {
 			redirect('member/account_verification');
 		} else {
 			$this->session->set_flashdata('message','Login Failed');
+			redirect('home');
 		}
 	}
 	
@@ -58,17 +59,24 @@ class Home extends CI_Controller {
 			redirect('home');
 		}
 		
-		if(! $this->input->cookie('id_refferer')){
-			$id_refferer=$this->m_home->refferer();
-			if($id_refferer->num_rows()!=0){
-				$id_refferer=$id_refferer->row();
-				$this->m_home->update_member($id_refferer->id_member, array('flag'=>($id_refferer->flag-1)));
-				$id_refferer=$id_refferer->id_member;
+		if(!$this->input->cookie('id_referral')){
+			$config=$this->m_home->get_config('auto_refferal');
+			if($config=='random'){
+				$id_refferer=$this->m_home->refferer();
+				if($id_refferer->num_rows()!=0){
+					$id_refferer=$id_refferer->row();
+					$this->m_home->update_member($id_refferer->id_member, array('flag'=>($id_refferer->flag-1)));
+					$id_refferer=$id_refferer->id_member;
+				}
+				else
+					$id_refferer=NULL;
 			}
-			else
+			else if($config=="fgs")
 				$id_refferer=NULL;
+			else
+				$id_refferer=$config;
 		}else{
-			$id_refferer=$this->input->cookie('id_refferer');
+			$id_refferer=$this->input->cookie('id_referral');
 		}
 		
 		$db_data = array(
@@ -91,16 +99,38 @@ class Home extends CI_Controller {
 					"username" => $user_data->username
 				);
 				$this->session->set_userdata($session_data);
+
+				$to = $this->input->post('email');
+				$sender_name = "no-reply@forexglobalservice.com";		
+				$subject = 'Registration complete';		
+				$from = "no-reply@forexglobalservice.com";		
+				$headers = 'To: <'.$to.'>' . "\r\n";		
+				$headers .= 'From: '.$sender_name."\r\n";		
+				
+				$message = "Dear, ".$this->input->post('first_name')." \n";
+				$message.= "Terimakasih telah mendaftar pada forexglobalservice.com \n";
+				$message.= "Silahkan melakukan login sebagai member pada website forexglobalservice.com menggunakan email dan password sesuai data registrasi anda \n";
+				$message.= "Username: ".$this->input->post('username')." \n";
+				$message.= "Email: ".$this->input->post('email')." \n";
+				$message.= "Nama: ".$this->input->post('first_name')." ".$this->input->post('last_name')." \n";
+				$message.= "\n \n \n";
+				$message.= "Team FGS, \n forexglobalservice.com";
+				$message = str_replace("\n.", "\n..", $message);
+				
+				$send = mail($to, $subject, $message, $headers);
+				if($send)
+				{$this->session->set_flashdata('msg',"Message sent");}
+				delete_cookie("id_referral");
 				redirect('member/account_verification');
 			} else {
 				$this->session->set_flashdata('message','Login Failed');
 			}
 		}
 		else
-		$this->m_home->update_member($db_data);
+			$this->m_home->update_member($db_data);
 		redirect('home');
 	}
-	
+
 	public function referral($id_referral=-1) {
 		$cookie = array(
 			'name'   => 'id_referral',

@@ -11,6 +11,13 @@ class M_home extends CI_Model
 		return $this->db->insert('member',$data);
 	}
 	
+	public function get_config($name){
+		return $this->db->where('config_name',$name)
+						->get('config')
+						->row()
+						->value;
+	}
+	
 	public function get_ib($id_member){
 		return $this->db->where('id_member',$id_member)
 						->get('vw_member');

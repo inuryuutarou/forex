@@ -9,12 +9,14 @@
 				<br>
                 <br>
                 <form class="form-horizontal" enctype="multipart/form-data" action="<?=site_url("member/update_profile")?>" method="post">
+                	<?php if($member->valid==3){ ?>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Refferal link</label>
                       <div class="col-sm-7">
                         <input type="text" class="form-control" onClick="this.setSelectionRange(0, this.value.length)" value="<?=site_url("home/referral/$member->id_member")?>" readonly>
                       </div>
                     </div>
+                    <?php }?>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Username</label>
                       <div class="col-sm-7">

@@ -75,6 +75,21 @@ class Admin extends Admin_secure_area {
 		$this->m_admin->update_data($id_broker,'id_broker',array('deleted'=>'1'),"broker");
 	}
 	
+	public function config(){
+		$data['aktif']='config';
+		$data['view']='admin/config';
+		$this->load->view('admin/template',$data);
+	}
+	public function save_config(){
+		extract($_POST);
+		if($auto_refferal=="fgs" or $auto_refferal=="random")
+			$value=$auto_refferal;
+		else
+			$value=$auto_refferal_text;
+		$this->m_admin->update_data('auto_refferal','config_name',array("value"=>$value),"config");
+		redirect('admin/config');
+	}
+	
 	public function logout() {
 		$session_data = array(
 			'admin_forex_login' => "",
