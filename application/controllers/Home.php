@@ -13,11 +13,24 @@ class Home extends CI_Controller {
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
 		$data['content']='main/home';
+		$data['active']='home';
 		$this->load->view('main/template',$data);
 	}
 	
-	public function signin_form(){
-		$this->load->view('pop_up/sign_in');	
+	public function signin(){
+		$data['header']='comp/header';
+		$data['footer']='comp/footer';
+		$data['content']='main/login';
+		$data['active']='home';
+		$this->load->view('main/template',$data);	
+	}
+	
+	public function register(){
+		$data['header']='comp/header';
+		$data['footer']='comp/footer';
+		$data['content']='main/register';
+		$data['active']='home';
+		$this->load->view('main/template',$data);	
 	}
 	
 	public function sign_in() {

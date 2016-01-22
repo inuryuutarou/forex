@@ -13,6 +13,7 @@ class Contact_us extends CI_Controller {
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
 		$data['content']='main/contact';
+		$data['active']='support';
 		$this->load->view('main/template',$data);
 	}
 }
