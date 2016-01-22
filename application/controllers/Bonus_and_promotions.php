@@ -13,6 +13,7 @@ class Bonus_and_promotions extends CI_Controller {
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
 		$data['content']='main/bonus_and_promotions';
+		$data['active']='bonus';
 		$this->load->view('main/template',$data);
 	}
 }

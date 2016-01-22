@@ -13,6 +13,7 @@ class Affiliate_program extends CI_Controller {
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
 		$data['content']='main/affiliate';
+		$data['active']='affiliate';
 		$this->load->view('main/template',$data);
 	}
 }

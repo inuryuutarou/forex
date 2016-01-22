@@ -13,6 +13,7 @@ class Hotforex extends CI_Controller {
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
 		$data['content']='main/hotforex';
+		$data['active']='broker';
 		$this->load->view('main/template',$data);
 	}
 }

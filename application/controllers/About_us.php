@@ -13,6 +13,7 @@ class About_us extends CI_Controller {
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
 		$data['content']='main/about_us';
+		$data['active']='about';
 		$this->load->view('main/template',$data);
 	}
 }
