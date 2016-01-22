@@ -51,7 +51,11 @@ class Admin extends Admin_secure_area {
 	
 	public function member(){
 		$data['aktif']	= 'member';
+		if($this->input->post('search_member'))
+		$this->db->like('first_name',$this->input->post('search_member'))
+				 ->or_like('last_name',$this->input->post('search_member'));
 		$data['member'] = $this->m_admin->get_data('*','vw_member','level_status = 0');
+		$data['search_member'] = ($this->input->post('search_member')) ? $this->input->post('search_member') : '';
 		$data['view']='admin/member';
 		$this->load->view('admin/template',$data);
 	}

@@ -110,6 +110,11 @@
                 <i class="fa fa-users"></i><span>Config</span>
               </a>
             </li>
+            <li>
+              <a href="<?=site_url()?>/admin/logout">
+                <i class="fa fa-sign-out"></i><span>Logout</span>
+              </a>
+            </li>
           </ul>
         </section>
         <!-- /.sidebar -->

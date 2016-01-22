@@ -17,6 +17,16 @@
   <div class="box">
       <div class="box-header">
         <h3 class="box-title">Daftar Member</h3>
+        <div class="box-tools">
+        <?=form_open('admin/member');?>
+          <div class="input-group" style="width: 200px;">
+            <input type="text" name="search_member" class="form-control input-sm pull-right" value="<?=$search_member;?>" placeholder="search name">
+            <div class="input-group-btn">
+              <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+          <?=form_close();?>
+        </div>
       </div><!-- /.box-header -->
       <div class="box-body">
         <table id="member_table" class="table table-bordered table-striped">
@@ -50,7 +60,7 @@
                 <td><?=$valid;?></td>
                 <td align="right">
                 <?php if($row->valid == '2') { $disabled = ''; } ?>
-                <a href="<?=site_url()?>/admin/approve/<?=$row->id_member;?>" class="link-approve" style="margin-right: 10px">
+                <a href="<?=site_url()?>/admin/approve/<?=$row->id_member;?>" class="link-approve <?=$disabled;?>" style="margin-right: 10px">
                 	<button <?=$disabled;?> class="btn btn-primary btn-md btn-par">Approve</button></a>
                 <a href="<?=site_url()?>/admin/detail_member/<?=$row->id_member;?>" data-toggle="modal" data-target="#detail_member"><span><i class="glyphicon glyphicon-list-alt"></i></span> Lihat Detail</a>
             </tr></td><?php
@@ -81,6 +91,8 @@
 	 });
 	 $(".link-approve").click(function(event){
 		  event.preventDefault();
+		  if($(this).hasClass('disabled'))
+		  return false;
 		  var confirmApprove = confirm('Approve member ini?');
 		  if(confirmApprove === false)
 		  return false;
