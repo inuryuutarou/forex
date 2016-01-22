@@ -8,7 +8,7 @@
     <!-- Bootstrap 3.3.4 -->
     <link href="<?=base_url()?>/media/includes/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
-    <link href="<?=base_url()?>media/resources/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>media/css/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <!--<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />-->
     <!-- Theme style -->

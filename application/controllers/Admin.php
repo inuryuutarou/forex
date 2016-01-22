@@ -4,6 +4,8 @@ include_once("Admin_secure_area.php");
 
 class Admin extends Admin_secure_area {
 	
+	var $per_page = 20;
+	
 	function __construct() 
     {
         parent::__construct();
@@ -50,11 +52,33 @@ class Admin extends Admin_secure_area {
 	}
 	
 	public function member(){
+		$this->load->library('pagination');
+		
+		$page = ($this->input->get('per_page')) ? $this->input->get('per_page') : '1';
+		// Pagination Settings
+		$config['use_page_numbers'] = TRUE;
+		$config['page_query_string'] = TRUE;
+		$config['full_tag_open'] = '<div class="ci_pagination">';
+		$config['full_tag_close'] = '</div>';
+		$config['num_links'] = 5;
+		$config['base_url'] = site_url("admin/member");
+		
+		
+		if($this->input->post('search_member'))
+		$this->db->like('first_name',$this->input->post('search_member'))->or_like('last_name',$this->input->post('search_member'));
+		$config['total_rows'] = $this->m_admin->get_data('*','vw_member','level_status = 0')->num_rows();
+		
+		$config['per_page'] = $this->per_page;
+		$this->pagination->initialize($config);
+		$offset = ($page-1) * $this->per_page;
+		
 		$data['aktif']	= 'member';
 		if($this->input->post('search_member'))
-		$this->db->like('first_name',$this->input->post('search_member'))
-				 ->or_like('last_name',$this->input->post('search_member'));
+		$this->db->like('first_name',$this->input->post('search_member'))->or_like('last_name',$this->input->post('search_member'));
+		$this->db->limit($this->per_page,$offset);
+		$this->db->order_by('first_name','asc');
 		$data['member'] = $this->m_admin->get_data('*','vw_member','level_status = 0');
+		
 		$data['search_member'] = ($this->input->post('search_member')) ? $this->input->post('search_member') : '';
 		$data['view']='admin/member';
 		$this->load->view('admin/template',$data);

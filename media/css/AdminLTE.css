@@ -26,6 +26,27 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 }
+.ci_pagination > strong, .ci_pagination > a {
+	display: inline-block;
+	padding: 5px;
+	min-width: 35px;
+	text-align: center;
+	margin: 2px;
+	border: 1px solid #207DA4;
+	border-radius: 2px;
+}
+.ci_pagination > strong {
+	background-color: #FFF;
+	color: #1F7D9F;
+}
+.ci_pagination > a {
+	background-color: #1F7D9F;
+	color: white;
+}
+.ci_pagination > a:hover {
+	background-color: #164A74;
+	color: white;
+}
 /* Layout */
 .wrapper {
   min-height: 100%;

@@ -66,6 +66,9 @@
             </tr></td><?php
 			  }
 		  } ?>
+          <tr>
+          	<td colspan="5"><?=$this->pagination->create_links();?></td>
+          </tr>
           </tbody>
         </table>
       </div><!-- /.box-body -->
