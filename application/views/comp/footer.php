@@ -13,12 +13,12 @@
 
 				<div class="container">
                     <ul id="mycarouselthree" class="jcarousel-skin-tango">
-                  
-                        <li><img src="<?=base_url()?>/media/images/logo_broker/HotForex-logo.png" alt="" /></li>
+
+                        <li><img src="<?=base_url()?>/media/images/logo_broker/exness.png" alt="" /></li>                  
+                        <li><img src="<?=base_url()?>/media/images/logo_broker/instaforex.png" height="140px" alt="" /></li>
                         <li><img src="<?=base_url()?>/media/images/logo_broker/unnamed.png" alt="" /></li>
                         <li><img src="<?=base_url()?>/media/images/logo_broker/orbex.png" alt="" /></li>
-                        <li><img src="<?=base_url()?>/media/images/logo_broker/exness.png" alt="" /></li>
-                        <li><img src="<?=base_url()?>/media/images/logo_broker/instaforex.png" height="140px" alt="" /></li>
+                        <li><img src="<?=base_url()?>/media/images/logo_broker/HotForex-logo.png" alt="" /></li>
             
                     </ul>
 				</div>
@@ -28,17 +28,16 @@
         
         <div class="clearfix divider_dashed1"></div>
         
-        <div class="one_fourth animate" data-anim-type="fadeInUp">
+        <div class="one_third animate" data-anim-type="fadeInUp">
             <ul class="faddress">
                 <li><img src="<?=base_url()?>/media/images/logo.png" alt="" width="80px" /></li>
-                <li><i class="fa fa-map-marker fa-lg"></i>&nbsp; Jl. Teuku Umar, Dunkin Donuts<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Denpasar, Bali</li>
-                <li><i class="fa fa-phone"></i>&nbsp; 1 -234 -456 -7890</li>
-                <li><i class="fa fa-print"></i>&nbsp; 1 -234 -456 -7890</li>
-                <li><a href="mailto:info@yourdomain.com"><i class="fa fa-envelope"></i> info@yourdomain.com</a></li>
+                <li><i class="fa fa-map-marker fa-lg"></i>&nbsp; Jl. Tukad Bilok No. 2, Renon<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Denpasar, Bali</li>
+                <li><i class="fa fa-phone"></i>&nbsp; +6281 246 515 082</li>
+                <li><a href="mailto:info@yourdomain.com"><i class="fa fa-envelope"></i> info@forexglobalservice.com</a></li>
             </ul>
         </div><!-- end address -->
         
-        <div class="one_fourth animate" data-anim-type="fadeInUp">
+        <div class="one_third animate" data-anim-type="fadeInUp">
             <div class="qlinks">
             
                 <h4 class="lmb">Support</h4>
@@ -51,25 +50,16 @@
             </div>
         </div><!-- end links -->
             
-        <div class="one_fourth animate" data-anim-type="fadeInUp">
+        <div class="one_third last animate" data-anim-type="fadeInUp">
             <div class="siteinfo">
             
                 <h4 class="lmb">Facebook</h4>
-                
-                <div class="fb-page" data-href="https://www.facebook.com/FOREX-Global-Service-FGS-792977437492109/?fref=nf" data-tabs="timeline" data-height="260" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+                <div style="padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; background-color:#fff;">
+                	<div class="fb-like" data-href="https://www.facebook.com/FOREX-Global-Service-FGS-792977437492109/?fref=nf" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
+                </div>
                 
             </div>
-        </div><!-- end site info -->
-        
-        <div class="one_fourth last animate" data-anim-type="fadeInUp">
-            
-            <h4>Twitter</h4>
-            
-            <a class="twitter-timeline" width='250' height='260'  href="https://twitter.com/fabric"  data-widget-id="600720083413962752" data-chrome='nofooter'>Tweets by @fabric</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                
-        </div><!-- end flickr -->
-        
+        </div><!-- end site info -->        
         
     </div>
 </div><!-- end footer -->
@@ -90,9 +80,7 @@
         <div class="one_half last">
             
             <ul class="footer_social_links">
-                <li class="animate" data-anim-type="zoomIn"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li class="animate" data-anim-type="zoomIn"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li class="animate" data-anim-type="zoomIn"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li class="animate" data-anim-type="zoomIn"><a href="https://www.facebook.com/FOREX-Global-Service-FGS-792977437492109/?fref=nf"><i class="fa fa-facebook"></i></a></li>
             </ul>
                 
         </div>

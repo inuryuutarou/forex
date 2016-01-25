@@ -46,7 +46,7 @@
                     data-duration="900"
                     data-effect="scale(1.5,1.6)"
                 >
-                    <a href="#" class="sbutton1">Registrasi Sekarang!</a>
+                    <a href="<?=site_url()?>/home/register" class="sbutton1">Registrasi Sekarang!</a>
                 </div>
                  
                  
@@ -60,15 +60,44 @@
 
 <div class="clearfix"></div>
 
-<?php if( ! $this->session->userdata('forex_login') ) { ?>
 <div class="feature_section2">
     <div class="container">
     	<div class="one_half">
-        	<h2>Main <strong>Broker</strong></h2>
+			<div class="feature_section11" style="background:none; padding: 0px 0px 35px 0px;">
+                <div class="animate fadeInUp" data-anim-type="fadeInUp">
+                    
+                    <strong>Forex Global Service (FGS) ?</strong>
+                    <div class="clearfix"></div>
+                    <div class="contbox" style="padding:20px 40px 31px 40px">
+                    
+                    <h5>Forex Global Service (FGS) adalah sebuah program yang memiliki sistem jangka panjang yang berantai yang memiliki potensi bisnis yang sangat besar untuk para member FGS. Sebuah program terbaru yang menggunakan sistem jaringan / network marketing dalam dunia forex yang akan melibatkan ribuan trader yang ada di dalam program ini. </h5>
+                    <br><br>
+                    <a href="<?=site_url()?>/about_us" class="readmore_but1 nocurve"><i class="fa fa-hand-o-right"></i> &nbsp;Read More..</a>
+                    
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-xs-12" style="background:#fff; outline: 10px solid #ffffff;
+    outline-offset: 4px;">
+    			<div class="row" style="padding:15px; ">
+                    <div class="col-sm-4">
+                    <a href="ymsgr:SendIM?YOUR Yahoo ID" style="background:none; float:none; padding:0; vertical-align:top"><img border="0" src="http://opi.yahoo.com/online?u=YOUR Yahoo ID&amp;m=g&amp;t=11"></a>
+                    </div>
+                    <div class="col-sm-8">
+                        <h4 style="margin-bottom:0">FGS Customer Service</h4>
+                        <h4><strong>Ayu Carollina</strong></h4>
+                        <p>Office Hour : <br>09.00 - 17.00 WIB</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="one_half last">
-            <div class="reg_form">
-                <form id="sky-form" class="sky-form" novalidate="novalidate" action="<?=site_url('home/save');?>" method="post">
+        <?php if( ! $this->session->userdata('forex_login') ) { ?>
+
+            <div class="reg_form" style="margin: 24px auto 0 auto;">
+                <form id="sky-form" class="sky-form" novalidate action="<?=site_url('home/save');?>" method="post">
                     <header>Registrasi sekarang !</header>
                     
                     <fieldset>					
@@ -126,52 +155,14 @@
                     </footer>
                 </form>			
             </div>
+            <?php } ?>
     	</div>   
     </div>
 </div><!-- end features section2 -->
-<?php } ?>
 
 <div class="clearfix"></div>
 
-<div class="parallax_sec2">
-    <div class="container">
-    
-        <h2 style="color:#E9EAED">Video <strong>Tutorial</strong></h2>
-        
-        <div class="clearfix margin_top3"></div>
-        
-        <div class="one_half animate" data-anim-type="fadeInLeft">
-            <div class="hvideo">
-                <iframe src="http://www.youtube.com/embed/1qJRFcDOiKo" allowfullscreen="" frameborder="0"></iframe>
-            </div>
-        </div>
-        
-        <div class="one_half last animate" data-anim-type="fadeInRight">
-            <div class="hvideo right">
-                <iframe src="http://www.youtube.com/embed/WTAHzO1i6Mw" allowfullscreen="" frameborder="0"></iframe>
-            </div>
-        </div>
-    
-    </div>
-</div><!-- end parallax sec 2 -->
 
-<div class="clearfix"></div>
-
-<div class="feature_section11">
-    <div class="container animate fadeInUp" data-anim-type="fadeInUp">
-        
-        <strong>Forex Global Service (FGS) ?</strong>
-        <div class="clearfix"></div>
-        <div class="contbox">
-        
-        <h5>Forex Global Service (FGS) adalah sebuah program yang memiliki sistem jangka panjang yang berantai yang memiliki potensi bisnis yang sangat besar untuk para member FGS. Sebuah program terbaru yang menggunakan sistem jaringan / network marketing dalam dunia forex yang akan melibatkan ribuan trader yang ada di dalam program ini. Program ini adalah sebuah terobosan besar dalam dunia Forex saat ini.</h5>
-        <br><br>
-        <a href="<?=site_url()?>/about_us" class="readmore_but1 nocurve"><i class="fa fa-hand-o-right"></i> &nbsp;Read More..</a>
-        
-        </div>
-        
-    </div>
-</div>
 
 <div class="clearfix"></div>
 <div class="feature_section35">
@@ -199,6 +190,45 @@
             <a href="<?=site_url()?>/affiliate_program" class="readmore_but1">Read More..</a>
                 
         </div>
+    </div>
+</div>
+
+<div class="clearfix margin_top5"></div>
+
+<!--<div class="parallax_sec2" style="background:#262626">
+    <div class="container">
+    
+        <h2 style="color:#E9EAED">Video <strong>Tutorial</strong></h2>
+        
+        <div class="clearfix margin_top3"></div>
+        
+        <div class="one_half animate" data-anim-type="fadeInLeft">
+            <div class="hvideo">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/CIVXsZ4JjtA" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        
+        <div class="one_half last animate" data-anim-type="fadeInRight">
+            <div class="hvideo right">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/N474HiKru6k" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    
+    </div>
+</div>--><!-- end parallax sec 2 -->
+
+<div class="clearfix"></div>
+
+<div class="feature_section11" style="background:#262626;">
+    <div class="container animate fadeInUp" data-anim-type="fadeInUp">
+        
+        <strong>Main Broker</strong>
+        <div class="clearfix"></div>
+        <div class="contbox">
+        	<img src="<?=base_url()?>/media/images/logo_broker/exness.png" alt="" />
+            <p>Sejak berdiri di tahun 2008, broker forex Exness melayani perdagangan Forex, CFD, dan Futures. Exness berpusat di Rusia, melebarkan sayap ke Eropa dengan lisensi dari regulator CySEC Siprus, kemudian perlahan Exness mulai berkembang ke China, Malaysia, termasuk Indonesia. Dilihat dari sebarannya, market utama Exness adalah Eropa Timur dan Asia <a href="<?=site_url()?>/exness">read more..</a></p>
+        </div>
+        
     </div>
 </div>
 

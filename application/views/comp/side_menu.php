@@ -4,7 +4,7 @@
 		border-radius: 3px;
 		padding: 5px 20px;
 		margin-bottom:3px;	
-		color: #000000;
+		color: #ddd;
 		width: 300px;
 	}
 	.arrows_list1 .side_par a{

@@ -333,10 +333,10 @@
 }
 .feature_section2 a {
 	float: right;
-	color: #13afeb;
+	color: #fff;
 	font-size: 16px;
 	padding: 13px 35px;
-	background-color: #fff;
+	background-color: #E0D332;
 	border-radius: 4px;
 	text-transform: uppercase;
 }
@@ -581,7 +581,7 @@
 }
 .feature_section11 .contbox {
 	float: left;
-	width: 610px;
+	width: 100%;
 	padding: 40px 40px 50px 40px;
 	text-align: center;
 	background-color: #fff;
@@ -607,7 +607,7 @@
 	text-transform: uppercase;
 	position: relative;
 	z-index: 4;
-	margin-left: 48px;
+	margin-left: 7px;
 }
 
 /* features section 12 */
