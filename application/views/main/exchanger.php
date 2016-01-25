@@ -18,7 +18,42 @@
                     
                     <p>Dengan Bantuan Customer Support khusus yang selalu siap melayani anda, transaksi anda akan di proses secara cepat.</p>
                     
-                    <p>&nbsp;</p>
+                    <br><br>
+                    <div class="col-xs-12" style="background-color:#ddd; padding:15px">
+                    	<h4 style="text-align:center; font-weight:bold">Kurs Jual Beli FGS</h4>
+                        <p style="text-align:center">Stok tidak mengikat.<br>Klik kurs BELI untuk menukarkan Rupiah anda dengan E-Currency<br>Klik kurs JUAL untuk menukarkan E-Currency anda dengan rupiah</p>
+                        <div class="tablewrap table-responsive">
+	                        <table class="table" border="0">
+                            	<thead align="center" style="background:#fff; border:none">
+                                	<th>JENIS</th>
+                                    <th>JUAL</th>
+                                    <th>BELI</th>
+                                    <th>STOCK</th>
+                                </thead>
+                                <tbody style="margin-top:20px">
+                                	<tr>
+                                    	<td><img src="<?=base_url()?>/media/images/logo_broker/unnamed.png" alt="" class="img_left11" /></td>
+                                        <td>Rp 13.700</td>
+                                        <td>Rp 13.700</td>
+                                        <td>Rp 13.700</td>
+                                    </tr>
+                                    <tr>
+                                    	<td><img src="<?=base_url()?>/media/images/logo_broker/unnamed.png" alt="" class="img_left11" /></td>
+                                        <td>Rp 13.700</td>
+                                        <td>Rp 13.700</td>
+                                        <td>Rp 13.700</td>
+                                    </tr>
+                                    <tr>
+                                    	<td><img src="<?=base_url()?>/media/images/logo_broker/unnamed.png" alt="" class="img_left11" /></td>
+                                        <td>Rp 13.700</td>
+                                        <td>Rp 13.700</td>
+                                        <td>Rp 13.700</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
                     
                     <ul>
                         <li><em>** Dibawah ini contoh tampilan rate harga Jual Beli yang nanti ditampilkan di web ya bro. Harga Jual Beli di set admin di admin area.</em></li>
