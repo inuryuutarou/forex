@@ -16,6 +16,9 @@
                   
                         <li><img src="<?=base_url()?>/media/images/logo_broker/HotForex-logo.png" alt="" /></li>
                         <li><img src="<?=base_url()?>/media/images/logo_broker/unnamed.png" alt="" /></li>
+                        <li><img src="<?=base_url()?>/media/images/logo_broker/orbex.png" alt="" /></li>
+                        <li><img src="<?=base_url()?>/media/images/logo_broker/exness.png" alt="" /></li>
+                        <li><img src="<?=base_url()?>/media/images/logo_broker/instaforex.png" height="140px" alt="" /></li>
             
                     </ul>
 				</div>

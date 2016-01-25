@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-include_once('secure_area.php');
+include_once('Secure_area.php');
 
 class Member extends Secure_area {
 
@@ -148,6 +148,33 @@ class Member extends Secure_area {
 		$this->m_member->insert_batch_broker($data);
 		$this->m_member->update_member($this->session->userdata('id_member'),array('valid'=>2));
 		redirect("member/my_profile");
+	}
+	
+	public function webinar(){
+		$data['header']='comp/header';
+		$data['footer']='comp/footer';
+		$data['side_menu']='comp/side_menu';
+		$data['content']='main/webinar';
+		$data['active']='webinar';
+		$this->load->view('main/template',$data);
+	}
+	
+	public function exchanger(){
+		$data['header']='comp/header';
+		$data['footer']='comp/footer';
+		$data['side_menu']='comp/side_menu';
+		$data['content']='main/exchanger';
+		$data['active']='exchanger';
+		$this->load->view('main/template',$data);
+	}
+	
+	public function dhuafa(){
+		$data['header']='comp/header';
+		$data['footer']='comp/footer';
+		$data['side_menu']='comp/side_menu';
+		$data['content']='main/dhuafa';
+		$data['active']='dhuafa';
+		$this->load->view('main/template',$data);
 	}
 }
 include_once('simpleimage.php');

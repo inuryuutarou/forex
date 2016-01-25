@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Exchanger extends CI_Controller {
+class Orbex extends CI_Controller {
 	
 	function __construct() 
     {
@@ -12,7 +12,8 @@ class Exchanger extends CI_Controller {
 	public function index(){
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
-		$data['content']='main/exchanger';
+		$data['content']='main/orbex';
+		$data['active']='broker';
 		$this->load->view('main/template',$data);
 	}
 }

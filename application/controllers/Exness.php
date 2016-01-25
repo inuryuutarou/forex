@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Webinar extends CI_Controller {
+class Exness extends CI_Controller {
 	
 	function __construct() 
     {
@@ -12,7 +12,8 @@ class Webinar extends CI_Controller {
 	public function index(){
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
-		$data['content']='main/webinar';
+		$data['content']='main/exness';
+		$data['active']='broker';
 		$this->load->view('main/template',$data);
 	}
 }

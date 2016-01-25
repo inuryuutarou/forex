@@ -71,21 +71,45 @@
                                     <div class="yamm-content">
                                       <div class="row">
                                       
-                                        <ul class="col-sm-6 col-md-3 list-unstyled ">
+                                        <ul class="col-sm-6 col-md-2 list-unstyled ">
                                           <li>
                                             <a href="<?=site_url()?>/xm"><p>XM</p></a>
                                             <!--<a href="#"><p>XM</p></a>-->
                                           </li>
                                           <li>
-                                          <img src="<?=base_url()?>/media/images/logo_broker/unnamed.png" alt="" class="img_left4" /></li>
+                                          <img src="<?=base_url()?>/media/images/logo_broker/unnamed.png" width="100%" alt="" class="img_left4" /></li>
                                         </ul>
-                                        <ul class="col-sm-6 col-md-3 list-unstyled ">
+                                        <ul class="col-sm-6 col-md-2 list-unstyled ">
                                           <li>
                                             <a href="<?=site_url()?>/hotforex"><p>HotForex</p></a>
                                             <!--<a href="#"><p>HotForex</p></a>-->
                                           </li>
                                           <li>
-                                          <img src="<?=base_url()?>/media/images/logo_broker/HotForex-logo.png" alt="" class="img_left4" /></li>
+                                          <img src="<?=base_url()?>/media/images/logo_broker/HotForex-logo.png" width="100%" alt="" class="img_left4" /></li>
+                                        </ul>
+                                        <ul class="col-sm-6 col-md-2 list-unstyled ">
+                                          <li>
+                                            <a href="<?=site_url()?>/orbex"><p>Orbex</p></a>
+                                            <!--<a href="#"><p>HotForex</p></a>-->
+                                          </li>
+                                          <li>
+                                          <img src="<?=base_url()?>/media/images/logo_broker/orbex.png" width="100%" alt="" class="img_left4" /></li>
+                                        </ul>
+                                        <ul class="col-sm-6 col-md-2 list-unstyled ">
+                                          <li>
+                                            <a href="<?=site_url()?>/exness"><p>Exness</p></a>
+                                            <!--<a href="#"><p>HotForex</p></a>-->
+                                          </li>
+                                          <li>
+                                          <img src="<?=base_url()?>/media/images/logo_broker/exness.png" width="100%" alt="" class="img_left4" /></li>
+                                        </ul>
+                                        <ul class="col-sm-6 col-md-2 list-unstyled ">
+                                          <li>
+                                            <a href="<?=site_url()?>/instaforex"><p>Instaforex</p></a>
+                                            <!--<a href="#"><p>HotForex</p></a>-->
+                                          </li>
+                                          <li>
+                                          <img src="<?=base_url()?>/media/images/logo_broker/instaforex.png" width="100%" alt="" class="img_left4" /></li>
                                         </ul>
                                         
                                       </div>
@@ -102,14 +126,7 @@
                                   <li> <a href="<?=site_url()?>/faq">FAQ</a> </li>
                                 </ul>
                             </li>
-                        	<li class="dropdown"> <a href="#" data-toggle="dropdown" class="dropdown-toggle <?=($active=='others')?'active':'';?>"><i class="fa fa-tachometer"></i> Others</a>
-                                <ul class="dropdown-menu" role="menu">
-                                  <li> <!--<a href="<?=site_url()?>/dhuafa">Dhuafa Program</a>--><a href="#">Dhuafa Program</a> </li>
-                                  <li> <!--<a href="<?=site_url()?>/exchanger">Exchanger</a>--><a href="#">Exchanger</a> </li>
-                                  <li> <!--<a href="<?=site_url()?>/webinar">Webinar</a>--><a href="#">Webinar</a> </li>
-                                  <li> <!--<a href="<?=site_url()?>/gallery">Gallery</a>--><a href="#">Gallery</a> </li>
-                                </ul>
-                            </li>
+                        	<li> <a href="<?=site_url()?>/gallery" class="<?=($active=='gallery')?'active':'';?>"><i class="fa fa-photo"></i> Gallery</a></li>
                         
                         </ul>                
                       </div>

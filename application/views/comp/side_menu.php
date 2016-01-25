@@ -25,6 +25,9 @@
             <li class="side_par"><a href="<?=site_url()?>/member/my_profile"><i class="fa fa-user"></i> My Profile</a></li>
             <li class="side_par"><a href="#"><i class="fa fa-envelope"></i> Inbox</a></li>
             <li class="side_par"><a href="<?=site_url()?>/member/my_client"><i class="fa fa-group"></i> My Clients</a></li>
+            <li class="side_par"><a href="<?=site_url()?>/member/dhuafa"><i class="fa fa-child"></i> Dhuafa Program</a> </li>
+            <li class="side_par"><a href="<?=site_url()?>/member/exchanger"><i class="fa fa-money"></i> Exchanger</a> </li>
+            <li class="side_par"><a href="<?=site_url()?>/member/webinar"><i class="fa fa-group"></i> Webinar</a> </li>
             <li class="side_par"><a href="<?=site_url()?>/home/sign_out"><i class="fa fa-sign-out"></i> Sign Out</a></li>
 		</ul>
         
