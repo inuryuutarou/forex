@@ -18,9 +18,27 @@ class Member extends Secure_area {
 		else if($member->valid==1){
 			redirect('member/broker_verification');
 		}
-		redirect('member/my_profile');
+		redirect('member/wall');
 	}
-	
+	public function wall(){
+		$data['wall'] = $this->m_member->get_wall()->result();
+		$data['active']='dashboard';
+		$data['header']='comp/header';
+		$data['footer']='comp/footer';
+		$data['side_menu']='comp/side_menu';
+		$data['content']='main/wall';
+		$this->load->view('main/template',$data);	
+	}
+	public function update_wall(){
+		extract($_POST);
+		$data=array(
+					'id_member'=>$this->session->userdata('id_member'),
+					'content'=>$content,
+					'timestamp'=>date("Y-m-d H:i:s"),
+				);
+		$this->m_member->insert_wall($data);
+		redirect("member/wall");
+	}
 	public function my_profile(){
 		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
 		$data['active']='my_profile';
@@ -160,6 +178,7 @@ class Member extends Secure_area {
 	}
 	
 	public function exchanger(){
+		$data['broker'] = $this->m_member->get_broker()->result();
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
 		$data['side_menu']='comp/side_menu';
@@ -167,7 +186,36 @@ class Member extends Secure_area {
 		$data['active']='exchanger';
 		$this->load->view('main/template',$data);
 	}
-	
+	public function exchange_form($id_broker){
+		$data['broker'] = $this->m_member->get_broker($id_broker)->row();
+		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
+		$data['header']='comp/header';
+		$data['footer']='comp/footer';
+		$data['side_menu']='comp/side_menu';
+		$data['content']='main/exchange_form';
+		$data['active']='exchanger';
+		$this->load->view('main/template',$data);
+	}
+	public function exchange_process(){
+		extract($_POST);
+		$broker = $this->m_member->get_broker($id_broker)->row();
+		$data=array(
+					'id_member'=>$this->session->userdata('id_member'),
+					'id_broker'=>$id_broker,
+					'jenis_transaksi'=>$jenis_transaksi,
+					'nilai'=>$nilai,
+					'nilai_tukar'=>($jenis_transaksi==0)?$broker->beli:$broker->jual,
+					'no_akun_trading'=>$no_akun_trading,
+					'nama_akun_trading'=>$nama_akun_trading,
+					'nama_bank'=>$nama_bank,
+					'no_rek'=>$no_rek,
+					'nama_rek'=>$nama_rek,
+					'notes'=>$notes,
+					'timestamp'=>date("Y-m-d H:i:s"),
+				);
+		$this->m_member->insert_exchange($data);
+		redirect("member/exchanger");
+	}
 	public function dhuafa(){
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';

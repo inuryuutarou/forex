@@ -19,26 +19,23 @@ class Admin extends Admin_secure_area {
 	}
 	
 	
-	public function suggest_member()
-	{
+	public function suggest_member(){
 		$data = array(
-		'error' => 'no',
-		'response' => array()
-		);
+						'error' => 'no',
+						'response' => array()
+					);
 		
 		$keyword = $this->input->post('term');
-		$q = "SELECT * FROM
-				(
-				SELECT *, CONCAT( first_name, ' ', last_name) AS member_name FROM `vw_member`
-				) AS member
+		$q = "SELECT * 
+				FROM (
+						SELECT *, CONCAT( first_name, ' ', last_name) AS member_name FROM `vw_member`
+					) AS member
 				WHERE member_name LIKE '%$keyword%'";
 		
 		$get_anggota = $this->db->query($q);
 		
-		if($get_anggota->num_rows() > 0)
-		{
-			foreach($get_anggota->result() as $row)
-			{
+		if($get_anggota->num_rows() > 0){
+			foreach($get_anggota->result() as $row)	{
 				$data['response'][] = array(
 				'label' => $row->member_name,
 				'value' => $row->member_name,
@@ -159,7 +156,17 @@ class Admin extends Admin_secure_area {
 		$this->m_admin->update_data('auto_refferal','config_name',array("value"=>$value),"config");
 		redirect('admin/config');
 	}
-	
+	public function changer(){
+		$data['aktif']='config';
+		$data['view']='admin/changer';
+		$data['changer']=$this->m_admin->get_data("*","vw_changer","approved = 0");
+		$this->load->view('admin/template',$data);
+	}
+	public function approve_changer(){
+		extract($_POST);
+		$this->m_admin->update_data($id_changer,'id_changer',array("approved"=>1),"changer");
+		redirect('admin/changer');
+	}
 	public function logout() {
 		$session_data = array(
 			'admin_forex_login' => "",

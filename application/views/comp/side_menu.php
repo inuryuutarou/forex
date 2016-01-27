@@ -20,8 +20,10 @@
         
 		<ul class="arrows_list1">		
         
-            <li class="side_par"><a href="#"><i class="fa fa-home"></i> Dashboard</a></li>
+            <li class="side_par"><a href="<?=site_url()?>/member/"><i class="fa fa-home"></i> Dashboard</a></li>
+            <?php if($this->session->userdata('valid')!=3){?>
             <li class="side_par"><a href="<?=site_url()?>/member/account_verification"><i class="fa fa-user"></i> Account Verification</a></li>
+            <?php }?>
             <li class="side_par"><a href="<?=site_url()?>/member/my_profile"><i class="fa fa-user"></i> My Profile</a></li>
             <li class="side_par"><a href="#"><i class="fa fa-envelope"></i> Inbox</a></li>
             <li class="side_par"><a href="<?=site_url()?>/member/my_client"><i class="fa fa-group"></i> My Clients</a></li>

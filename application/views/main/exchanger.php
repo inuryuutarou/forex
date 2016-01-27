@@ -50,36 +50,14 @@
                                     <th>STOCK</th>
                                 </thead>
                                 <tbody style="margin-top:20px">
+                                <?php foreach($broker as $br){?>
                                 	<tr>
-                                    	<td><img src="<?=base_url()?>/media/images/logo_broker/exness.png" alt="" /></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
+                                    	<td><a href="<?=site_url("member/exchange_form/$br->id_broker")?>"><img src="<?=base_url()?>/media/images/logo_broker/broker-<?=$br->id_broker?>.png" alt="" /></a></td>
+                                        <td><div class="par_exc">Rp <?=number_format($br->jual)?></div></td>
+                                        <td><div class="par_exc">Rp <?=number_format($br->beli)?></div></td>
+                                        <td><div class="par_exc">$ <?=number_format($br->stock,2)?></div></td>
                                     </tr>
-                                    <tr>
-                                    	<td><img src="<?=base_url()?>/media/images/logo_broker/instaforex.png" alt="" /></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                    </tr>
-                                    <tr>
-                                    	<td><img src="<?=base_url()?>/media/images/logo_broker/unnamed.png" alt="" /></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                    </tr>
-                                    <tr>
-                                    	<td><img src="<?=base_url()?>/media/images/logo_broker/orbex.png" alt="" /></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                    </tr>
-                                    <tr>
-                                    	<td><img src="<?=base_url()?>/media/images/logo_broker/HotForex-logo.png" alt="" /></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                        <td><div class="par_exc">Rp 13.700</div></td>
-                                    </tr>
+                                 <?php }?>
                                 </tbody>
                             </table>
                         </div>
