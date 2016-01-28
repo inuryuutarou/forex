@@ -21,13 +21,43 @@ CREATE TABLE `broker` (
   `name` varchar(200) NOT NULL,
   `link_ib` varchar(300) NOT NULL,
   `link_client` varchar(300) DEFAULT NULL,
+  `jual` int(11) NOT NULL DEFAULT '0',
+  `beli` int(11) NOT NULL DEFAULT '0',
+  `stock` double NOT NULL DEFAULT '0',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_broker`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `broker` */
 
-insert  into `broker`(`id_broker`,`name`,`link_ib`,`link_client`,`deleted`) values (1,'XM ','http://clicks.pipaffiliates.com/afs/come.php?cid=65890&ctgid=16&atype=1&brandid=3','http://clicks.pipaffiliates.com/afs/come.php?cid=65934&ctgid=0&atype=2&brandid=1',0),(2,'orbex','http://www.orbex.com/en/?ref_id=102013',NULL,0);
+insert  into `broker`(`id_broker`,`name`,`link_ib`,`link_client`,`jual`,`beli`,`stock`,`deleted`) values (1,'XM ','http://clicks.pipaffiliates.com/afs/come.php?cid=65890&ctgid=16&atype=1&brandid=3','http://clicks.pipaffiliates.com/afs/come.php?cid=65934&ctgid=0&atype=2&brandid=1',13000,13700,20000,0),(2,'orbex','http://www.orbex.com/en/?ref_id=102013',NULL,12500,13000,20000.3,0);
+
+/*Table structure for table `changer` */
+
+DROP TABLE IF EXISTS `changer`;
+
+CREATE TABLE `changer` (
+  `id_changer` int(11) NOT NULL AUTO_INCREMENT,
+  `id_member` int(11) NOT NULL COMMENT '0->beli 1->jual',
+  `id_broker` int(11) NOT NULL,
+  `jenis_transaksi` tinyint(4) NOT NULL DEFAULT '0',
+  `nilai` int(11) NOT NULL,
+  `nilai_tukar` int(11) NOT NULL,
+  `no_akun_trading` varchar(150) DEFAULT NULL,
+  `nama_akun_trading` varchar(300) DEFAULT NULL,
+  `nama_bank` varchar(300) DEFAULT NULL,
+  `no_rek` varchar(150) DEFAULT NULL,
+  `nama_rek` varchar(300) DEFAULT NULL,
+  `notes` text,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `approved` tinyint(4) NOT NULL DEFAULT '0',
+  `approve_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id_changer`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `changer` */
+
+insert  into `changer`(`id_changer`,`id_member`,`id_broker`,`jenis_transaksi`,`nilai`,`nilai_tukar`,`no_akun_trading`,`nama_akun_trading`,`nama_bank`,`no_rek`,`nama_rek`,`notes`,`timestamp`,`approved`,`approve_time`) values (1,4,1,1,13000,13000,'23123','tre','1234','1234','12423','no','2016-01-27 19:17:49',0,'0000-00-00 00:00:00');
 
 /*Table structure for table `config` */
 
@@ -99,11 +129,11 @@ CREATE TABLE `member` (
   UNIQUE KEY `email` (`email`),
   KEY `id_refferer` (`id_refferer`),
   CONSTRAINT `member_ibfk_1` FOREIGN KEY (`id_refferer`) REFERENCES `member` (`id_member`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 /*Data for the table `member` */
 
-insert  into `member`(`id_member`,`id_refferer`,`username`,`email`,`password`,`pin`,`flag`,`first_name`,`last_name`,`country`,`province`,`city`,`address`,`postal`,`id_card_number`,`phone`,`bank_name`,`bank_branch`,`bank_acc_name`,`bank_acc_num`,`im`,`fb_username`,`fb_link`,`valid`,`register_date`,`deleted`,`last_update`,`valid_date`,`level_status`) values (4,NULL,'chico','inumaru.ryuusuke@gmail.com','034559aa5996026a68d79128251887ee','d41d8cd98f00b204e9800998ecf8427e',0,'chico','naga','Indonesia','Bali','Denpasar','test','80223','1234','08563790471','1234','1234','12423','1234',NULL,'','',2,'2015-12-27 20:46:10',0,'2016-01-09 16:20:13',NULL,1),(6,4,'gungdp','gungdp@example.com','123456',NULL,2,'Dharma','Putra',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 20:49:26',0,'2015-12-27 20:49:26',NULL,0),(7,4,'parwita','parwita@example.com','123456',NULL,2,'Parwita','Cole',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:10:24',0,'2015-12-27 21:10:24',NULL,0),(8,6,'ransdwi','ransdwi@example.com','123456',NULL,2,'Dwi','Ningsih',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:17:17',0,'2015-12-27 21:17:17',NULL,0);
+insert  into `member`(`id_member`,`id_refferer`,`username`,`email`,`password`,`pin`,`flag`,`first_name`,`last_name`,`country`,`province`,`city`,`address`,`postal`,`id_card_number`,`phone`,`bank_name`,`bank_branch`,`bank_acc_name`,`bank_acc_num`,`im`,`fb_username`,`fb_link`,`valid`,`register_date`,`deleted`,`last_update`,`valid_date`,`level_status`) values (4,NULL,'chico','inumaru.ryuusuke@gmail.com','034559aa5996026a68d79128251887ee','d41d8cd98f00b204e9800998ecf8427e',0,'chico','naga','Indonesia','Bali','Denpasar','test','80223','1234','08563790471','1234','1234','12423','1234',NULL,'','',3,'2015-12-27 20:46:10',0,'2016-01-09 16:20:13',NULL,1),(6,4,'gungdp','gungdp@example.com','123456',NULL,2,'Dharma','Putra',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 20:49:26',0,'2015-12-27 20:49:26',NULL,0),(7,4,'parwita','parwita@example.com','123456',NULL,2,'Parwita','Cole',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:10:24',0,'2015-12-27 21:10:24',NULL,0),(8,6,'ransdwi','ransdwi@example.com','123456',NULL,2,'Dwi','Ningsih',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:17:17',0,'2015-12-27 21:17:17',NULL,0),(10,4,'testis','tes@te.is','179ad45c6ce2cb97cf1029e212046e81',NULL,2,'tes','tis',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2016-01-13 01:16:44',0,NULL,NULL,0);
 
 /*Table structure for table `member_broker` */
 
@@ -160,6 +190,69 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `news` */
+
+/*Table structure for table `wall_comment` */
+
+DROP TABLE IF EXISTS `wall_comment`;
+
+CREATE TABLE `wall_comment` (
+  `id_comment` int(11) NOT NULL AUTO_INCREMENT,
+  `id_wall_post` int(11) NOT NULL,
+  `id_member` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `content` text NOT NULL,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_comment`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `wall_comment` */
+
+/*Table structure for table `wall_post` */
+
+DROP TABLE IF EXISTS `wall_post`;
+
+CREATE TABLE `wall_post` (
+  `id_wall_post` int(11) NOT NULL AUTO_INCREMENT,
+  `id_member` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `content` text NOT NULL,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_wall_post`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `wall_post` */
+
+insert  into `wall_post`(`id_wall_post`,`id_member`,`timestamp`,`content`,`deleted`) values (1,4,'2016-01-27 18:44:23','test',0);
+
+/*Table structure for table `vw_changer` */
+
+DROP TABLE IF EXISTS `vw_changer`;
+
+/*!50001 DROP VIEW IF EXISTS `vw_changer` */;
+/*!50001 DROP TABLE IF EXISTS `vw_changer` */;
+
+/*!50001 CREATE TABLE  `vw_changer`(
+ `id_changer` int(11) ,
+ `id_member` int(11) ,
+ `username` varchar(500) ,
+ `first_name` varchar(500) ,
+ `last_name` varchar(500) ,
+ `id_broker` int(11) ,
+ `name` varchar(200) ,
+ `stock` double ,
+ `jenis_transaksi` tinyint(4) ,
+ `nilai` int(11) ,
+ `nilai_tukar` int(11) ,
+ `no_akun_trading` varchar(150) ,
+ `nama_akun_trading` varchar(300) ,
+ `nama_bank` varchar(300) ,
+ `no_rek` varchar(150) ,
+ `nama_rek` varchar(300) ,
+ `notes` text ,
+ `timestamp` timestamp ,
+ `approved` tinyint(4) ,
+ `approve_time` timestamp 
+)*/;
 
 /*Table structure for table `vw_member` */
 
@@ -251,6 +344,50 @@ DROP TABLE IF EXISTS `vw_member_broker`;
  `level_status` tinyint(1) 
 )*/;
 
+/*Table structure for table `vw_wall_comment` */
+
+DROP TABLE IF EXISTS `vw_wall_comment`;
+
+/*!50001 DROP VIEW IF EXISTS `vw_wall_comment` */;
+/*!50001 DROP TABLE IF EXISTS `vw_wall_comment` */;
+
+/*!50001 CREATE TABLE  `vw_wall_comment`(
+ `id_comment` int(11) ,
+ `id_wall_post` int(11) ,
+ `id_member` int(11) ,
+ `username` varchar(500) ,
+ `first_name` varchar(500) ,
+ `last_name` varchar(500) ,
+ `timestamp` timestamp ,
+ `content` text ,
+ `deleted` tinyint(4) 
+)*/;
+
+/*Table structure for table `vw_wall_post` */
+
+DROP TABLE IF EXISTS `vw_wall_post`;
+
+/*!50001 DROP VIEW IF EXISTS `vw_wall_post` */;
+/*!50001 DROP TABLE IF EXISTS `vw_wall_post` */;
+
+/*!50001 CREATE TABLE  `vw_wall_post`(
+ `id_wall_post` int(11) ,
+ `id_member` int(11) ,
+ `username` varchar(500) ,
+ `first_name` varchar(500) ,
+ `last_name` varchar(500) ,
+ `timestamp` timestamp ,
+ `content` text ,
+ `deleted` tinyint(4) 
+)*/;
+
+/*View structure for view vw_changer */
+
+/*!50001 DROP TABLE IF EXISTS `vw_changer` */;
+/*!50001 DROP VIEW IF EXISTS `vw_changer` */;
+
+/*!50001 CREATE VIEW `vw_changer` AS (select `c`.`id_changer` AS `id_changer`,`c`.`id_member` AS `id_member`,`m`.`username` AS `username`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`c`.`id_broker` AS `id_broker`,`b`.`name` AS `name`,`b`.`stock` AS `stock`,`c`.`jenis_transaksi` AS `jenis_transaksi`,`c`.`nilai` AS `nilai`,`c`.`nilai_tukar` AS `nilai_tukar`,`c`.`no_akun_trading` AS `no_akun_trading`,`c`.`nama_akun_trading` AS `nama_akun_trading`,`c`.`nama_bank` AS `nama_bank`,`c`.`no_rek` AS `no_rek`,`c`.`nama_rek` AS `nama_rek`,`c`.`notes` AS `notes`,`c`.`timestamp` AS `timestamp`,`c`.`approved` AS `approved`,`c`.`approve_time` AS `approve_time` from ((`changer` `c` left join `member` `m` on((`c`.`id_member` = `m`.`id_member`))) left join `broker` `b` on((`c`.`id_broker` = `b`.`id_broker`)))) */;
+
 /*View structure for view vw_member */
 
 /*!50001 DROP TABLE IF EXISTS `vw_member` */;
@@ -264,6 +401,20 @@ DROP TABLE IF EXISTS `vw_member_broker`;
 /*!50001 DROP VIEW IF EXISTS `vw_member_broker` */;
 
 /*!50001 CREATE VIEW `vw_member_broker` AS (select `b`.`name` AS `name`,`b`.`link_ib` AS `link_ib_main`,`b`.`link_client` AS `link_client_main`,`mb`.`id_member` AS `id_member`,`mb`.`id_broker` AS `id_broker`,`mb`.`link_ib` AS `link_ib`,`mb`.`link_client` AS `link_client`,`mb`.`broker_username` AS `broker_username`,`mb`.`real_account` AS `real_account`,`b`.`deleted` AS `deleted_broker`,`m`.`id_refferer` AS `id_refferer`,`m`.`username` AS `username`,`m`.`email` AS `email`,`m`.`password` AS `password`,`m`.`pin` AS `pin`,`m`.`flag` AS `flag`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`m`.`country` AS `country`,`m`.`province` AS `province`,`m`.`city` AS `city`,`m`.`address` AS `address`,`m`.`postal` AS `postal`,`m`.`id_card_number` AS `id_card_number`,`m`.`phone` AS `phone`,`m`.`bank_name` AS `bank_name`,`m`.`bank_branch` AS `bank_branch`,`m`.`bank_acc_name` AS `bank_acc_name`,`m`.`bank_acc_num` AS `bank_acc_num`,`m`.`im` AS `im`,`m`.`fb_username` AS `fb_username`,`m`.`fb_link` AS `fb_link`,`m`.`valid` AS `valid`,`m`.`register_date` AS `register_date`,`m`.`deleted` AS `deleted`,`m`.`last_update` AS `last_update`,`m`.`valid_date` AS `valid_date`,`m`.`level_status` AS `level_status` from ((`broker` `b` left join `member_broker` `mb` on(((`b`.`id_broker` = `mb`.`id_broker`) and (`b`.`deleted` = 0)))) left join `member` `m` on((`mb`.`id_member` = `m`.`id_member`)))) */;
+
+/*View structure for view vw_wall_comment */
+
+/*!50001 DROP TABLE IF EXISTS `vw_wall_comment` */;
+/*!50001 DROP VIEW IF EXISTS `vw_wall_comment` */;
+
+/*!50001 CREATE VIEW `vw_wall_comment` AS (select `wc`.`id_comment` AS `id_comment`,`wc`.`id_wall_post` AS `id_wall_post`,`wc`.`id_member` AS `id_member`,`m`.`username` AS `username`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`wc`.`timestamp` AS `timestamp`,`wc`.`content` AS `content`,`wc`.`deleted` AS `deleted` from (`wall_comment` `wc` left join `member` `m` on((`wc`.`id_member` = `m`.`id_member`)))) */;
+
+/*View structure for view vw_wall_post */
+
+/*!50001 DROP TABLE IF EXISTS `vw_wall_post` */;
+/*!50001 DROP VIEW IF EXISTS `vw_wall_post` */;
+
+/*!50001 CREATE VIEW `vw_wall_post` AS (select `wp`.`id_wall_post` AS `id_wall_post`,`wp`.`id_member` AS `id_member`,`m`.`username` AS `username`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`wp`.`timestamp` AS `timestamp`,`wp`.`content` AS `content`,`wp`.`deleted` AS `deleted` from (`wall_post` `wp` left join `member` `m` on((`wp`.`id_member` = `m`.`id_member`)))) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
