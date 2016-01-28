@@ -174,9 +174,9 @@
     
     <!-- cubeportfolio -->
     <script type="text/javascript" src="<?=base_url()?>/media/js/cubeportfolio/jquery.cubeportfolio.min.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>/media/js/cubeportfolio/main.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>/media/js/cubeportfolio/main5.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>/media/js/cubeportfolio/main6.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>/media/js/cubeportfolio/main3.js"></script>
+	<script type="text/javascript" src="<?=base_url()?>/media/js/cubeportfolio/main6.js"></script>
+
     
     <!-- carousel -->
     <script defer src="<?=base_url()?>/media/js/carousel/jquery.flexslider.js"></script>

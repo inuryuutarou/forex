@@ -173,7 +173,7 @@ class Member extends Secure_area {
 		$data['footer']='comp/footer';
 		$data['side_menu']='comp/side_menu';
 		$data['content']='main/webinar';
-		$data['active']='webinar';
+		$data['active']='others';
 		$this->load->view('main/template',$data);
 	}
 	
@@ -221,7 +221,7 @@ class Member extends Secure_area {
 		$data['footer']='comp/footer';
 		$data['side_menu']='comp/side_menu';
 		$data['content']='main/dhuafa';
-		$data['active']='dhuafa';
+		$data['active']='others';
 		$this->load->view('main/template',$data);
 	}
 }

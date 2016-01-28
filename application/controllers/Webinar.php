@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class About_us extends CI_Controller {
+class Webinar extends CI_Controller {
 	
 	function __construct() 
     {
@@ -12,8 +12,8 @@ class About_us extends CI_Controller {
 	public function index(){
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
-		$data['content']='main/about_us';
-		$data['active']='support';
+		$data['content']='main/webinar_content';
+		$data['active']='others';
 		$this->load->view('main/template',$data);
 	}
 }

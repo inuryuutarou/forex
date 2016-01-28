@@ -13,7 +13,7 @@ class Faq extends CI_Controller {
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
 		$data['content']='main/faq';
-		$data['active']='faq';
+		$data['active']='support';
 		$this->load->view('main/template',$data);
 	}
 }

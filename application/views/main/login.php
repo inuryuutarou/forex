@@ -55,6 +55,7 @@
 	</div>
 
 </div><!-- end content area -->
+<div class="margin_top5"></div> 
 
 <script src="<?=base_url()?>/media/js/form/jquery.form.min.js"></script>
 <script src="<?=base_url()?>/media/js/form/jquery.validate.min.js"></script>

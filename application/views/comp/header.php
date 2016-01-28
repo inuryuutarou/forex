@@ -116,7 +116,7 @@
                             </li>
                             <li><a href="<?=site_url()?>/bonus_and_promotions" class="<?=($active=='bonus')?'active':'';?>"><i class="fa fa-trophy"></i> Promotions</a></li>
                             <li><a href="<?=site_url()?>/affiliate_program" class="<?=($active=='affiliate')?'active':'';?>"><i class="fa fa-group"></i> Affiliate</a></li>
-                            <li><a href="<?=site_url()?>/exchanger" class="<?=($active=='exchanger')?'active':'';?>"><i class="fa fa-money"></i> Exchanger</a></li>
+                            <li><a href="<?=site_url()?>/<?=(! $this->session->userdata('forex_login'))?'exchanger':'member/exchanger'?>" class="<?=($active=='exchanger')?'active':'';?>"><i class="fa fa-money"></i> Exchanger</a></li>
                             <li class="dropdown"> <a href="#" data-toggle="dropdown" class="dropdown-toggle <?=($active=='support')?'active':'';?>"><i class="fa fa-support"></i> About Us</a>
                                 <ul class="dropdown-menu" role="menu">
                                   <li> <a href="<?=site_url()?>/contact_us">Contact Us</a> </li>
@@ -125,12 +125,12 @@
                                 </ul>
                             </li>
                         	<li> <a href="<?=site_url()?>/gallery" class="<?=($active=='gallery')?'active':'';?>"><i class="fa fa-photo"></i> Gallery</a></li>
-                            <li class="dropdown"> <a href="#" data-toggle="dropdown" class="dropdown-toggle <?=($active=='support')?'active':'';?>"><i class="fa fa-support"></i> Others</a>
+                            <li class="dropdown"> <a href="#" data-toggle="dropdown" class="dropdown-toggle <?=($active=='others')?'active':'';?>"><i class="fa fa-support"></i> Others</a>
                                 <ul class="dropdown-menu" role="menu">
-                                  <li> <a href="<?=site_url()?>/dhuafa">Dhuafa</a> </li>
-                                  <li> <a href="<?=site_url()?>/webinar">Webinar</a> </li>
-                                  <li> <a href="<?=site_url()?>/pelatihan">Pelatihan Trading</a> </li>
-                                  <li> <a href="<?=site_url()?>/copy_trade">Copy Trade</a> </li>
+                                  <li> <a href="<?=site_url()?>/<?=(! $this->session->userdata('forex_login'))?'dhuafa':'member/dhuafa'?>">Dhuafa</a> </li>
+                                  <li> <a href="<?=site_url()?>/<?=(! $this->session->userdata('forex_login'))?'webinar':'member/webinar'?>">Webinar</a> </li>
+                                  <li> <a href="#">Pelatihan Trading</a> </li>
+                                  <li> <a href="#">Copy Trade</a> </li>
                                 </ul>
                             </li>
                         	

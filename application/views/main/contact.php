@@ -1,5 +1,5 @@
 <div class="one_full">
-	<iframe class="google-map2" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Washington,+DC,+United+States&amp;aq=2&amp;oq=was&amp;sll=40.714353,-74.005973&amp;sspn=0.765069,1.674042&amp;ie=UTF8&amp;hq=&amp;hnear=Washington,+District+of+Columbia&amp;t=m&amp;z=11&amp;ll=38.907231,-77.036464&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Washington,+DC,+United+States&amp;aq=2&amp;oq=was&amp;sll=40.714353,-74.005973&amp;sspn=0.765069,1.674042&amp;ie=UTF8&amp;hq=&amp;hnear=Washington,+District+of+Columbia&amp;t=m&amp;z=11&amp;ll=38.907231,-77.036464" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.104676251231!2d115.24988424251637!3d-8.68159513634836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2404e8d34dd03%3A0x57d1562bf376524e!2sJl.+Tukad+Bilok+No.2%2C+Denpasar+Sel.%2C+Kota+Denpasar%2C+Bali+80227%2C+Indonesia!5e0!3m2!1sen!2s!4v1454000507765" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe><br /><small><a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.104676251231!2d115.24988424251637!3d-8.68159513634836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2404e8d34dd03%3A0x57d1562bf376524e!2sJl.+Tukad+Bilok+No.2%2C+Denpasar+Sel.%2C+Kota+Denpasar%2C+Bali+80227%2C+Indonesia!5e0!3m2!1sen!2s!4v1454000507765" style="color:#0000FF;text-align:left">View Larger Map</a></small>
 </div>
 
 <div class="container">
@@ -56,14 +56,13 @@
     
       <div class="address_info two">
       
-        <h4>Company <strong>Address</strong></h4>
+        <h4><strong>Address</strong></h4>
         <ul>
-          <li> <strong>Company Name</strong><br />
-            2901 Marmora Road, Glassgow, Seattle, WA 98122-1090<br />
-            Telephone: +1 1234-567-89000<br />
-            FAX: +1 0123-4567-8900<br />
-            E-mail: <a href="mailto:mail@companyname.com">mail@companyname.com</a><br />
-            Website: <a href="index.html">www.yoursitename.com</a> </li>
+          <li> <strong>Forex Global Service</strong><br />
+            Jl. Tukad Bilok No. 2, Renon, Denpasar, Bali<br />
+            Telepon: +6281 246 515 082<br />
+            E-mail: <a href="mailto:info@forexglobalservice.com">info@forexglobalservice.com</a><br />
+            Website: <a href="<?=site_url()?>">www.forexglobalservice.com</a> </li>
         </ul>
         
       </div><!-- end section -->
