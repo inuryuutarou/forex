@@ -93,7 +93,7 @@
     <!-- ######### JS FILES ######### -->
     <!-- get jQuery from the google apis -->
     <script type="text/javascript" src="<?=base_url()?>/media/js/universal/jquery.js"></script>
-
+	<script type="text/javascript" src="<?=base_url()?>/media/includes/bootstrap/js/bootstrap.min.js"></script>
     
 </head>
 <body>

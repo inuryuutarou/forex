@@ -224,7 +224,7 @@
         
         <strong>Main Broker</strong>
         <div class="clearfix"></div>
-        <div class="contbox">
+        <div class="contbox" style="background: url(<?=base_url()?>/media/images/Arabic-Ornaments-2.jpg) 50%; background-size:100%; color:black">
         	<img src="<?=base_url()?>/media/images/logo_broker/exness.png" alt="" />
             <p>Sejak berdiri di tahun 2008, broker forex Exness melayani perdagangan Forex, CFD, dan Futures. Exness berpusat di Rusia, melebarkan sayap ke Eropa dengan lisensi dari regulator CySEC Siprus, kemudian perlahan Exness mulai berkembang ke China, Malaysia, termasuk Indonesia. Dilihat dari sebarannya, market utama Exness adalah Eropa Timur dan Asia <a href="<?=site_url()?>/exness">read more..</a></p>
         </div>

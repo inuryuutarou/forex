@@ -9,7 +9,7 @@
 	<?php isset($side_menu)?$this->load->view($side_menu):'side_menu'?>
     <div class="content_right">
         <div class="call">
-            <h4 style="text-align:center">My Client</h4>
+            <h2 class="main-text-color">My Clients</h2>
             <br>
             <div class="table-responsive">
                 <table class="tablesorter table table-bordered">

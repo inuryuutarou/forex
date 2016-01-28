@@ -16,6 +16,13 @@
 		-moz-box-shadow: 0px 4px 14px -2px rgba(0,0,0,0.81);
 		box-shadow: 0px 4px 14px -2px rgba(0,0,0,0.81);
 	}
+	.par_box{
+		padding: 15px 14px 15px 14px;
+		color: #999;
+		margin-bottom: 4px;
+		background-color: #fff;
+		border: 1px solid #e3e3e3;
+	}
 </style>
 <div class="margin_top5"></div> 
 <div class="container">
@@ -85,103 +92,153 @@
                         </div>
                     </div>
                     <br><br>
-                    <h4><strong>Waktu Layanan</strong></h4>
-                    <table border="0" cellpadding="0" cellspacing="0" style="width:214px">
-                        <tbody>
-                            <tr>
-                                <td colspan="3">
-                                <p><strong>Waktu Proses Order</strong></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:102px">
-                                <p><strong>Senin-Jumat</strong></p>
-                                </td>
-                                <td style="width:10px">
-                                <p>:</p>
-                                </td>
-                                <td style="width:102px">
-                                <p>09:00-12:00</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                <p>&nbsp;</p>
-                                </td>
-                                <td>
-                                <p>&nbsp;</p>
-                                </td>
-                                <td>
-                                <p>13:00-17:00</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                <p>&nbsp;</p>
-                                </td>
-                                <td>
-                                <p>&nbsp;</p>
-                                </td>
-                                <td>
-                                <p>19:30-21:00</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                <p><strong>Sabtu</strong></p>
-                                </td>
-                                <td>
-                                <p>:</p>
-                                </td>
-                                <td>
-                                <p>09:00-12:00</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                <p><strong>Minggu/Libur</strong></p>
-                                </td>
-                                <td>
-                                <p>:</p>
-                                </td>
-                                <td>
-                                <p>Proses malam hari</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                <p>&nbsp;</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                <p><strong>Waktu Online Support</strong></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                <p><strong>Senin-Jumat</strong></p>
-                                </td>
-                                <td>
-                                <p>:</p>
-                                </td>
-                                <td>
-                                <p>09:00-12:00</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                <p>&nbsp;</p>
-                                </td>
-                                <td>
-                                <p>&nbsp;</p>
-                                </td>
-                                <td>
-                                <p>13:00-17:00</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="row"> 
+                    	<div class="col-md-4">
+                            <h4><strong>Waktu</strong> Layanan</h4>
+                            <table border="0" cellpadding="0" cellspacing="0" style="width:214px">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3">
+                                        <p><strong>Waktu Proses Order</strong></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:102px">
+                                        <p><strong>Senin-Jumat</strong></p>
+                                        </td>
+                                        <td style="width:10px">
+                                        <p>:</p>
+                                        </td>
+                                        <td style="width:102px">
+                                        <p>09:00-12:00</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td>
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td>
+                                        <p>13:00-17:00</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td>
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td>
+                                        <p>19:30-21:00</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        <p><strong>Sabtu</strong></p>
+                                        </td>
+                                        <td>
+                                        <p>:</p>
+                                        </td>
+                                        <td>
+                                        <p>09:00-12:00</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        <p><strong>Minggu/Libur</strong></p>
+                                        </td>
+                                        <td>
+                                        <p>:</p>
+                                        </td>
+                                        <td>
+                                        <p>Proses malam hari</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                        <p>&nbsp;</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                        <p><strong>Waktu Online Support</strong></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        <p><strong>Senin-Jumat</strong></p>
+                                        </td>
+                                        <td>
+                                        <p>:</p>
+                                        </td>
+                                        <td>
+                                        <p>09:00-12:00</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td>
+                                        <p>&nbsp;</p>
+                                        </td>
+                                        <td>
+                                        <p>13:00-17:00</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+						</div>
+                        <div class="col-md-8">
+                        	<h4><strong>Exchange</strong> History</h4>
+                            <br />
+                            <div class="par_box">
+                                <div class="tablewrap table-responsive">
+                                    <table class="table table-bordered" style="background-color:#fff">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" style="border-top:solid 3px #FDEA00; border-left:1px; border-right:1px; text-align:center; font-size:13px;font-weight:bold">Date</td>
+                                                <td align="center" style="border-top:solid 3px #FDEA00; border-left:1px; border-right:1px; text-align:center; font-size:13px;font-weight:bold">Type</td>
+                                                <td align="center" style="border-top:solid 3px #FDEA00; border-left:1px; border-right:1px; text-align:center; font-size:13px;font-weight:bold">Nominal</td>
+                                                <td align="center" style="border-top:solid 3px #FDEA00; border-left:1px; border-right:1px; text-align:center; font-size:13px;font-weight:bold">Status</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:108px">
+                                                <p>12-12-2016</p>
+                                                </td>
+                                                <td style="width:102px">
+                                                <p>Deposit</p>
+                                                </td>
+                                                <td style="width:120px">
+                                                <p>$2000</p>
+                                                </td>
+                                                <td style="width:96px">
+                                                <p>Approved</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:108px">
+                                                <p>12-12-2016</p>
+                                                </td>
+                                                <td style="width:102px">
+                                                <p>Withdraw</p>
+                                                </td>
+                                                <td style="width:120px">
+                                                <p>$2000</p>
+                                                </td>
+                                                <td style="width:96px">
+                                                <p>Approved</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
                 </div>
                 <div class="shadow"></div>
             </div>
