@@ -67,7 +67,7 @@ class M_member extends CI_Model
 		if($id_changer!=NULL)
 			$this->db->where("id_changer",$id_changer);
 		return $this->db->where("id_member",$id_member)
-						->get("changer");
+						->get("vw_changer");
 	}
 	public function insert_exchange($data){
 		return $this->db->insert('changer',$data);

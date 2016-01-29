@@ -17,20 +17,20 @@
                   <div class="col-sm-4">
                     <select class="form-control" id="jenis_transaksi" name="jenis_transaksi" required>
                     	<option value="">-Pilih transaksi-</option>
-                    	<option value="0">BELI</option>
-                    	<option value="1">JUAL</option>
+                    	<option <?=($type==0)?"selected":""?> value="0">BELI</option>
+                    	<option <?=($type==1)?"selected":""?> value="1">JUAL</option>
                     </select>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-3 control-label">Jumlah</label>
+                  <label class="col-sm-3 control-label">Jumlah $</label>
                   <div class="col-sm-7">
                     <input type="text" class="form-control" id="nilai" name="nilai" required>
                     <span id="nilai_tukar"></span>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-3 control-label">Saldo $</label>
+                  <label class="col-sm-3 control-label">Jumlah Bayar</label>
                   <div class="col-sm-7">
                     <input type="text" class="form-control" id="saldo" name="saldo" disabled><br>
                   </div>
@@ -99,12 +99,13 @@ $(document).ready(function()
 		$("#nilai").val(tukar);
 		$("#nilai_tukar").html("Rp "+tukar);
 		jml=($("#nilai").val()=="")?0:$("#nilai").val();
-		$("#saldo").val((jml/tukar));
+		$("#saldo").val((jml*tukar));
 	});
 	$("#nilai").keyup(function(){
 		jml=($("#nilai").val()=="")?0:$("#nilai").val();
-		$("#saldo").val((jml/tukar));
+		$("#saldo").val((jml*tukar));
 	});
+	$("#jenis_transaksi").trigger("change");
 })
 
 </script>

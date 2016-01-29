@@ -178,7 +178,8 @@ class Member extends Secure_area {
 	}
 	
 	public function exchanger(){
-		$data['broker'] = $this->m_member->get_broker()->result();
+		$data['broker']=$this->m_member->get_broker()->result();
+		$data['history']=$this->m_member->get_exchange($this->session->userdata('id_member'))->result();
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
 		$data['side_menu']='comp/side_menu';
@@ -186,9 +187,10 @@ class Member extends Secure_area {
 		$data['active']='exchanger';
 		$this->load->view('main/template',$data);
 	}
-	public function exchange_form($id_broker){
+	public function exchange_form($id_broker,$type=NULL){
 		$data['broker'] = $this->m_member->get_broker($id_broker)->row();
 		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
+		$data['type']=$type;
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
 		$data['side_menu']='comp/side_menu';
@@ -199,12 +201,13 @@ class Member extends Secure_area {
 	public function exchange_process(){
 		extract($_POST);
 		$broker = $this->m_member->get_broker($id_broker)->row();
+		$nil_tukar=($jenis_transaksi==0)?$broker->beli:$broker->jual;
 		$data=array(
 					'id_member'=>$this->session->userdata('id_member'),
 					'id_broker'=>$id_broker,
 					'jenis_transaksi'=>$jenis_transaksi,
-					'nilai'=>$nilai,
-					'nilai_tukar'=>($jenis_transaksi==0)?$broker->beli:$broker->jual,
+					'nilai'=>$nilai*$nil_tukar,
+					'nilai_tukar'=>$nil_tukar,
 					'no_akun_trading'=>$no_akun_trading,
 					'nama_akun_trading'=>$nama_akun_trading,
 					'nama_bank'=>$nama_bank,

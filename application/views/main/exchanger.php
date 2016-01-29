@@ -59,9 +59,21 @@
                                 <tbody style="margin-top:20px">
                                 <?php foreach($broker as $br){?>
                                 	<tr>
-                                    	<td><a href="<?=site_url("member/exchange_form/$br->id_broker")?>"><img src="<?=base_url()?>/media/images/logo_broker/broker-<?=$br->id_broker?>.png" alt="" /></a></td>
-                                        <td><div class="par_exc">Rp <?=number_format($br->jual)?></div></td>
-                                        <td><div class="par_exc">Rp <?=number_format($br->beli)?></div></td>
+                                    	<td>
+                                        	<a href="<?=site_url("member/exchange_form/$br->id_broker")?>">
+                                            	<img src="<?=base_url()?>/media/images/logo_broker/broker-<?=$br->id_broker?>.png" alt="" />
+                                            </a>
+                                        </td>
+                                        <td>
+                                        	<a href="<?=site_url("member/exchange_form/$br->id_broker/1")?>">
+                                            	<div class="par_exc">Rp <?=number_format($br->jual)?></div>
+                                            </a>
+                                        </td>
+                                        <td>
+                                        	<a href="<?=site_url("member/exchange_form/$br->id_broker/0")?>">
+                                            	<div class="par_exc">Rp <?=number_format($br->beli)?></div>
+                                            </a>
+                                        </td>
                                         <td><div class="par_exc">$ <?=number_format($br->stock,2)?></div></td>
                                     </tr>
                                  <?php }?>
@@ -180,37 +192,29 @@
                                             <tr>
                                                 <td align="center" style="border-top:solid 3px #FDEA00; border-left:1px; border-right:1px; text-align:center; font-size:13px;font-weight:bold">Date</td>
                                                 <td align="center" style="border-top:solid 3px #FDEA00; border-left:1px; border-right:1px; text-align:center; font-size:13px;font-weight:bold">Type</td>
-                                                <td align="center" style="border-top:solid 3px #FDEA00; border-left:1px; border-right:1px; text-align:center; font-size:13px;font-weight:bold">Nominal</td>
+                                                <td align="center" style="border-top:solid 3px #FDEA00; border-left:1px; border-right:1px; text-align:center; font-size:13px;font-weight:bold">Jumlah</td>
+                                                <td align="center" style="border-top:solid 3px #FDEA00; border-left:1px; border-right:1px; text-align:center; font-size:13px;font-weight:bold">Nominal $</td>
                                                 <td align="center" style="border-top:solid 3px #FDEA00; border-left:1px; border-right:1px; text-align:center; font-size:13px;font-weight:bold">Status</td>
                                             </tr>
+                                            <?php foreach($history as $row){?>
                                             <tr>
                                                 <td style="width:108px">
-                                                <p>12-12-2016</p>
+                                                <p><?=$row->timestamp?></p>
                                                 </td>
                                                 <td style="width:102px">
-                                                <p>Deposit</p>
+                                                <p><?=($row->jenis_transaksi==0)?"BELI":"JUAL"?></p>
                                                 </td>
                                                 <td style="width:120px">
-                                                <p>$2000</p>
-                                                </td>
-                                                <td style="width:96px">
-                                                <p>Approved</p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width:108px">
-                                                <p>12-12-2016</p>
-                                                </td>
-                                                <td style="width:102px">
-                                                <p>Withdraw</p>
+                                                <p>Rp <?=number_format($row->nilai)?></p>
                                                 </td>
                                                 <td style="width:120px">
-                                                <p>$2000</p>
+                                                <p>$ <?=number_format($row->nilai/$row->nilai,2)?></p>
                                                 </td>
                                                 <td style="width:96px">
-                                                <p>Approved</p>
+                                                <p><?=($row->approved==1)?"Pending":"Approved"?></p>
                                                 </td>
                                             </tr>
+                                            <?php }?>
                                         </tbody>
                                     </table>
                                 </div>
