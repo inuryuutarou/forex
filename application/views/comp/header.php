@@ -117,7 +117,7 @@
                             <li><a href="<?=site_url()?>/bonus_and_promotions" class="<?=($active=='bonus')?'active':'';?>"><i class="fa fa-trophy"></i> Promotions</a></li>
                             <li><a href="<?=site_url()?>/affiliate_program" class="<?=($active=='affiliate')?'active':'';?>"><i class="fa fa-group"></i> Affiliate</a></li>
                             <li><a href="<?=site_url()?>/<?=(! $this->session->userdata('forex_login'))?'exchanger':'member/exchanger'?>" class="<?=($active=='exchanger')?'active':'';?>"><i class="fa fa-money"></i> Exchanger</a></li>
-                            <li class="dropdown"> <a href="#" data-toggle="dropdown" class="dropdown-toggle <?=($active=='support')?'active':'';?>"><i class="fa fa-support"></i> About Us</a>
+                            <li class="dropdown"> <a href="#" data-toggle="dropdown" class="dropdown-toggle <?=($active=='support')?'active':'';?>"><i class="fa fa-info"></i> About Us</a>
                                 <ul class="dropdown-menu" role="menu">
                                   <li> <a href="<?=site_url()?>/contact_us">Contact Us</a> </li>
                                   <li> <a href="<?=site_url()?>/faq">FAQ</a> </li>
@@ -129,7 +129,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                   <li> <a href="<?=site_url()?>/<?=(! $this->session->userdata('forex_login'))?'dhuafa':'member/dhuafa'?>">Dhuafa</a> </li>
                                   <li> <a href="<?=site_url()?>/<?=(! $this->session->userdata('forex_login'))?'webinar':'member/webinar'?>">Webinar</a> </li>
-                                  <li> <a href="#">Tools</a> </li>
+                                  <li> <a href="<?=site_url()?>/<?=(! $this->session->userdata('forex_login'))?'tools':'member/tools'?>">Tools</a> </li>
                                   <li> <a href="#">Pelatihan Trading</a> </li>
                                   <li> <a href="#">Copy Trade</a> </li>
                                 </ul>

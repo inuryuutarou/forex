@@ -10,7 +10,7 @@ class Secret_reg extends CI_Controller {
     }
 
 	public function index(){
-		$this->load->view('secret/form');	
+		$this->load->view('main/register_secret');	
 	}
 	
 	public function save(){

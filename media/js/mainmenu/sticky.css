@@ -2,7 +2,7 @@
 body{font:12px/28px ;}
 .wrapper,#page{zoom:1;width:100%;margin:0 auto}.wrapper:after,#page:after,.wrapper:before,#page:before{content:"\0020";display:table;height:0;overflow:hidden}.wrapper:after,#page:after{clear:both}
 #header{margin:0px 0 0;}
-#trueHeader{z-index:8000;left:0;right:0;padding:0px 0;box-shadow:0 1px 5px rgba(0,0,0,0.2);-khtml-box-shadow:0 1px 5px rgba(0,0,0,0.2);-webkit-box-shadow:0 1px 5px rgba(0,0,0,0.2);-moz-box-shadow:0 1px 5px rgba(0,0,0,0.2);-ms-box-shadow:0 1px 5px rgba(0,0,0,0.2);-o-box-shadow:0 1px 5px rgba(0,0,0,0.2);transition:padding 0.35s ease;-khtml-transition:padding 0.35s ease;-webkit-transition:padding 0.35s ease;-moz-transition:padding 0.35s ease;-ms-transition:padding 0.35s ease;-o-transition:padding 0.35s ease;background-color:transparent;zoom:1}
+#trueHeader{z-index:1000;left:0;right:0;padding:0px 0;box-shadow:0 1px 5px rgba(0,0,0,0.2);-khtml-box-shadow:0 1px 5px rgba(0,0,0,0.2);-webkit-box-shadow:0 1px 5px rgba(0,0,0,0.2);-moz-box-shadow:0 1px 5px rgba(0,0,0,0.2);-ms-box-shadow:0 1px 5px rgba(0,0,0,0.2);-o-box-shadow:0 1px 5px rgba(0,0,0,0.2);transition:padding 0.35s ease;-khtml-transition:padding 0.35s ease;-webkit-transition:padding 0.35s ease;-moz-transition:padding 0.35s ease;-ms-transition:padding 0.35s ease;-o-transition:padding 0.35s ease;background-color:transparent;zoom:1}
 
 #trueHeader {
 	background: #272727;

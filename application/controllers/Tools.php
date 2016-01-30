@@ -12,7 +12,7 @@ class Tools extends CI_Controller {
 	public function index(){
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
-		$data['content']='main/tools';
+		$data['content']='main/tools_content';
 		$data['active']='others';
 		$this->load->view('main/template',$data);
 	}

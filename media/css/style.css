@@ -186,7 +186,8 @@
 .menu_main {
 	float: right;
 	width: 75%;
-	z-index: 9999;
+	/*z-index: 9999;*/
+	z-index:1000;
 	position: relative;
 }
 
@@ -5177,7 +5178,7 @@ a.knowmore_but:hover {
 	padding: 30px 0px 58px 0px;
 }
 
-/* bootstrap modal 
+/* bootstrap modal */
 .modal-open {
   overflow: hidden;
 }
@@ -5310,4 +5311,4 @@ a.knowmore_but:hover {
 }
 .modal-footer:after {
   clear: both;
-}*/
+}

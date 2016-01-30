@@ -55,10 +55,6 @@
 <div class="margin_top5"></div> 
 
 <div class="modal fade" id="detail_client" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-    </div>
-  </div>
 </div>
 
 <script type="text/javascript" language="javascript">
