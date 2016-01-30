@@ -4,6 +4,7 @@
 		display: none;
 	}
 </style>
+
 <div class="margin_top5"></div> 
 <div class="container">
 	<?php isset($side_menu)?$this->load->view($side_menu):'side_menu'?>

@@ -129,6 +129,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                   <li> <a href="<?=site_url()?>/<?=(! $this->session->userdata('forex_login'))?'dhuafa':'member/dhuafa'?>">Dhuafa</a> </li>
                                   <li> <a href="<?=site_url()?>/<?=(! $this->session->userdata('forex_login'))?'webinar':'member/webinar'?>">Webinar</a> </li>
+                                  <li> <a href="#">Tools</a> </li>
                                   <li> <a href="#">Pelatihan Trading</a> </li>
                                   <li> <a href="#">Copy Trade</a> </li>
                                 </ul>

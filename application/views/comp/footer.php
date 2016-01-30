@@ -24,7 +24,21 @@
 				</div>
             </div>
                     
-        </div><!-- end twitter feeds -->
+        </div>
+        
+        <div class="clearfix divider_dashed1"></div>
+        
+        <div class="one_full animate" data-anim-type="fadeInLeft">
+            <h4>Broker Ads</h4>
+            
+            <div class="clients">
+
+				<div class="container">
+                    <p>Space for broker ads</p>
+				</div>
+            </div>
+                    
+        </div>
         
         <div class="clearfix divider_dashed1"></div>
         

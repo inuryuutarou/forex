@@ -224,5 +224,13 @@ class Member extends Secure_area {
 		$data['active']='others';
 		$this->load->view('main/template',$data);
 	}
+	public function tools(){
+		$data['header']='comp/header';
+		$data['footer']='comp/footer';
+		$data['side_menu']='comp/side_menu';
+		$data['content']='main/tools';
+		$data['active']='others';
+		$this->load->view('main/template',$data);
+	}
 }
 include_once('simpleimage.php');

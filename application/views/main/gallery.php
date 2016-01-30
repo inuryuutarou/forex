@@ -61,9 +61,6 @@
        </ul>
     
     </div>
-    <div class="cbp-l-loadMore-text">
-        <div data-href="#" class="cbp-l-loadMore-text-link"></div>
-    </div>
       
 </div><!-- end content area -->
 

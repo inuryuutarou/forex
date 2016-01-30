@@ -1,3 +1,20 @@
+<style>
+	.info_style p{
+		font-size: 13px;
+    	line-height: normal;
+	}
+	.info_style{
+		padding:40px 0 0 0;	
+	}
+	.box_info{
+		padding:10px 15px;
+		border: 1px rgb(187,184,184) solid;
+
+		-moz-box-shadow:  0px 6px 15px 2px rgb(128,128,128);
+		-webkit-box-shadow:  0px 6px 15px 2px rgb(128,128,128);
+		box-shadow:  0px 6px 15px 2px rgb(128,128,128);
+	}
+</style>
 
 <!-- Slider
 ======================================= -->  
@@ -57,7 +74,6 @@
     </div>
 
 </div><!-- end slider -->
-
 <div class="clearfix"></div>
 
 <div class="feature_section2">
@@ -232,6 +248,31 @@
     </div>
 </div>
 
+<div class="clearfix"></div>
+<div class="feature_section35 info_style">
+    <div class="container">
+        <h3><strong>Info</strong> Terbaru</h3>
+        <div class="row box_info">
+        	<div class="one_half">
+                <p>Selamat pagi. Informasi terbaru dari <strong>FGS</strong>.</p>
+                
+                <p><strong>FGS</strong> akan mengadakan Launching dengan Konsep KOPDAR Roadshow di 31 Kota di Indonesia. Insya Allah semua Regional <strong>FGS</strong> akan kami kunjungi. Dengan Tema &quot;Kopdar Santai dan Silaturahmi Keluarga besar <strong>FGS</strong>&quot;</p>
+                
+                <p>2 Kota pertama yang akan kami kunjungi adalah Bandung (21 Februari) dan Jakarta (28 Februari).</p>
+			</div>
+			<div class="one_half last">            
+                <p>Link Form Pendaftaran Regional Bandung :<br />
+                <a href="https://docs.google.com/forms/d/1dp0W_JKbE6czDD9aEqWU4ZNdiK082XYfkae24GgPpp0/viewform" target="_blank">Registrasi Bandung</a></p>
+                
+                <p>Link Form Pendaftaran Regional Jakarta :<br />
+                <a href="https://docs.google.com/forms/d/1opEz5eGVpi_iHfPHLmuydJlId3K5D9H1y4LIgB1RlNQ/viewform" target="_blank">Registrasi Jakarta</a></p>
+                <p>Acara <strong>FREE</strong>. Info lengkap hubungi admin.</p>
+             </div>
+        </div>
+    </div>
+</div>
+<div class="margin_top2"></div> 
+
 
 <script src="<?=base_url()?>/media/js/form/jquery.form.min.js"></script>
 <script src="<?=base_url()?>/media/js/form/jquery.validate.min.js"></script>
@@ -338,3 +379,15 @@
 
 })(jQuery);
 </script>
+
+<!--<script type="text/javascript">
+	var i;
+	var divs = document.getElementsByTagName('div');
+	//var read_btn = document.getElementById('r_more');
+	for(i=0;i<divs.length;i++) {
+	  if(divs[i].id == 'info_terbaru') {
+		divs[i].innerHTML = divs[i].innerHTML.substring(0,200);
+	  }
+	}
+</script>
+-->
