@@ -10,7 +10,7 @@
     
       <div class="cforms">
       
-      <form action="demo-contacts.php" method="post" id="sky-form" class="sky-form">
+      <form action="<?=site_url("contact_us/send")?>" method="post" id="sky-form" class="sky-form">
         <header>Send Us a <strong>Message!</strong></header>
         <fieldset>
           <div class="row">
@@ -39,6 +39,14 @@
               <textarea rows="4" name="message" id="message"></textarea>
             </label>
           </section>
+          <section>
+			<?php $img_capt=$this->session->userdata('captcha');?>
+			<img src="<?=$img_capt['image_src']?>" title="captcha" style="width:137px; height:45px; background-color:#F4AF4B; border-radius:5px;">
+            <label class="label">Captcha</label>
+            <label class="input"> <i class="icon-append icon-envelope-alt"></i>
+                <input type="text" name="captcha" required="required" />
+              </label>
+		  </section>
         </fieldset>
         <footer>
           <button type="submit" class="button">Send message</button>
