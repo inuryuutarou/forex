@@ -22,7 +22,7 @@
                               <input type="text" class="form-control" value="<?=$member->id_member?>" disabled/>
                             </div>
                              <div class="form-group">
-                              <label>Staus registrasi</label>
+                              <label>Status registrasi</label>
                               <input type="text" class="form-control" value="<?=($member->valid==3)?"valid":"invalid"?>" disabled/>
                             </div>
                            <div class="form-group">

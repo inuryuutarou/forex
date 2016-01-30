@@ -188,6 +188,8 @@ class Member extends Secure_area {
 		$this->load->view('main/template',$data);
 	}
 	public function exchange_form($id_broker,$type=NULL){
+		$this->load->model('m_captcha');
+		$this->session->set_userdata('captcha',$this->m_captcha->simple_php_captcha());
 		$data['broker'] = $this->m_member->get_broker($id_broker)->row();
 		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
 		$data['type']=$type;
@@ -200,6 +202,14 @@ class Member extends Secure_area {
 	}
 	public function exchange_process(){
 		extract($_POST);
+		$answer = strtoupper($this->input->post('captcha'));
+		$code=$this->session->userdata('captcha');
+		$word = strtoupper($code['code']);
+		$this->session->set_flashdata('message',"Captcha salah");
+		if($word!=$answer){
+			$this->session->set_flashdata('message','Captcha salah');
+			redirect("member/exchange_form/$id_broker/$jenis_transaksi");
+		}
 		$broker = $this->m_member->get_broker($id_broker)->row();
 		$nil_tukar=($jenis_transaksi==0)?$broker->beli:$broker->jual;
 		$data=array(

@@ -162,6 +162,19 @@
                                 </label>
                             </section>
                         </div>
+                        <div class="row">
+                            <section class="col col-6">
+                                <label class="input">
+                                    <?php $img_capt=$this->session->userdata('captcha');?>
+									<img src="<?=$img_capt['image_src']?>" title="captcha" style="width:137px; height:45px; background-color:#F4AF4B; border-radius:5px;">
+                                </label>
+                            </section>
+                            <section class="col col-6">
+                                <label class="input">
+                                    <input type="text" name="captcha" required="captcha" placeholder="Captcha">
+                                </label>
+                            </section>
+                        </div>
                         <section>
                             <label class="checkbox"><input type="checkbox" name="terms" id="terms"><i></i>I agree with the Terms and Conditions</label>
                         </section>

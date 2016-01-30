@@ -39,14 +39,19 @@
               <textarea rows="4" name="message" id="message"></textarea>
             </label>
           </section>
-          <section>
+          <div class="row">
+			<section class="col col-3">
+            <label class="label">Captcha</label>
 			<?php $img_capt=$this->session->userdata('captcha');?>
 			<img src="<?=$img_capt['image_src']?>" title="captcha" style="width:137px; height:45px; background-color:#F4AF4B; border-radius:5px;">
-            <label class="label">Captcha</label>
-            <label class="input"> <i class="icon-append icon-envelope-alt"></i>
-                <input type="text" name="captcha" required="required" />
-              </label>
-		  </section>
+            </section>
+            <section class="col col-4">
+            	<label class="label">Input Captcha</label>
+                <label class="input"> 
+                    <input type="text" name="captcha" required="required" />
+                  </label>
+            </section>
+		  </div>
         </fieldset>
         <footer>
           <button type="submit" class="button">Send message</button>

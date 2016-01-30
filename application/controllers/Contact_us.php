@@ -22,7 +22,7 @@ class Contact_us extends CI_Controller {
 		$answer = strtoupper($this->input->post('captcha'));
 		$code=$this->session->userdata('captcha');
 		$word = strtoupper($code['code']);
-		$this->session->set_flashdata('msg',"Captcha salah");
+		$this->session->set_flashdata('message',"Captcha salah");
 		if($word==$answer){
 			extract($_POST);
 			$to = "info@forexglobalservice.com";

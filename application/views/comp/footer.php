@@ -112,6 +112,10 @@
     
         jQuery(document).ready(function() {
                 jQuery('#mycarouselthree').jcarousel();
+				
+				<?php if($this->session->flashdata('message')){?>
+					alert("<?=$this->session->flashdata('message')?>");
+				<?php }?>
         });
         
     })(jQuery);
