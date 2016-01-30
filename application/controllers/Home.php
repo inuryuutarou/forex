@@ -20,10 +20,10 @@ class Home extends CI_Controller {
 	}
 	
 	public function signin(){
-		if($this->session->userdata('forex_login') == FALSE)
+		if($this->session->userdata('forex_login') == TRUE)
 			redirect('member');
-		if($this->session->userdata('admin_forex_login') == FALSE)
-			redirect('member');
+		if($this->session->userdata('admin_forex_login') == TRUE)
+			redirect('admin');
 
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
@@ -33,10 +33,10 @@ class Home extends CI_Controller {
 	}
 	
 	public function register(){
-		if($this->session->userdata('forex_login') == FALSE)
+		if($this->session->userdata('forex_login') == TRUE)
 			redirect('member');
-		if($this->session->userdata('admin_forex_login') == FALSE)
-			redirect('member');
+		if($this->session->userdata('admin_forex_login') == TRUE)
+			redirect('admin');
 			
 		$this->load->model('m_captcha');
 		$this->session->set_userdata('captcha',$this->m_captcha->simple_php_captcha());
@@ -48,10 +48,10 @@ class Home extends CI_Controller {
 	}
 	
 	public function sign_in() {
-		if($this->session->userdata('forex_login') == FALSE)
-			redirect('home');
-		if($this->session->userdata('admin_forex_login') == FALSE)
-			redirect('login');
+		if($this->session->userdata('forex_login') == TRUE)
+			redirect('member');
+		if($this->session->userdata('admin_forex_login') == TRUE)
+			redirect('admin');
 		extract($_POST);
 		$get_member = $this->m_home->sign_in($username,$password);
 		
@@ -82,10 +82,10 @@ class Home extends CI_Controller {
 	}
 	
 	public function save($id_member=-1){
-		if($this->session->userdata('forex_login') == FALSE)
-			redirect('home');
-		if($this->session->userdata('admin_forex_login') == FALSE)
-			redirect('login');
+		if($this->session->userdata('forex_login') == TRUE)
+			redirect('member');
+		if($this->session->userdata('admin_forex_login') == TRUE)
+			redirect('admin');
 		
 		if($this->m_home->cek_username_email($this->input->post('email'))->num_rows()!=0){
 			$this->session->set_flashdata('message','Email alredy registered');
