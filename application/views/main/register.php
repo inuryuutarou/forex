@@ -4,7 +4,7 @@
     
 		
       <div class="login_form">		
-			<form id="sky-form" class="sky-form" novalidate="novalidate" action="<?=site_url('home/save');?>" method="post">
+			<form id="sky-form" class="sky-form" novalidate action="<?=site_url('home/save');?>" method="post">
                 <header>Register Form</header>
                 
                 <fieldset>					
@@ -50,6 +50,19 @@
                         <section class="col col-6">
                             <label class="input">
                                 <input type="text" name="last_name" placeholder="Last name">
+                            </label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col col-6">
+                            <label class="input">
+                                <?php $img_capt=$this->session->userdata('captcha');?>
+								<img src="<?=$img_capt['image_src']?>" title="captcha" style="width:137px; height:45px; background-color:#F4AF4B; border-radius:5px;">
+                            </label>
+                        </section>
+                        <section class="col col-6">
+                            <label class="input">
+                                <input type="text" name="captcha" placeholder="Captcha" required>
                             </label>
                         </section>
                     </div>

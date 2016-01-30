@@ -71,6 +71,14 @@
                     <textarea class="form-control" id="notes" name="notes" rows="5"></textarea>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">Captcha</label>
+                  <div class="col-sm-7">
+					<?php $img_capt=$this->session->userdata('captcha');?>
+                    <img src="<?=$img_capt['image_src']?>" title="captcha" style="width:137px; height:45px; background-color:#F4AF4B; border-radius:5px;">
+                    <input type="text" class="form-control" id="captcha" name="captcha" placeholder="Captcha" required>
+                  </div>
+                </div>
                 <br>
                 <div class="form-group" align="center">
                   <div class="col-sm-12 submit_btn">
