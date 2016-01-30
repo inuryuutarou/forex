@@ -120,12 +120,23 @@ class Admin extends Admin_secure_area {
 		$db_data = array(
 			"name" => $this->input->post('broker_name'),
 			"link_ib" => $this->input->post('link_ib'),
-			"link_client" => $this->input->post('link_client')
+			"link_client" => $this->input->post('link_client'),
+			"jual" => $this->input->post('jual'),
+			"beli" => $this->input->post('beli'),
+			"stock" => $this->input->post('stock')
 		);
-		if($id_broker == -1)
-		$this->m_admin->save_data($db_data,"broker");
+		
+		if($id_broker == -1) {
+			$this->m_admin->save_data($db_data,"broker");
+			$id_broker = $this->db->insert_id();
+		}
 		else
 		$this->m_admin->update_data($id_broker,'id_broker',$db_data,"broker");
+		
+		if($_FILES['logo_broker']['name'] != "") {
+			move_uploaded_file($_FILES['logo_broker']['tmp_name'],"media/images/logo_broker/".$id_broker.".png");
+		}
+		
 		echo 'ok';
 	}
 	
@@ -162,10 +173,16 @@ class Admin extends Admin_secure_area {
 		$data['changer']=$this->m_admin->get_data("*","vw_changer","approved = 0");
 		$this->load->view('admin/template',$data);
 	}
-	public function approve_changer(){
-		extract($_POST);
-		$this->m_admin->update_data($id_changer,'id_changer',array("approved"=>1),"changer");
+	public function approve_changer($id_changer=-1){
+		$this->m_admin->update_data($id_changer,'id_changer',array("approved"=>1,"approve_time" => date('Y-m-d H:i:s')),"changer");
 		redirect('admin/changer');
+	}
+	public function detail_changer($id_changer=-1) {
+		$get_changer = $this->m_admin->get_data('*','vw_changer',"id_changer = $id_changer");
+		if($get_changer->num_rows() == 0)
+		exit('Changer tidak ditemukan');
+		$data['changer'] = $get_changer->row();
+		$this->load->view('admin/changer_detail',$data);
 	}
 	public function logout() {
 		$session_data = array(
