@@ -8,18 +8,28 @@
                 <h2 class="main-text-color">Wall Post</h2>
                 <div class="divider divider-3"></div>
                 <div class="form form-1" style="padding:20px" align="justify">
-                	Apa yang anda pikirkan?
-                    <form class="form-horizontal" enctype="multipart/form-data" action="<?=site_url("member/update_wall")?>" method="post">
-                    	<textarea name="content"></textarea>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                	<h4 style="margin-bottom:0">Apa yang anda pikirkan?</h4>
+                    <div class="cforms">
+                    <form class="sky-form" enctype="multipart/form-data" action="<?=site_url("member/update_wall")?>" method="post">
+                    <fieldset>
+                    	<section style="margin-bottom:0">
+                    	<label class="textarea"> <i class="icon-append icon-envelope-alt"></i>
+                            <textarea name="content" rows="5"></textarea>
+                          </label>
+                        </section>
+                        <footer style="text-align:right">
+                          <button type="submit" class="button">Send</button>
+                        </footer>
+                    </fieldset>
                     </form>
+                    </div>
                     <br><br>
                     <div class="col-xs-12" style="background-color:#F1F1F1; padding:15px">
                     <?php foreach($wall as $w){?>
-                    	<div style="border:thin solid #767373; margin-bottom:20px;">
-							<?=$w->content?><br>
-                            <?=$w->first_name." ".$w->last_name?><br>
-                            <?=$w->timestamp?>
+                    	<div style="border:thin solid #CCCCCC; margin-bottom:20px; padding:15px; border-radius:3px">
+							<p><?=$w->content?></p>
+                            <p style="font-size:12px; text-align:right"><?=$w->first_name." ".$w->last_name?><br>
+                            <?=$w->timestamp?></p>
 						</div>
 					<?php }?>
                     </div>
