@@ -33,15 +33,18 @@ class M_member extends CI_Model
 						->where('deleted_broker',0)
 						->get('vw_member_broker');
 	}
+	public function check_broker($id_member,$id_broker=NULL){
+		if($id_broker!=NULL)
+			$this->db->where('id_broker',$id_broker);
+		return $this->db->where('id_member',$id_member)
+						->where('deleted_broker',0)
+						->get('vw_member_broker');
+	}
 	
 	public function insert_broker($data){
 		return $this->db->insert('member_broker',$data);
 	}
 	
-	public function insert_batch_broker($data){
-		return $this->db->insert_batch('member_broker',$data);
-	}
-
 	public function update_broker($data){
 		return $this->db->where('id_member',$data['id_member'])
 						->where('id_broker',$data['id_broker'])

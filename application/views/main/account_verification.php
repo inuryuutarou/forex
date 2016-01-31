@@ -31,11 +31,9 @@
                 <div class="panel-heading">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#tab1default" data-toggle="tab">Account Verification</a></li>
-                            <li><a href="#tab2default" data-toggle="tab">Exness</a></li>
-                            <li><a href="#tab3default" data-toggle="tab">InstaForex</a></li>
-                            <li><a href="#tab4default" data-toggle="tab">XM</a></li>
-                            <li><a href="#tab5default" data-toggle="tab">Orbex</a></li>
-                            <li><a href="#tab6default" data-toggle="tab">HotForex</a></li>
+                            <?php $i=1;foreach($broker->result() as $row){$i++;?>
+                            <li><a href="#tab<?=$i?>default" data-toggle="tab"><?=$row->name?></a></li>
+                            <?php }?>
                         </ul>
                 </div>
                 <div class="panel-body">
@@ -180,225 +178,61 @@
                             </form>
                         </div>
                         <!--=======================================================-->
-                        <!--Tab untuk Exness-->
-                        <div class="tab-pane fade" id="tab2default">
+                        <!--Tab untuk form-->
+                        <?php $i=1;foreach($broker->result() as $row){$i++;
+								$chk=$this->m_member->check_broker($this->session->userdata('id_member'),$row->id_broker);
+								$chk_dta=($chk->num_rows()!=0)?$chk->row():'';
+						?>
+                        <div class="tab-pane fade" id="tab<?=$i?>default">
                         	<div class="margin_top3"></div> 
-                            <h4 style="text-align:center">Exness</h4>
+                            <h4 style="text-align:center"><?=$row->name?></h4>
                             <br>
-                            <form class="form-horizontal" action="<?=site_url("member/broker_batch")?>" method="post">
+                            <form class="form-horizontal" action="<?=site_url("member/broker_add")?>" method="post">
                             <p>Masuk melalui semua link berikut ini ketika mendaftar</p>
-                            <div class="alert alert-info" role="alert"><a href="#">this is link...............................</a></div>
+                            <div class="alert alert-info" role="alert"><a href="<?=$row->link_ib?>" target="_blank"><h4>this is link <?=$row->name?></h4></a></div>
+							<?php if($row->link_client!=""){?>
+                            <div class="alert alert-info" role="alert"><a href="<?=$row->link_client?>" target="_blank"><h4>this is link <?=$row->name?></h4></a></div>
+                            <?php }?>
                             <p>Setelah melakukan daftar, pastikan akun IB dan Akun trading anda telah diverifikasi oleh broker, 
                             dan pastikan Link IB dan data akun trading yang anda masukkan benar pada form dibawah</p>
                             <br>
                             <div class="form-group">
                               <label class="col-sm-2 control-label">Affiliation Link</label>
                               <div class="col-sm-7">
-                                <input type="text" class="form-control" id="link_ib" name="link_ib[]" placeholder="Affiliation Link" required>
+                                <input type="text" class="form-control" id="link_ib" name="link_ib" value="<?=($chk_dta!='')?$chk_dta->link_ib:''?>" placeholder="Affiliation Link" required>
                               </div>
                             </div>
-                            
+							<?php if($row->link_client!=""){?>
                             <div class="form-group">
                               <label class="col-sm-2 control-label">Client Link</label>
                               <div class="col-sm-7">
-                                <input type="text" class="form-control" id="link_client" name="link_client[]" placeholder="Client Link" required>
+                                <input type="text" class="form-control" id="link_client" name="link_client" value="<?=($chk_dta!='')?$chk_dta->link_client:''?>" placeholder="Client Link" required>
                               </div>
                             </div>
+							<?php }else{?>
+                                <input type="hidden" value="" readonly class="form-control" name="link_client" value="<?=($chk_dta!='')?$chk_dta->link_client:''?>">
+                            <?php }?>
                             <div class="form-group">
                               <label class="col-sm-2 control-label">Broker Username</label>
                               <div class="col-sm-7">
-                                <input type="text" class="form-control" id="broker_username" name="broker_username[]" placeholder="Broker Username" required>
+                                <input type="text" class="form-control" id="broker_username" value="<?=($chk_dta!='')?$chk_dta->broker_username:''?>" name="broker_username" placeholder="Broker Username" required>
                               </div>
                             </div>
                             <div class="form-group">
                               <label class="col-sm-2 control-label">Real Account</label>
                               <div class="col-sm-7">
-                                <input type="text" class="form-control" id="real_account" name="real_account[]" placeholder="Real Account" required>
+                                <input type="text" class="form-control" id="real_account" value="<?=($chk_dta!='')?$chk_dta->real_account:''?>" name="real_account" placeholder="Real Account" required>
                               </div>
                             </div>
                             <div class="form-group">
                             	<div class="col-sm-12" align="center">
                                 	<button type="submit" class="btn btn-primary" id="finish">Submit</button>
+                                    <input type="hidden" name="id_broker" value="<?=$row->id_broker?>">
                                 </div>
                             </div>
                             </form>
                         </div>
-                        <!--=======================================================-->
-                        <!--Tab untuk InstaForex-->
-                        <div class="tab-pane fade" id="tab3default">
-                        	<div class="margin_top3"></div> 
-                            <h4 style="text-align:center">InstaForex</h4>
-                            <br>
-                            <form class="form-horizontal" action="<?=site_url("member/broker_batch")?>" method="post">
-                            <p>Masuk melalui semua link berikut ini ketika mendaftar</p>
-                            <div class="alert alert-info" role="alert"><a href="#">this is link...............................</a></div>
-                            <p>Setelah melakukan daftar, pastikan akun IB dan Akun trading anda telah diverifikasi oleh broker, 
-                            dan pastikan Link IB dan data akun trading yang anda masukkan benar pada form dibawah</p>
-                            <br>
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Affiliation Link</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="link_ib" name="link_ib[]" placeholder="Affiliation Link" required>
-                              </div>
-                            </div>
-                            
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Client Link</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="link_client" name="link_client[]" placeholder="Client Link" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Broker Username</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="broker_username" name="broker_username[]" placeholder="Broker Username" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Real Account</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="real_account" name="real_account[]" placeholder="Real Account" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                            	<div class="col-sm-12" align="center">
-                                	<button type="submit" class="btn btn-primary" id="finish">Submit</button>
-                                </div>
-                            </div>
-                            </form>
-                        </div>
-                        <!--=======================================================-->
-                        <!--Tab untuk XM-->
-                        <div class="tab-pane fade" id="tab4default">
-                        	<div class="margin_top3"></div> 
-                            <h4 style="text-align:center">XM</h4>
-                            <br>
-                            <form class="form-horizontal" action="<?=site_url("member/broker_batch")?>" method="post">
-                            <p>Masuk melalui semua link berikut ini ketika mendaftar</p>
-                            <div class="alert alert-info" role="alert"><a href="#">this is link...............................</a></div>
-                            <p>Setelah melakukan daftar, pastikan akun IB dan Akun trading anda telah diverifikasi oleh broker, 
-                            dan pastikan Link IB dan data akun trading yang anda masukkan benar pada form dibawah</p>
-                            <br>
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Affiliation Link</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="link_ib" name="link_ib[]" placeholder="Affiliation Link" required>
-                              </div>
-                            </div>
-                            
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Client Link</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="link_client" name="link_client[]" placeholder="Client Link" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Broker Username</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="broker_username" name="broker_username[]" placeholder="Broker Username" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Real Account</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="real_account" name="real_account[]" placeholder="Real Account" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                            	<div class="col-sm-12" align="center">
-                                	<button type="submit" class="btn btn-primary" id="finish">Submit</button>
-                                </div>
-                            </div>
-                            </form>
-                        </div>
-                        <!--=======================================================-->
-                        <!--Tab untuk Orbex-->
-                        <div class="tab-pane fade" id="tab5default">
-                        <div class="margin_top3"></div> 
-                            <h4 style="text-align:center">Orbex</h4>
-                            <br>
-                            <form class="form-horizontal" action="<?=site_url("member/broker_batch")?>" method="post">
-                            <p>Masuk melalui semua link berikut ini ketika mendaftar</p>
-                            <div class="alert alert-info" role="alert"><a href="#">this is link...............................</a></div>
-                            <p>Setelah melakukan daftar, pastikan akun IB dan Akun trading anda telah diverifikasi oleh broker, 
-                            dan pastikan Link IB dan data akun trading yang anda masukkan benar pada form dibawah</p>
-                            <br>
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Affiliation Link</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="link_ib" name="link_ib[]" placeholder="Affiliation Link" required>
-                              </div>
-                            </div>
-                            
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Client Link</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="link_client" name="link_client[]" placeholder="Client Link" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Broker Username</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="broker_username" name="broker_username[]" placeholder="Broker Username" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Real Account</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="real_account" name="real_account[]" placeholder="Real Account" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                            	<div class="col-sm-12" align="center">
-                                	<button type="submit" class="btn btn-primary" id="finish">Submit</button>
-                                </div>
-                            </div>
-                            </form>
-                        </div>
-                        <!--=======================================================-->
-                        <!--Tab untuk HotForex-->
-                        <div class="tab-pane fade" id="tab6default">
-                        <div class="margin_top3"></div> 
-                            <h4 style="text-align:center">HotForex</h4>
-                            <br>
-                            <form class="form-horizontal" action="<?=site_url("member/broker_batch")?>" method="post">
-                            <p>Masuk melalui semua link berikut ini ketika mendaftar</p>
-                            <div class="alert alert-info" role="alert"><a href="#">this is link...............................</a></div>
-                            <p>Setelah melakukan daftar, pastikan akun IB dan Akun trading anda telah diverifikasi oleh broker, 
-                            dan pastikan Link IB dan data akun trading yang anda masukkan benar pada form dibawah</p>
-                            <br>
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Affiliation Link</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="link_ib" name="link_ib[]" placeholder="Affiliation Link" required>
-                              </div>
-                            </div>
-                            
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Client Link</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="link_client" name="link_client[]" placeholder="Client Link" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Broker Username</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="broker_username" name="broker_username[]" placeholder="Broker Username" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="col-sm-2 control-label">Real Account</label>
-                              <div class="col-sm-7">
-                                <input type="text" class="form-control" id="real_account" name="real_account[]" placeholder="Real Account" required>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                            	<div class="col-sm-12" align="center">
-                                	<button type="submit" class="btn btn-primary" id="finish">Submit</button>
-                                </div>
-                            </div>
-                            </form>
-                        </div>
+                        <?php }?>
                     </div>
                 </div>
             </div>

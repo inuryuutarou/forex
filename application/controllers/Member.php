@@ -121,9 +121,14 @@ class Member extends Secure_area {
 	
 	public function account_verification(){
 		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
-		if($data['member']->valid!=0){
-			redirect('member/broker_verification');
+		if($data['member']->valid==3){
+			redirect('member');
 		}
+		if($data['member']->id_refferer!='')
+			$broker=$this->m_member->get_broker_refferal($data['member']->id_refferer);
+		else
+			$broker=$this->m_member->get_broker();
+		$data['broker'] = $broker;
 		$data['active']='account_verification';
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
@@ -149,23 +154,30 @@ class Member extends Secure_area {
 		$data['content']='main/broker_verification';
 		$this->load->view('main/template',$data);
 	}
-	public function broker_batch(){
+	public function broker_add(){
 		extract($_POST);
-		$i=0;
-		foreach($id_broker as $id_br){
-			$data[]=array(
-						'id_member'=>$this->session->userdata('id_member'),
-						'id_broker'=>$id_br,
-						'link_ib'=>$link_ib[$i],
-						'link_client'=>(isset($link_client[$i])?$link_client[$i]:''),
-						'broker_username'=>$broker_username[$i],
-						'real_account'=>$real_account[$i],
-					);
-			$i++;
-		}
-		$this->m_member->insert_batch_broker($data);
-		$this->m_member->update_member($this->session->userdata('id_member'),array('valid'=>2));
-		redirect("member/my_profile");
+		$data=array(
+					'id_member'=>$this->session->userdata('id_member'),
+					'id_broker'=>$id_broker,
+					'link_ib'=>$link_ib,
+					'link_client'=>(isset($link_client)?$link_client:''),
+					'broker_username'=>$broker_username,
+					'real_account'=>$real_account,
+				);
+		$chk=$this->m_member->check_broker($this->session->userdata('id_member'),$row->id_broker);
+		if($chk->num_rows()==0)
+			$this->m_member->insert_broker($data);
+		else
+			$this->m_member->update_broker($data);
+		//update member status	
+		if($data['member']->id_refferer!='')
+			$broker=$this->m_member->get_broker_refferal($data['member']->id_refferer);
+		else
+			$broker=$this->m_member->get_broker();
+		$member=$this->m_member->get_ib($this->session->userdata('id_member'))->row();
+		if($broker->num_rows()==$chk->num_rows() and $member->valid==1)
+			$this->m_member->update_member($this->session->userdata('id_member'),array('valid'=>2));
+		redirect("member/account_verification");
 	}
 	
 	public function webinar(){

@@ -19,8 +19,10 @@
                         <br>
                         <p>Masuk melalui semua link berikut ini ketika mendaftar</p>
                         <a href="<?=$brkr->link_ib?>" target="_blank"><h4><?=$brkr->link_ib?></h4></a>
+                        <?php if($brkr->link_client!=""){?>
                         <br>
                         <a href="<?=$brkr->link_client?>" target="_blank"><h4><?=$brkr->link_client?></h4></a>
+                        <?php }?>
                         <br>
                         <p>Setelah melakukan daftar, pastikan akun IB dan Akun trading anda telah diverifikasi oleh broker, 
                         dan pastikan Link IB dan data akun trading yang anda masukkan benar pada form dibawah</p>
