@@ -78,6 +78,7 @@ class Home extends CI_Controller {
 			"member_last_name" => ""
 		);
 		$this->session->set_userdata($session_data);
+		$this->session->sess_destroy();
 		redirect('home');
 	}
 	

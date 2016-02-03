@@ -146,17 +146,17 @@ class Member extends Secure_area {
 					'broker_username'=>$broker_username,
 					'real_account'=>$real_account,
 				);
-		$chk=$this->m_member->check_broker($this->session->userdata('id_member'),$row->id_broker);
+		$chk=$this->m_member->check_broker($this->session->userdata('id_member'),$id_broker);
 		if($chk->num_rows()==0)
 			$this->m_member->insert_broker($data);
 		else
 			$this->m_member->update_broker($data);
 		//update member status	
-		if($data['member']->id_refferer!='')
+		$member=$this->m_member->get_ib($this->session->userdata('id_member'))->row();
+		if($member->id_refferer!='')
 			$broker=$this->m_member->get_broker_refferal($data['member']->id_refferer);
 		else
 			$broker=$this->m_member->get_broker();
-		$member=$this->m_member->get_ib($this->session->userdata('id_member'))->row();
 		if($broker->num_rows()==$chk->num_rows() and $member->valid==1)
 			$this->m_member->update_member($this->session->userdata('id_member'),array('valid'=>2));
 		redirect("member/account_verification");
