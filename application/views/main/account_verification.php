@@ -58,7 +58,7 @@
                                 <div class="form-group">
                                   <label class="col-sm-2 control-label">PIN Deposit/Withdraw*</label>
                                   <div class="col-sm-7">
-                                    <input type="password" class="form-control" id="pin" name="pin" placeholder="PIN" maxlength="4" required>
+                                    <input type="password" class="form-control" id="pin" name="pin" maxlength="4" <?=($member->pin!='')?'placeholder="PIN already set" readonly':'placeholder="PIN" required'?>>
                                   </div>
                                 </div>
                                 <div class="form-group">

@@ -54,7 +54,6 @@ class Home extends CI_Controller {
 			redirect('admin');
 		extract($_POST);
 		$get_member = $this->m_home->sign_in($username,$password);
-		
 		if($get_member->num_rows() == 1) {
 			$user_data = $get_member->row();
 			$session_data = array(

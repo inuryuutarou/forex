@@ -74,7 +74,6 @@ class Member extends Secure_area {
 	
 	public function update_profile(){
 		$data=array(
-			"pin" => md5($this->input->post('pin')),
 			"country" => $this->input->post('country'),
 			"province" => $this->input->post('province'),
 			"city" => $this->input->post('city'),
@@ -82,6 +81,7 @@ class Member extends Secure_area {
 			"postal" => $this->input->post('postal'),
 			"id_card_number" => $this->input->post('id_card_number'),
 			"phone" => $this->input->post('phone'),
+			"im" => $this->input->post('im'),
 			"bank_name" => $this->input->post('bank_name'),
 			"bank_branch" => $this->input->post('bank_branch'),
 			"bank_acc_num" => $this->input->post('bank_acc_num'),
@@ -90,6 +90,8 @@ class Member extends Secure_area {
 			"fb_link" => $this->input->post('fb_link'),
 			"last_update" => date('Y-m-d H:i:s')
 			);
+		if($this->input->post('pin')!='')
+			$data["pin"] =  md5($this->input->post('pin'));	
 		if(isset($_POST['verify']) and $_FILES['ktp_file']['tmp_name']==''){
 			$this->session->set_flashdata('error',"KTP harus di upload untuk proses verifikasi");
 			redirect("member/account_verification");

@@ -24,7 +24,7 @@ class M_home extends CI_Model
 	}
 	
 	public function sign_in($username,$password){
-		return $this->db->where("(username = '$username' OR email = 'username')")
+		return $this->db->where("(username = '$username' OR email = '$username')")
 						->where("password",md5($password))
 						->where("deleted",0)
 						->get('vw_member');
