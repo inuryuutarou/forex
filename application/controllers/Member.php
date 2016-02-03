@@ -12,11 +12,8 @@ class Member extends Secure_area {
 	
 	public function index(){
 		$member = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
-		if($member->valid==0){
+		if($member->valid==0 or $member->valid==1){
 			redirect('member/account_verification');
-		}
-		else if($member->valid==1){
-			redirect('member/broker_verification');
 		}
 		redirect('member/wall');
 	}
@@ -116,7 +113,7 @@ class Member extends Secure_area {
 		if(!isset($_POST['verify']))
 			redirect("member/my_profile");
 		else
-			redirect("member/broker_verification");
+			redirect("member/account_verification");
 	}
 	
 	public function account_verification(){
@@ -137,23 +134,6 @@ class Member extends Secure_area {
 		$this->load->view('main/template',$data);
 	}
 	
-	public function broker_verification(){
-		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
-		if($data['member']->valid!=1){
-			redirect('member/my_profile');
-		}
-		if($data['member']->id_refferer!='')
-			$broker=$this->m_member->get_broker_refferal($data['member']->id_refferer);
-		else
-			$broker=$this->m_member->get_broker();
-		$data['broker'] = $broker;
-		$data['active']='account_verification';
-		$data['header']='comp/header';
-		$data['footer']='comp/footer';
-		$data['side_menu']='comp/side_menu';
-		$data['content']='main/broker_verification';
-		$this->load->view('main/template',$data);
-	}
 	public function broker_add(){
 		extract($_POST);
 		$data=array(

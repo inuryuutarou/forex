@@ -131,6 +131,14 @@
                                     <input type="text" class="form-control" id="id_card_number" name="id_card_number" value="<?=$member->id_card_number?>" placeholder="ID Card (KTP)" required>
                                   </div>
                                 </div>
+								<?php if(is_file("media/img/member_id/id_card_".$member->id_member.".jpg")){?>
+                                <div class="form-group">
+                                  <div class="col-sm-2"> </div>
+                                  <div class="col-sm-7">
+                                    <img src="<?=base_url("media/img/member_id/id_card_".$member->id_member.".jpg")?>" class="col-xs-10">
+                                  </div>
+                                </div>
+                                <?php }?>
                                 <div class="form-group">
                                   <label class="col-sm-2 control-label">ID Card (KTP) File*</label>
                                   <div class="col-sm-7">

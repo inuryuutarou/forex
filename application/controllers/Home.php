@@ -61,6 +61,7 @@ class Home extends CI_Controller {
 				"forex_login" => TRUE,
 				"id_member" => $user_data->id_member,
 				"username" => $user_data->username,
+				'email'	 => $user_data->email,
 				"valid" => $user_data->valid
 			);
 			$this->session->set_userdata($session_data);
