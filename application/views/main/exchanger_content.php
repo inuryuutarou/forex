@@ -56,7 +56,7 @@
                             <tbody style="margin-top:20px">
                             <?php foreach($broker as $br){?>
                                 <tr>
-                                    <td><img src="<?=base_url()?>/media/images/logo_broker/broker-<?=$br->id_broker?>.png" alt="" /></td>
+                                    <td><div class="par_exc"><?=$br->name?></div></td>
                                     <td><div class="par_exc">Rp <?=number_format($br->jual)?></div></td>
                                     <td><div class="par_exc">Rp <?=number_format($br->beli)?></div></td>
                                     <td><div class="par_exc">$ <?=number_format($br->stock,2)?></div></td>

@@ -61,7 +61,7 @@
                                 	<tr>
                                     	<td>
                                         	<a href="<?=site_url("member/exchange_form/$br->id_broker")?>">
-                                            	<img src="<?=base_url()?>/media/images/logo_broker/broker-<?=$br->id_broker?>.png" alt="" />
+                                            	<div class="par_exc"><?=$br->name?></div>
                                             </a>
                                         </td>
                                         <td>

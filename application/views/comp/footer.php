@@ -47,7 +47,7 @@
                 <li><img src="<?=base_url()?>/media/images/logo.png" alt="" width="80px" /></li>
                 <li><i class="fa fa-map-marker fa-lg"></i>&nbsp; Jl. Tukad Bilok No. 2, Renon<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Denpasar, Bali</li>
                 <li><i class="fa fa-phone"></i>&nbsp; +6281 246 515 082</li>
-                <li><a href="mailto:info@yourdomain.com"><i class="fa fa-envelope"></i> info@forexglobalservice.com</a></li>
+                <li><a href="mailto:info@forexglobalservice.com"><i class="fa fa-envelope"></i> info@forexglobalservice.com</a></li>
             </ul>
         </div><!-- end address -->
         

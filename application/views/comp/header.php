@@ -12,7 +12,7 @@
                         <?php if($this->session->userdata('forex_login') == TRUE){?>
                         <ul>
                             <li class="link"><a href="<?=site_url()?>/member/my_profile"><i class="fa fa-user"></i> <?=$this->session->userdata('username')?></a></li>
-                            <li><a href="mailto:info@yourdomain.com"><i class="fa fa-envelope"></i> info@forexglobalservice.com</a></li>
+                            <li><a href="mailto:info@forexglobalservice.com"><i class="fa fa-envelope"></i> info@forexglobalservice.com</a></li>
                             <li><i class="fa fa-phone"></i> +6281 246 515 082</li>
                             
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -21,7 +21,7 @@
                         <ul>
                             <li class="link"><a href="<?=site_url()?>/home/signin"><i class="fa fa-lock"></i> Sign In</a></li>
                             <li class="link"><a href="<?=site_url()?>/home/register"><i class="fa fa-edit"></i> Register</a></li>
-                            <li><a href="mailto:info@yourdomain.com"><i class="fa fa-envelope"></i> info@forexglobalservice.com</a></li>
+                            <li><a href="mailto:info@forexglobalservice.com"><i class="fa fa-envelope"></i> info@forexglobalservice.com</a></li>
                             <li><i class="fa fa-phone"></i> +6281 246 515 082</li>
                             
                             <li><a href="https://www.facebook.com/FOREX-Global-Service-FGS-792977437492109/?fref=nf"><i class="fa fa-facebook"></i></a></li>
