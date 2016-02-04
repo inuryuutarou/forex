@@ -135,7 +135,11 @@
       <footer class="main-footer">
         <strong>Copyright &copy; 2016.</strong> All rights reserved.
       </footer>
-
+	<script>
+		<?php if($this->session->flashdata('message')){?>
+		alert("<?=$this->session->flashdata('message')?>");
+		<?php }?>
+	</script>
     </div><!-- ./wrapper -->
   </body>
 </html>

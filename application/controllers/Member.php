@@ -157,6 +157,7 @@ class Member extends Secure_area {
 			$broker=$this->m_member->get_broker_refferal($data['member']->id_refferer);
 		else
 			$broker=$this->m_member->get_broker();
+		$chk=$this->m_member->check_broker($this->session->userdata('id_member'));
 		if($broker->num_rows()==$chk->num_rows() and $member->valid==1)
 			$this->m_member->update_member($this->session->userdata('id_member'),array('valid'=>2));
 		redirect("member/account_verification");

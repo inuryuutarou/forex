@@ -115,7 +115,8 @@ class Admin extends Admin_secure_area {
 		if($id_broker != -1) {
 			$get_broker = $this->m_admin->get_data('*','broker',"id_broker = $id_broker AND deleted = '0'");
 			if($get_broker->num_rows() == 0)
-			exit('Broker tidak ditemukan');
+			$this->session->set_flashdata('message','Broker tidak ditemukan');
+			//exit('Broker tidak ditemukan');
 		}
 		$db_data = array(
 			"name" => $this->input->post('broker_name'),
@@ -136,8 +137,8 @@ class Admin extends Admin_secure_area {
 		if($_FILES['logo_broker']['name'] != "") {
 			move_uploaded_file($_FILES['logo_broker']['tmp_name'],"media/images/logo_broker/".$id_broker.".png");
 		}
-		
-		echo 'ok';
+		redirect('admin/broker');
+		//echo 'ok';
 	}
 	
 	public function delete_broker($id_broker=-1) {
