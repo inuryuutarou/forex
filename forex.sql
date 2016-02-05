@@ -30,7 +30,7 @@ CREATE TABLE `broker` (
 
 /*Data for the table `broker` */
 
-insert  into `broker`(`id_broker`,`name`,`link_ib`,`link_client`,`jual`,`beli`,`stock`,`deleted`) values (1,'XM ','http://clicks.pipaffiliates.com/afs/come.php?cid=65890&ctgid=16&atype=1&brandid=3','http://clicks.pipaffiliates.com/afs/come.php?cid=65934&ctgid=0&atype=2&brandid=1',13000,13700,20000,0),(2,'orbex','http://www.orbex.com/en/?ref_id=102013',NULL,12500,13000,20000.3,0);
+insert  into `broker`(`id_broker`,`name`,`link_ib`,`link_client`,`jual`,`beli`,`stock`,`deleted`) values (1,'XM ','http://clicks.pipaffiliates.com/afs/come.php?cid=65890&ctgid=16&atype=1&brandid=3','http://clicks.pipaffiliates.com/afs/come.php?cid=65934&ctgid=0&atype=2&brandid=1',13000,13700,20000,0),(2,'orbex','http://www.orbex.com/en/?ref_id=102013','',12500,13000,20000.3,0);
 
 /*Table structure for table `changer` */
 
@@ -53,11 +53,9 @@ CREATE TABLE `changer` (
   `approved` tinyint(4) NOT NULL DEFAULT '0',
   `approve_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id_changer`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `changer` */
-
-insert  into `changer`(`id_changer`,`id_member`,`id_broker`,`jenis_transaksi`,`nilai`,`nilai_tukar`,`no_akun_trading`,`nama_akun_trading`,`nama_bank`,`no_rek`,`nama_rek`,`notes`,`timestamp`,`approved`,`approve_time`) values (1,4,1,1,13000,13000,'23123','tre','1234','1234','12423','no','2016-01-27 19:17:49',0,'0000-00-00 00:00:00');
 
 /*Table structure for table `config` */
 
@@ -119,6 +117,8 @@ CREATE TABLE `member` (
   `fb_username` varchar(100) DEFAULT NULL,
   `fb_link` varchar(200) DEFAULT NULL,
   `valid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=profile, 1=broker, 2=admin valid, 3=valid',
+  `id_broker` int(11) DEFAULT NULL,
+  `nominal_deposit` double DEFAULT NULL,
   `register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `last_update` timestamp NULL DEFAULT NULL,
@@ -129,11 +129,11 @@ CREATE TABLE `member` (
   UNIQUE KEY `email` (`email`),
   KEY `id_refferer` (`id_refferer`),
   CONSTRAINT `member_ibfk_1` FOREIGN KEY (`id_refferer`) REFERENCES `member` (`id_member`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `member` */
 
-insert  into `member`(`id_member`,`id_refferer`,`username`,`email`,`password`,`pin`,`flag`,`first_name`,`last_name`,`country`,`province`,`city`,`address`,`postal`,`id_card_number`,`phone`,`bank_name`,`bank_branch`,`bank_acc_name`,`bank_acc_num`,`im`,`fb_username`,`fb_link`,`valid`,`register_date`,`deleted`,`last_update`,`valid_date`,`level_status`) values (4,NULL,'chico','inumaru.ryuusuke@gmail.com','034559aa5996026a68d79128251887ee','d41d8cd98f00b204e9800998ecf8427e',0,'chico','naga','Indonesia','Bali','Denpasar','test','80223','1234','08563790471','1234','1234','12423','1234',NULL,'','',3,'2015-12-27 20:46:10',0,'2016-01-09 16:20:13',NULL,1),(6,4,'gungdp','gungdp@example.com','123456',NULL,2,'Dharma','Putra',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 20:49:26',0,'2015-12-27 20:49:26',NULL,0),(7,4,'parwita','parwita@example.com','123456',NULL,2,'Parwita','Cole',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:10:24',0,'2015-12-27 21:10:24',NULL,0),(8,6,'ransdwi','ransdwi@example.com','123456',NULL,2,'Dwi','Ningsih',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2015-12-27 21:17:17',0,'2015-12-27 21:17:17',NULL,0),(10,4,'testis','tes@te.is','179ad45c6ce2cb97cf1029e212046e81',NULL,2,'tes','tis',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2016-01-13 01:16:44',0,NULL,NULL,0);
+insert  into `member`(`id_member`,`id_refferer`,`username`,`email`,`password`,`pin`,`flag`,`first_name`,`last_name`,`country`,`province`,`city`,`address`,`postal`,`id_card_number`,`phone`,`bank_name`,`bank_branch`,`bank_acc_name`,`bank_acc_num`,`im`,`fb_username`,`fb_link`,`valid`,`id_broker`,`nominal_deposit`,`register_date`,`deleted`,`last_update`,`valid_date`,`level_status`) values (1,NULL,'chico','inumaru.ryuusuke@gmail.com','034559aa5996026a68d79128251887ee','81dc9bdb52d04dc20036dbd8313ed055',2,'chico','naga','cou','pr','cit','add','po','123214','pho','bca','sesetan','chico','12323','asce2222','chico','frcnp',3,NULL,NULL,'2016-02-04 01:40:07',0,'2016-02-03 18:58:12',NULL,1),(2,1,'inubau','inu@bau.com','034559aa5996026a68d79128251887ee','81dc9bdb52d04dc20036dbd8313ed055',2,'inu','bau','set','aet','ets','set','et','12321','2313','sadsa','asf','sadf','21321','dfds','ets','set',2,2,10,'2016-02-05 02:26:03',0,'2016-02-05 16:31:01',NULL,0),(3,1,'sdsad','asd@sdf.co','e10adc3949ba59abbe56e057f20f883e',NULL,2,'asd','asd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,'2016-02-05 02:28:12',0,NULL,NULL,0),(4,1,'teae','tea@tea.te','55caeb5de0b558fb7836f5346d35d67e',NULL,2,'teat','teat',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,'2016-02-05 02:31:28',0,NULL,NULL,0),(5,2,'','','',NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,'2016-02-05 02:54:04',0,NULL,NULL,0);
 
 /*Table structure for table `member_broker` */
 
@@ -151,7 +151,7 @@ CREATE TABLE `member_broker` (
 
 /*Data for the table `member_broker` */
 
-insert  into `member_broker`(`id_member`,`id_broker`,`link_ib`,`link_client`,`broker_username`,`real_account`) values (4,1,'test','test','test','test'),(4,2,'test','','test','test');
+insert  into `member_broker`(`id_member`,`id_broker`,`link_ib`,`link_client`,`broker_username`,`real_account`) values (1,1,'test','test','test','test'),(1,2,'testist','','test','test'),(2,1,'test','test','test','test'),(2,2,'test','','test','test');
 
 /*Table structure for table `message` */
 
@@ -218,11 +218,9 @@ CREATE TABLE `wall_post` (
   `content` text NOT NULL,
   `deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_wall_post`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `wall_post` */
-
-insert  into `wall_post`(`id_wall_post`,`id_member`,`timestamp`,`content`,`deleted`) values (1,4,'2016-01-27 18:44:23','test',0);
 
 /*Table structure for table `vw_changer` */
 
@@ -289,6 +287,8 @@ DROP TABLE IF EXISTS `vw_member`;
  `fb_username` varchar(100) ,
  `fb_link` varchar(200) ,
  `valid` tinyint(1) ,
+ `id_broker` int(11) ,
+ `broker_name` varchar(200) ,
  `register_date` timestamp ,
  `deleted` tinyint(1) ,
  `last_update` timestamp ,
@@ -393,7 +393,7 @@ DROP TABLE IF EXISTS `vw_wall_post`;
 /*!50001 DROP TABLE IF EXISTS `vw_member` */;
 /*!50001 DROP VIEW IF EXISTS `vw_member` */;
 
-/*!50001 CREATE VIEW `vw_member` AS (select `m`.`id_refferer` AS `id_refferer`,`m2`.`username` AS `refferer_username`,`m2`.`first_name` AS `refferer_first_name`,`m2`.`last_name` AS `refferer_last_name`,`m`.`id_member` AS `id_member`,`m`.`username` AS `username`,`m`.`email` AS `email`,`m`.`password` AS `password`,`m`.`pin` AS `pin`,`m`.`flag` AS `flag`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`m`.`country` AS `country`,`m`.`province` AS `province`,`m`.`city` AS `city`,`m`.`address` AS `address`,`m`.`postal` AS `postal`,`m`.`id_card_number` AS `id_card_number`,`m`.`phone` AS `phone`,`m`.`bank_name` AS `bank_name`,`m`.`bank_branch` AS `bank_branch`,`m`.`bank_acc_name` AS `bank_acc_name`,`m`.`bank_acc_num` AS `bank_acc_num`,`m`.`im` AS `im`,`m`.`fb_username` AS `fb_username`,`m`.`fb_link` AS `fb_link`,`m`.`valid` AS `valid`,`m`.`register_date` AS `register_date`,`m`.`deleted` AS `deleted`,`m`.`last_update` AS `last_update`,`m`.`valid_date` AS `valid_date`,`m`.`level_status` AS `level_status` from (`member` `m` left join `member` `m2` on((`m`.`id_refferer` = `m2`.`id_member`)))) */;
+/*!50001 CREATE VIEW `vw_member` AS (select `m`.`id_refferer` AS `id_refferer`,`m2`.`username` AS `refferer_username`,`m2`.`first_name` AS `refferer_first_name`,`m2`.`last_name` AS `refferer_last_name`,`m`.`id_member` AS `id_member`,`m`.`username` AS `username`,`m`.`email` AS `email`,`m`.`password` AS `password`,`m`.`pin` AS `pin`,`m`.`flag` AS `flag`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`m`.`country` AS `country`,`m`.`province` AS `province`,`m`.`city` AS `city`,`m`.`address` AS `address`,`m`.`postal` AS `postal`,`m`.`id_card_number` AS `id_card_number`,`m`.`phone` AS `phone`,`m`.`bank_name` AS `bank_name`,`m`.`bank_branch` AS `bank_branch`,`m`.`bank_acc_name` AS `bank_acc_name`,`m`.`bank_acc_num` AS `bank_acc_num`,`m`.`im` AS `im`,`m`.`fb_username` AS `fb_username`,`m`.`fb_link` AS `fb_link`,`m`.`valid` AS `valid`,`m`.`id_broker` AS `id_broker`,`b`.`name` AS `broker_name`,`m`.`register_date` AS `register_date`,`m`.`deleted` AS `deleted`,`m`.`last_update` AS `last_update`,`m`.`valid_date` AS `valid_date`,`m`.`level_status` AS `level_status` from ((`member` `m` left join `member` `m2` on((`m`.`id_refferer` = `m2`.`id_member`))) left join `broker` `b` on((`b`.`id_broker` = `m`.`id_broker`)))) */;
 
 /*View structure for view vw_member_broker */
 
