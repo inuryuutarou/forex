@@ -67,7 +67,7 @@ class Home extends CI_Controller {
 			redirect('member/account_verification');
 		} else {
 			$this->session->set_flashdata('message','Login Failed');
-			redirect('home');
+			redirect('home/signin');
 		}
 	}
 	
@@ -90,18 +90,18 @@ class Home extends CI_Controller {
 		
 		if($this->m_home->cek_username_email($this->input->post('email'))->num_rows()!=0){
 			$this->session->set_flashdata('message','Email alredy registered');
-			redirect('home');
+			redirect('home/register');
 		}
 		if($this->m_home->cek_username_email($this->input->post('username'),'username')->num_rows()!=0){
 			$this->session->set_flashdata('message','Username alredy registered');
-			redirect('home');
+			redirect('home/register');
 		}
 		$answer = strtoupper($this->input->post('captcha'));
 		$code=$this->session->userdata('captcha');
 		$word = strtoupper($code['code']);
 		if($word!=$answer){
 			$this->session->set_flashdata('message','Captcha salah');
-			redirect('home');
+			redirect('home/register');
 		}
 		
 		if(!$this->input->cookie('id_referral')){
@@ -174,7 +174,7 @@ class Home extends CI_Controller {
 		}
 		else
 			$this->m_home->update_member($db_data);
-		redirect('home');
+		redirect('home/register');
 	}
 
 	public function referral($id_referral=-1) {

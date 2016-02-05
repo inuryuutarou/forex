@@ -120,6 +120,15 @@ class Member extends Secure_area {
 		else
 			redirect("member/account_verification");
 	}
+	public function depo_awal(){
+		$data=array(
+			"id_broker" => $this->input->post('id_broker'),
+			"nominal_deposit" => $this->input->post('nominal_deposit'),
+			"last_update" => date('Y-m-d H:i:s')
+			);
+		$this->m_member->update_member($this->session->userdata('id_member'),$data);
+		redirect("member/account_verification");
+	}
 	
 	public function account_verification(){
 		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
@@ -161,7 +170,7 @@ class Member extends Secure_area {
 		else
 			$broker=$this->m_member->get_broker();
 		$chk=$this->m_member->check_broker($this->session->userdata('id_member'));
-		if($broker->num_rows()==$chk->num_rows() and $member->valid==1)
+		if($broker->num_rows()==$chk->num_rows() and $member->valid==1 and $member->id_broker!='')
 			$this->m_member->update_member($this->session->userdata('id_member'),array('valid'=>2));
 		redirect("member/account_verification");
 	}

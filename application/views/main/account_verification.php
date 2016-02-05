@@ -248,24 +248,22 @@
                         	<div class="margin_top3"></div> 
                             <h4 style="text-align:center">Deposit Awal (Wajib)</h4>
                             <br>
-                            <form class="form-horizontal" enctype="multipart/form-data" action="#" method="post">
+                            <form class="form-horizontal" enctype="multipart/form-data" action="<?=site_url("member/depo_awal")?>" method="post">
                             <div class="alert alert-info" role="alert"><p>Sebagai persyaratan awal, calon member wajib melakukan deposit Minimal $10 di salah satu broker (Broker bebas). Dan wajib di tradingkan. Deposit ini sebagai syarat pertama kali saja diawal pendaftaran menjadi member FGS.</p></div>
                             <div class="form-group">
                               <label class="col-sm-2 control-label">Pilih Broker</label>
                               <div class="col-sm-7">
-                              	<select class="form-control" required>
-                                  <option>Exness</option>
-                                  <option>Instaforex</option>
-                                  <option>XM</option>
-                                  <option>Orbex</option>
-                                  <option>Hotforex</option>
+                              	<select class="form-control" name="id_broker" required>
+                                	<?php foreach($broker->result() as $row){?>
+                                  	<option <?=$member->id_broker==$row->id_broker?"selected":""?> value="<?=$row->id_broker?>"><?=$row->name?></option>
+                                  	<?php }?>
                                 </select>
                               </div>
                             </div>
                             <div class="form-group">
-                              <label class="col-sm-2 control-label">Nominal Deposit</label>
+                              <label class="col-sm-2 control-label">Nominal Deposit US$</label>
                               <div class="col-sm-7">
-                                <input type="text" class="form-control" id="nominal_deposit" name="nominal_deposit" placeholder="Input nominal deposit anda disini !" required>
+                                <input min="10" value="<?=$member->nominal_deposit?>" type="number" class="form-control" id="nominal_deposit" name="nominal_deposit" placeholder="Input nominal deposit anda disini !" required>
                               </div>
                             </div>
                             <div class="form-group">
