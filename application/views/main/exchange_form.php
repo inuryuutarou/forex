@@ -104,7 +104,7 @@ $(document).ready(function()
 		else
 			tukar=<?=$broker->jual?>;
 			
-		$("#nilai").val(tukar);
+		$("#nilai").val('1');
 		$("#nilai_tukar").html("Rp "+tukar);
 		jml=($("#nilai").val()=="")?0:$("#nilai").val();
 		$("#saldo").val((jml*tukar));

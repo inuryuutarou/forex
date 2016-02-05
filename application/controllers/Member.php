@@ -212,7 +212,6 @@ class Member extends Secure_area {
 		$answer = strtoupper($this->input->post('captcha'));
 		$code=$this->session->userdata('captcha');
 		$word = strtoupper($code['code']);
-		$this->session->set_flashdata('message',"Captcha salah");
 		if($word!=$answer){
 			$this->session->set_flashdata('message','Captcha salah');
 			redirect("member/exchange_form/$id_broker/$jenis_transaksi");
