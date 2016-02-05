@@ -42,30 +42,42 @@
                 <p>Dengan Bantuan Customer Support khusus yang selalu siap melayani anda, transaksi anda akan di proses secara cepat.</p>
                 
                 <br><br>
-                <div class="col-xs-12" style="background-color:#F1F1F1; padding:15px">
-                    <h4 style="text-align:center; font-weight:bold">Kurs Jual Beli FGS</h4>
-                    <p style="text-align:center">Stok tidak mengikat.<br>Klik kurs BELI untuk menukarkan Rupiah anda dengan E-Currency<br>Klik kurs JUAL untuk menukarkan E-Currency anda dengan rupiah</p>
-                    <div class="tablewrap table-responsive">
-                        <table class="table" border="0">
-                            <thead align="center" style="background:#fff; border:none">
-                                <th>JENIS</th>
-                                <th>JUAL</th>
-                                <th>BELI</th>
-                                <th>STOCK</th>
-                            </thead>
-                            <tbody style="margin-top:20px">
-                            <?php foreach($broker as $br){?>
-                                <tr>
-                                    <td><div class="par_exc"><?=$br->name?></div></td>
-                                    <td><div class="par_exc">Rp <?=number_format($br->jual)?></div></td>
-                                    <td><div class="par_exc">Rp <?=number_format($br->beli)?></div></td>
-                                    <td><div class="par_exc">$ <?=number_format($br->stock,2)?></div></td>
-                                </tr>
-                             <?php }?>
-                            </tbody>
-                        </table>
+                <div class="col-xs-12" style="background-color: #f9f9f9; padding: 15px; border: 1px solid #ccc;">
+                    	<h4 style="text-align:center; font-weight:bold">Kurs Jual Beli FGS</h4>
+                        <p style="text-align:center">Stok tidak mengikat.<br>Klik kurs BELI untuk menukarkan Rupiah anda dengan E-Currency<br>Klik kurs JUAL untuk menukarkan E-Currency anda dengan rupiah</p>
+                        <div class="tablewrap table-responsive">
+	                        <table class="table" style="border: 1px solid #ccc;">
+                            	<thead align="center" style="background:#fff">
+                                	<th>JENIS</th>
+                                    <th>JUAL</th>
+                                    <th>BELI</th>
+                                    <th>STOCK</th>
+                                </thead>
+                                <tbody style="margin-top:20px">
+                                <?php foreach($broker as $br){?>
+                                	<tr>
+                                    	<td>
+                                        	<!--<a href="<?=site_url("member/exchange_form/$br->id_broker")?>">-->
+                                            	<?=$br->name?>
+                                            <!--</a>-->
+                                        </td>
+                                        <td>
+                                        	<a class="btn btn-primary" href="<?=site_url("member/exchange_form/$br->id_broker/1")?>">
+                                            	Rp <?=number_format($br->jual)?>
+                                            </a>
+                                        </td>
+                                        <td>
+                                        	<a class="btn btn-success" href="<?=site_url("member/exchange_form/$br->id_broker/0")?>">
+                                            	Rp <?=number_format($br->beli)?>
+                                            </a>
+                                        </td>
+                                        <td>$ <?=number_format($br->stock,2)?></td>
+                                    </tr>
+                                 <?php }?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
                 <br><br>
                 <div class="row"> 
                     <div class="col-md-4">

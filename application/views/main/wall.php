@@ -24,9 +24,9 @@
                     </form>
                     </div>
                     <br><br>
-                    <div class="col-xs-12" style="background-color:#F1F1F1; padding:15px">
+                    <div class="col-xs-12" style="padding:0px">
                     <?php foreach($wall as $w){?>
-                    	<div style="border:thin solid #CCCCCC; margin-bottom:20px; padding:15px; border-radius:3px">
+                    	<div style="border:thin solid #CCCCCC; background-color:#eeeeee; margin-bottom:20px; padding:15px; border-radius:3px">
 							<p><?=$w->content?></p>
                             <p style="font-size:12px; text-align:right"><?=$w->first_name." ".$w->last_name?><br>
                             <?=$w->timestamp?></p>

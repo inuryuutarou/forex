@@ -34,6 +34,7 @@
                             <?php $i=1;foreach($broker->result() as $row){$i++;?>
                             <li><a href="#tab<?=$i?>default" data-toggle="tab"><?=$row->name?></a></li>
                             <?php }?>
+                            <li><a href="#tabdeposit" data-toggle="tab">Deposit Awal (Wajib)</a></li>
                         </ul>
                 </div>
                 <div class="panel-body">
@@ -197,39 +198,39 @@
                             <br>
                             <form class="form-horizontal" action="<?=site_url("member/broker_add")?>" method="post">
                             <p>Masuk melalui semua link berikut ini ketika mendaftar</p>
-                            <div class="alert alert-info" role="alert"><a href="<?=$row->link_ib?>" target="_blank"><h4>this is link <?=$row->name?></h4></a></div>
+                            <div class="alert alert-info" role="alert"><a href="<?=$row->link_ib?>" target="_blank"><h4>Buka akun IB <?=$row->name?> disini !</h4></a></div>
 							<?php if($row->link_client!=""){?>
-                            <div class="alert alert-info" role="alert"><a href="<?=$row->link_client?>" target="_blank"><h4>this is link <?=$row->name?></h4></a></div>
+                            <div class="alert alert-info" role="alert"><a href="<?=$row->link_client?>" target="_blank"><h4>Buka akun trading <?=$row->name?> disini !</h4></a></div>
                             <?php }?>
                             <p>Setelah melakukan daftar, pastikan akun IB dan Akun trading anda telah diverifikasi oleh broker, 
                             dan pastikan Link IB dan data akun trading yang anda masukkan benar pada form dibawah</p>
                             <br>
                             <div class="form-group">
-                              <label class="col-sm-2 control-label">Affiliation Link</label>
+                              <label class="col-sm-2 control-label">IB Link</label>
                               <div class="col-sm-7">
-                                <input type="text" class="form-control" id="link_ib" name="link_ib" value="<?=($chk_dta!='')?$chk_dta->link_ib:''?>" placeholder="Affiliation Link" required>
+                                <input type="text" class="form-control" id="link_ib" name="link_ib" value="<?=($chk_dta!='')?$chk_dta->link_ib:''?>" placeholder="Input link IB anda disini !" required>
                               </div>
                             </div>
 							<?php if($row->link_client!=""){?>
                             <div class="form-group">
                               <label class="col-sm-2 control-label">Client Link</label>
                               <div class="col-sm-7">
-                                <input type="text" class="form-control" id="link_client" name="link_client" value="<?=($chk_dta!='')?$chk_dta->link_client:''?>" placeholder="Client Link" required>
+                                <input type="text" class="form-control" id="link_client" name="link_client" value="<?=($chk_dta!='')?$chk_dta->link_client:''?>" placeholder="Input link afiliasi untuk akun trading anda disini !" required>
                               </div>
                             </div>
 							<?php }else{?>
                                 <input type="hidden" value="" readonly class="form-control" name="link_client" value="<?=($chk_dta!='')?$chk_dta->link_client:''?>">
                             <?php }?>
                             <div class="form-group">
-                              <label class="col-sm-2 control-label">Broker Username</label>
+                              <label class="col-sm-2 control-label">Nama Akun Trading</label>
                               <div class="col-sm-7">
-                                <input type="text" class="form-control" id="broker_username" value="<?=($chk_dta!='')?$chk_dta->broker_username:''?>" name="broker_username" placeholder="Broker Username" required>
+                                <input type="text" class="form-control" id="broker_username" value="<?=($chk_dta!='')?$chk_dta->broker_username:''?>" name="broker_username" placeholder="Input nama akun trading anda" required>
                               </div>
                             </div>
                             <div class="form-group">
-                              <label class="col-sm-2 control-label">Real Account</label>
+                              <label class="col-sm-2 control-label">Nomor Akun Trading</label>
                               <div class="col-sm-7">
-                                <input type="text" class="form-control" id="real_account" value="<?=($chk_dta!='')?$chk_dta->real_account:''?>" name="real_account" placeholder="Real Account" required>
+                                <input type="text" class="form-control" id="real_account" value="<?=($chk_dta!='')?$chk_dta->real_account:''?>" name="real_account" placeholder="Input nomer akun trading anda disini !" required>
                               </div>
                             </div>
                             <div class="form-group">
@@ -241,6 +242,39 @@
                             </form>
                         </div>
                         <?php }?>
+                        <!--=======================================================-->
+                        <!--Tab untuk Deposit Awal-->
+                        <div class="tab-pane fade" id="tabdeposit">
+                        	<div class="margin_top3"></div> 
+                            <h4 style="text-align:center">Deposit Awal (Wajib)</h4>
+                            <br>
+                            <form class="form-horizontal" enctype="multipart/form-data" action="#" method="post">
+                            <div class="alert alert-info" role="alert"><p>Sebagai persyaratan awal, calon member wajib melakukan deposit Minimal $10 di salah satu broker (Broker bebas). Dan wajib di tradingkan. Deposit ini sebagai syarat pertama kali saja diawal pendaftaran menjadi member FGS.</p></div>
+                            <div class="form-group">
+                              <label class="col-sm-2 control-label">Pilih Broker</label>
+                              <div class="col-sm-7">
+                              	<select class="form-control" required>
+                                  <option>Exness</option>
+                                  <option>Instaforex</option>
+                                  <option>XM</option>
+                                  <option>Orbex</option>
+                                  <option>Hotforex</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-2 control-label">Nominal Deposit</label>
+                              <div class="col-sm-7">
+                                <input type="text" class="form-control" id="nominal_deposit" name="nominal_deposit" placeholder="Input nominal deposit anda disini !" required>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                            	<div class="col-sm-12" align="center">
+                                	<button type="submit" class="btn btn-primary" id="finish">Submit</button>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
