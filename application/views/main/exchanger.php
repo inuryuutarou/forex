@@ -208,10 +208,10 @@
                                                 <p>Rp <?=number_format($row->nilai)?></p>
                                                 </td>
                                                 <td style="width:120px">
-                                                <p>$ <?=number_format($row->nilai/$row->nilai,2)?></p>
+                                                <p>$ <?=number_format($row->nilai/$row->nilai_tukar,2)?></p>
                                                 </td>
                                                 <td style="width:96px">
-                                                <p><?=($row->approved==1)?"Pending":"Approved"?></p>
+                                                <p><?=($row->approved==0)?"Pending":"Approved"?></p>
                                                 </td>
                                             </tr>
                                             <?php }?>
