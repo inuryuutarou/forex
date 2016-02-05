@@ -19,6 +19,7 @@
                         <th>Username</th>
                         <th>Name</th>
                         <th>ID Member</th>
+                        <th>Status Registrasi</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
@@ -28,6 +29,7 @@
                             <td><?=$cl->username?></td>
                             <td><?=$cl->first_name?> <?=$cl->last_name?></td>
                             <td><?=$cl->id_member?></td>
+                            <td><?=($cl->valid==3)?"approved":"pending"?></td>
                             <td><a href="<?=site_url("/member/detail_client/$cl->id_member")?>" data-toggle="modal" data-target="#detail_client" title="detail client">View Detail</a></td>
                         </tr>
                         <tr>
@@ -37,6 +39,7 @@
                                     <th>Username</th>
                                     <th>Name</th>
                                     <th>ID Member</th>
+                                    <th>Status Registrasi</th>
                                     <th>Action</th> 
                                 </thead>
                             

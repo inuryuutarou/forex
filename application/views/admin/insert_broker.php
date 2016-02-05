@@ -48,7 +48,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="<?=base_url('media/js/jquery.form.min.js');?>"></script>
+<!--<script type="text/javascript" src="<?=base_url('media/js/jquery.form.min.js');?>"></script>
 <script type="text/javascript">
 	$(function(){
 		$("#form_update_broker").ajaxForm({
@@ -64,4 +64,4 @@
 			}
 		});
 	});
-</script>
+</script>-->

@@ -57,14 +57,17 @@ class Member extends Secure_area {
 	}
 	public function ajax_grandchild($id_member){
 		$list_client= $this->m_member->list_client($id_member);
-		foreach($list_client->result() as $clt)
-		echo "
-		<tr>
-			<td>$clt->username</td>
-			<td>$clt->first_name $clt->last_name</td>
-			<td>$clt->id_member</td>
-			<td><a href='".site_url('/member/detail_client/'.$clt->id_member)."' data-toggle='modal' data-target='#detail_client' title='detail client'>View Detail</a></td>
-		</tr>";	
+		foreach($list_client->result() as $clt){
+			$sts=($clt->valid==3)?"approved":"pending";
+			echo "
+			<tr>
+				<td>$clt->username</td>
+				<td>$clt->first_name $clt->last_name</td>
+				<td>$clt->id_member</td>
+				<td>$sts</td>
+				<td><a href='".site_url('/member/detail_client/'.$clt->id_member)."' data-toggle='modal' data-target='#detail_client' title='detail client'>View Detail</a></td>
+			</tr>";	
+		}
 	}
 	
 	public function detail_client($id_member){
@@ -154,7 +157,7 @@ class Member extends Secure_area {
 		//update member status	
 		$member=$this->m_member->get_ib($this->session->userdata('id_member'))->row();
 		if($member->id_refferer!='')
-			$broker=$this->m_member->get_broker_refferal($data['member']->id_refferer);
+			$broker=$this->m_member->get_broker_refferal($member->id_refferer);
 		else
 			$broker=$this->m_member->get_broker();
 		$chk=$this->m_member->check_broker($this->session->userdata('id_member'));

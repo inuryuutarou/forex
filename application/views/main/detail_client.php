@@ -23,7 +23,7 @@
                             </div>
                              <div class="form-group">
                               <label>Status registrasi</label>
-                              <input type="text" class="form-control" value="<?=($member->valid==3)?"valid":"invalid"?>" disabled/>
+                              <input type="text" class="form-control" value="<?=($member->valid==3)?"approved":"pending"?>" disabled/>
                             </div>
                            <div class="form-group">
                               <label>Facebook Name</label>

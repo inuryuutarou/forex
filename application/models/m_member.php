@@ -9,11 +9,13 @@ class M_member extends CI_Model
     
     public function list_client($id_member){
 		return $this->db->where('id_refferer',$id_member)
+						->where('deletedr',0)
 						->get('member');
 	}
 	
 	public function get_ib($id_member){
 		return $this->db->where('id_member',$id_member)
+						->where('deleted',0)
 						->get('member');
 	}
 	

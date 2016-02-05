@@ -134,14 +134,15 @@ class Home extends CI_Controller {
 		);
 		if($id_member == -1) {
 			$this->m_home->register($db_data);
-			$get_member = $this->m_home->sign_in($db_data['username'],$db_data['password']);
-			
+			$get_member = $this->m_home->sign_in($db_data['username'],$this->input->post('password'));
 			if($get_member->num_rows() == 1) {
 				$user_data = $get_member->row();
 				$session_data = array(
 					"forex_login" => TRUE,
 					"id_member" => $user_data->id_member,
-					"username" => $user_data->username
+					"username" => $user_data->username,
+					'email'	 => $user_data->email,
+					"valid" => $user_data->valid
 				);
 				$this->session->set_userdata($session_data);
 
