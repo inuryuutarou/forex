@@ -28,6 +28,7 @@ class M_member extends CI_Model
 		if($id_broker!=NULL)
 			$this->db->where('id_broker',$id_broker);
 		return $this->db->where('deleted',0)
+						->select("*, link client as link_client_main, link ib as link_ib_main")
 						->get('broker');
 	}
 	public function get_broker_refferal($id_member){

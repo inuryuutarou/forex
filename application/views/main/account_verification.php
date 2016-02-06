@@ -213,7 +213,7 @@
                               </div>
                             </div>
                             <?php }else{?>
-                                <input type="hidden" value="" readonly class="form-control" name="link_ib" value="<?=$chk_dta->link_ib_main?>">
+                                <input type="hidden" readonly class="form-control" name="link_ib" value="<?=$row->link_ib_main?>">
 							<?php }
 							if($row->absolute_client==0){
 								if($row->link_client!=""){?>
@@ -226,7 +226,7 @@
 							<?php }else{?>
                                 <input type="hidden" value="" readonly class="form-control" name="link_client">
                             <?php } }else{?>
-                            	<input type="hidden" value="" readonly class="form-control" name="link_client" value="<?=$chk_dta->link_client_main?>">
+                            	<input type="hidden" readonly class="form-control" name="link_client" value="<?=$row->link_client_main?>">
                             <?php }?>
                             <div class="form-group">
                               <label class="col-sm-2 control-label">Nama Akun Trading</label>
