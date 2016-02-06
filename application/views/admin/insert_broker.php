@@ -16,10 +16,22 @@
                       <input type="text" name="link_ib" class="form-control"/>
                     </div>
                     <div class="form-group">
+                      <label>Link IB sama untuk seluruh member?</label>
+                      <input type="text" name="link_ib" class="form-control" value="<?=$broker->link_ib;?>" />
+                      <label><input type="radio" name="absolute_ib" class="form-control" value="0" checked>Tidak</label>
+                      <label><input type="radio" name="absolute_ib" class="form-control" value="1" >Ya</label>
+                    </div>
+                    <div class="form-group">
                       <label>Link Client</label>
                       <input type="text" name="link_client" class="form-control"/>
                     </div>
-                    <div class="form-group">
+                     <div class="form-group">
+                      <label>Link Client sama untuk seluruh member?</label>
+                      <input type="text" name="link_ib" class="form-control" value="<?=$broker->link_ib;?>" />
+                      <label><input type="radio" name="absolute_client" class="form-control" value="0" checked>Tidak</label>
+                      <label><input type="radio" name="absolute_client" class="form-control" value="1" >Ya</label>
+                    </div>
+                   <div class="form-group">
                         <div class="row">
                             <div class="col-xs-4">
                               <label>Jual</label>

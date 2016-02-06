@@ -124,7 +124,9 @@ class Admin extends Admin_secure_area {
 			"link_client" => $this->input->post('link_client'),
 			"jual" => $this->input->post('jual'),
 			"beli" => $this->input->post('beli'),
-			"stock" => $this->input->post('stock')
+			"stock" => $this->input->post('stock'),
+			"absolute_ib" => $this->input->post('absolute_ib'),
+			"absolute_client" => $this->input->post('absolute_client')
 		);
 		
 		if($id_broker == -1) {

@@ -16,8 +16,19 @@
                       <input type="text" name="link_ib" class="form-control" value="<?=$broker->link_ib;?>" />
                     </div>
                     <div class="form-group">
+                      <label>Link IB sama untuk seluruh member?</label>
+                      <input type="text" name="link_ib" class="form-control" value="<?=$broker->link_ib;?>" />
+                      <label><input type="radio" name="absolute_ib" class="form-control" value="0" <?=($broker->absolute_ib==0)?'checked':'';?>>Tidak</label>
+                      <label><input type="radio" name="absolute_ib" class="form-control" value="1" <?=($broker->absolute_ib==1)?'checked':'';?>>Ya</label>
+                    </div>
+                    <div class="form-group">
                       <label>Link Client</label>
                       <input type="text" name="link_client" class="form-control" value="<?=$broker->link_client;?>" />
+                    </div>
+                    <div class="form-group">
+                      <label>Link Client sama untuk seluruh member?</label>
+                      <label><input type="radio" name="absolute_client" class="form-control" value="0" <?=($broker->absolute_client==0)?'checked':'';?>>Tidak</label>
+                      <label><input type="radio" name="absolute_client" class="form-control" value="1" <?=($broker->absolute_client==1)?'checked':'';?>>Ya</label>
                     </div>
                     <div class="form-group">
                     	<div class="row">

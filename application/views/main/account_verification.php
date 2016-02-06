@@ -198,20 +198,25 @@
                             <br>
                             <form class="form-horizontal" action="<?=site_url("member/broker_add")?>" method="post">
                             <p>Masuk melalui semua link berikut ini ketika mendaftar</p>
-                            <div class="alert alert-info" role="alert"><a href="<?=$row->link_ib?>" target="_blank"><h4>Buka akun IB <?=$row->name?> disini !</h4></a></div>
+                            <div class="alert alert-info" role="alert"><a href="<?=($row->absolute_ib==0)?$row->link_ib:$row->link_ib_main?>" target="_blank"><h4>Buka akun IB <?=$row->name?> disini !</h4></a></div>
 							<?php if($row->link_client!=""){?>
-                            <div class="alert alert-info" role="alert"><a href="<?=$row->link_client?>" target="_blank"><h4>Buka akun trading <?=$row->name?> disini !</h4></a></div>
+                            <div class="alert alert-info" role="alert"><a href="<?=($row->absolute_client==0)?$row->link_client:$row->link_client_main?>" target="_blank"><h4>Buka akun trading <?=$row->name?> disini !</h4></a></div>
                             <?php }?>
                             <p>Setelah melakukan daftar, pastikan akun IB dan Akun trading anda telah diverifikasi oleh broker, 
                             dan pastikan Link IB dan data akun trading yang anda masukkan benar pada form dibawah</p>
                             <br>
+                            <?php if($row->absolute_ib==0){?>
                             <div class="form-group">
                               <label class="col-sm-2 control-label">IB Link</label>
                               <div class="col-sm-7">
                                 <input type="text" class="form-control" id="link_ib" name="link_ib" value="<?=($chk_dta!='')?$chk_dta->link_ib:''?>" placeholder="Input link IB anda disini !" required>
                               </div>
                             </div>
-							<?php if($row->link_client!=""){?>
+                            <?php }else{?>
+                                <input type="hidden" value="" readonly class="form-control" name="link_ib" value="<?=$chk_dta->link_ib_main?>">
+							<?php }
+							if($row->absolute_client==0){
+								if($row->link_client!=""){?>
                             <div class="form-group">
                               <label class="col-sm-2 control-label">Client Link</label>
                               <div class="col-sm-7">
@@ -219,7 +224,9 @@
                               </div>
                             </div>
 							<?php }else{?>
-                                <input type="hidden" value="" readonly class="form-control" name="link_client" value="<?=($chk_dta!='')?$chk_dta->link_client:''?>">
+                                <input type="hidden" value="" readonly class="form-control" name="link_client">
+                            <?php } }else{?>
+                            	<input type="hidden" value="" readonly class="form-control" name="link_client" value="<?=$chk_dta->link_client_main?>">
                             <?php }?>
                             <div class="form-group">
                               <label class="col-sm-2 control-label">Nama Akun Trading</label>

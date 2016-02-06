@@ -24,13 +24,15 @@ CREATE TABLE `broker` (
   `jual` int(11) NOT NULL DEFAULT '0',
   `beli` int(11) NOT NULL DEFAULT '0',
   `stock` double NOT NULL DEFAULT '0',
+  `absolute_ib` tinyint(4) NOT NULL DEFAULT '0',
+  `absolute_client` tinyint(4) NOT NULL DEFAULT '0',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_broker`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `broker` */
 
-insert  into `broker`(`id_broker`,`name`,`link_ib`,`link_client`,`jual`,`beli`,`stock`,`deleted`) values (1,'XM ','http://clicks.pipaffiliates.com/afs/come.php?cid=65890&ctgid=16&atype=1&brandid=3','http://clicks.pipaffiliates.com/afs/come.php?cid=65934&ctgid=0&atype=2&brandid=1',13000,13700,20000,0),(2,'orbex','http://www.orbex.com/en/?ref_id=102013','',12500,13000,20000.3,0);
+insert  into `broker`(`id_broker`,`name`,`link_ib`,`link_client`,`jual`,`beli`,`stock`,`absolute_ib`,`absolute_client`,`deleted`) values (1,'XM ','http://clicks.pipaffiliates.com/afs/come.php?cid=65890&ctgid=16&atype=1&brandid=3','http://clicks.pipaffiliates.com/afs/come.php?cid=65934&ctgid=0&atype=2&brandid=1',13000,13700,20000,0,0,0),(2,'orbex','http://www.orbex.com/en/?ref_id=102013','',12500,13000,20000.3,0,0,0);
 
 /*Table structure for table `changer` */
 
@@ -53,9 +55,11 @@ CREATE TABLE `changer` (
   `approved` tinyint(4) NOT NULL DEFAULT '0',
   `approve_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id_changer`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `changer` */
+
+insert  into `changer`(`id_changer`,`id_member`,`id_broker`,`jenis_transaksi`,`nilai`,`nilai_tukar`,`no_akun_trading`,`nama_akun_trading`,`nama_bank`,`no_rek`,`nama_rek`,`notes`,`timestamp`,`approved`,`approve_time`) values (1,2,1,0,187690000,13700,'123','afas','sadsa','21321','sadf','ghgh','2016-02-05 16:54:18',0,'0000-00-00 00:00:00'),(2,2,1,0,187690000,13700,'1233','afas','sadsa','21321','sadf','fsd','2016-02-05 16:54:45',0,'0000-00-00 00:00:00'),(3,2,1,0,187690000,13700,'23','1231','sadsa','21321','sadf','fsdfs','2016-02-05 16:55:08',0,'0000-00-00 00:00:00');
 
 /*Table structure for table `config` */
 
@@ -313,6 +317,8 @@ DROP TABLE IF EXISTS `vw_member_broker`;
  `link_client` varchar(300) ,
  `broker_username` varchar(300) ,
  `real_account` varchar(300) ,
+ `absolute_ib` tinyint(4) ,
+ `absolute_client` tinyint(4) ,
  `deleted_broker` tinyint(1) ,
  `id_refferer` int(11) ,
  `username` varchar(500) ,
@@ -400,7 +406,7 @@ DROP TABLE IF EXISTS `vw_wall_post`;
 /*!50001 DROP TABLE IF EXISTS `vw_member_broker` */;
 /*!50001 DROP VIEW IF EXISTS `vw_member_broker` */;
 
-/*!50001 CREATE VIEW `vw_member_broker` AS (select `b`.`name` AS `name`,`b`.`link_ib` AS `link_ib_main`,`b`.`link_client` AS `link_client_main`,`mb`.`id_member` AS `id_member`,`mb`.`id_broker` AS `id_broker`,`mb`.`link_ib` AS `link_ib`,`mb`.`link_client` AS `link_client`,`mb`.`broker_username` AS `broker_username`,`mb`.`real_account` AS `real_account`,`b`.`deleted` AS `deleted_broker`,`m`.`id_refferer` AS `id_refferer`,`m`.`username` AS `username`,`m`.`email` AS `email`,`m`.`password` AS `password`,`m`.`pin` AS `pin`,`m`.`flag` AS `flag`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`m`.`country` AS `country`,`m`.`province` AS `province`,`m`.`city` AS `city`,`m`.`address` AS `address`,`m`.`postal` AS `postal`,`m`.`id_card_number` AS `id_card_number`,`m`.`phone` AS `phone`,`m`.`bank_name` AS `bank_name`,`m`.`bank_branch` AS `bank_branch`,`m`.`bank_acc_name` AS `bank_acc_name`,`m`.`bank_acc_num` AS `bank_acc_num`,`m`.`im` AS `im`,`m`.`fb_username` AS `fb_username`,`m`.`fb_link` AS `fb_link`,`m`.`valid` AS `valid`,`m`.`register_date` AS `register_date`,`m`.`deleted` AS `deleted`,`m`.`last_update` AS `last_update`,`m`.`valid_date` AS `valid_date`,`m`.`level_status` AS `level_status` from ((`broker` `b` left join `member_broker` `mb` on(((`b`.`id_broker` = `mb`.`id_broker`) and (`b`.`deleted` = 0)))) left join `member` `m` on((`mb`.`id_member` = `m`.`id_member`)))) */;
+/*!50001 CREATE VIEW `vw_member_broker` AS (select `b`.`name` AS `name`,`b`.`link_ib` AS `link_ib_main`,`b`.`link_client` AS `link_client_main`,`mb`.`id_member` AS `id_member`,`mb`.`id_broker` AS `id_broker`,`mb`.`link_ib` AS `link_ib`,`mb`.`link_client` AS `link_client`,`mb`.`broker_username` AS `broker_username`,`mb`.`real_account` AS `real_account`,`b`.`absolute_ib` AS `absolute_ib`,`b`.`absolute_client` AS `absolute_client`,`b`.`deleted` AS `deleted_broker`,`m`.`id_refferer` AS `id_refferer`,`m`.`username` AS `username`,`m`.`email` AS `email`,`m`.`password` AS `password`,`m`.`pin` AS `pin`,`m`.`flag` AS `flag`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`m`.`country` AS `country`,`m`.`province` AS `province`,`m`.`city` AS `city`,`m`.`address` AS `address`,`m`.`postal` AS `postal`,`m`.`id_card_number` AS `id_card_number`,`m`.`phone` AS `phone`,`m`.`bank_name` AS `bank_name`,`m`.`bank_branch` AS `bank_branch`,`m`.`bank_acc_name` AS `bank_acc_name`,`m`.`bank_acc_num` AS `bank_acc_num`,`m`.`im` AS `im`,`m`.`fb_username` AS `fb_username`,`m`.`fb_link` AS `fb_link`,`m`.`valid` AS `valid`,`m`.`register_date` AS `register_date`,`m`.`deleted` AS `deleted`,`m`.`last_update` AS `last_update`,`m`.`valid_date` AS `valid_date`,`m`.`level_status` AS `level_status` from ((`broker` `b` left join `member_broker` `mb` on(((`b`.`id_broker` = `mb`.`id_broker`) and (`b`.`deleted` = 0)))) left join `member` `m` on((`mb`.`id_member` = `m`.`id_member`)))) */;
 
 /*View structure for view vw_wall_comment */
 
