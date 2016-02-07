@@ -17,8 +17,9 @@
                     </div>
                     <div class="form-group">
                       <label>Link IB sama untuk seluruh member?</label><br>
-                      <label><input type="radio" name="absolute_ib" class="form-control" value="0" <?=($broker->absolute_ib==0)?'checked':'';?>>Tidak</label><br>
-                      <label><input type="radio" name="absolute_ib" class="form-control" value="1" <?=($broker->absolute_ib==1)?'checked':'';?>>Ya</label>
+                      <label><input type="radio" style="vertical-align: top" name="absolute_ib" value="0" <?=($broker->absolute_ib==0)?'checked':'';?>> Tidak</label>
+                      &nbsp; | &nbsp;
+                      <label><input type="radio" style="vertical-align: top" name="absolute_ib" value="1" <?=($broker->absolute_ib==1)?'checked':'';?>> Ya</label>
                     </div>
                     <div class="form-group">
                       <label>Link Client</label>
@@ -26,8 +27,8 @@
                     </div>
                     <div class="form-group">
                       <label>Link Client sama untuk seluruh member?</label><br>
-                      <label><input type="radio" name="absolute_client" class="form-control" value="0" <?=($broker->absolute_client==0)?'checked':'';?>>Tidak</label><br>
-                      <label><input type="radio" name="absolute_client" class="form-control" value="1" <?=($broker->absolute_client==1)?'checked':'';?>>Ya</label>
+                      <label><input type="radio" name="absolute_client" style="vertical-align: top" value="0" <?=($broker->absolute_client==0)?'checked':'';?>> Tidak</label>&nbsp; | &nbsp;
+                      <label><input type="radio" name="absolute_client" style="vertical-align: top" value="1" <?=($broker->absolute_client==1)?'checked':'';?>> Ya</label>
                     </div>
                     <div class="form-group">
                     	<div class="row">

@@ -17,8 +17,8 @@
                     </div>
                     <div class="form-group">
                       <label>Link IB sama untuk seluruh member?</label><br>
-                      <label><input type="radio" name="absolute_ib" class="form-control" value="0" checked>Tidak</label><br>
-                      <label><input type="radio" name="absolute_ib" class="form-control" value="1" >Ya</label>
+                      <label><input type="radio" name="absolute_ib" style="vertical-align: top" value="0" checked> Tidak</label>&nbsp; | &nbsp;
+                      <label><input type="radio" name="absolute_ib" style="vertical-align: top" value="1" > Ya</label>
                     </div>
                     <div class="form-group">
                       <label>Link Client</label>
@@ -26,8 +26,8 @@
                     </div>
                      <div class="form-group">
                       <label>Link Client sama untuk seluruh member?</label><br>
-                      <label><input type="radio" name="absolute_client" class="form-control" value="0" checked>Tidak</label><br>
-                      <label><input type="radio" name="absolute_client" class="form-control" value="1" >Ya</label>
+                      <label><input type="radio" name="absolute_client" style="vertical-align: top" value="0" checked> Tidak</label>&nbsp; | &nbsp;
+                      <label><input type="radio" name="absolute_client" style="vertical-align: top" value="1" > Ya</label>
                     </div>
                    <div class="form-group">
                         <div class="row">
