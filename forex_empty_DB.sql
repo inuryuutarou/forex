@@ -24,13 +24,15 @@ CREATE TABLE `broker` (
   `jual` int(11) NOT NULL DEFAULT '0',
   `beli` int(11) NOT NULL DEFAULT '0',
   `stock` double NOT NULL DEFAULT '0',
+  `absolute_ib` tinyint(4) NOT NULL DEFAULT '0',
+  `absolute_client` tinyint(4) NOT NULL DEFAULT '0',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_broker`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `broker` */
 
-insert  into `broker`(`id_broker`,`name`,`link_ib`,`link_client`,`jual`,`beli`,`stock`,`deleted`) values (1,'XM ','http://clicks.pipaffiliates.com/afs/come.php?cid=65890&ctgid=16&atype=1&brandid=3','http://clicks.pipaffiliates.com/afs/come.php?cid=65934&ctgid=0&atype=2&brandid=1',13000,13700,20000,0),(2,'orbex','http://www.orbex.com/en/?ref_id=102013',NULL,12500,13000,20000.3,0);
+insert  into `broker`(`id_broker`,`name`,`link_ib`,`link_client`,`jual`,`beli`,`stock`,`absolute_ib`,`absolute_client`,`deleted`) values (1,'Exness','https://www.exness.com/a/sthjsuo9','https://www.exness.com/a/sthjsuo9',14000,14500,10000,0,0,0),(2,'InstaForex','https://secure.instaforex.org/open-account?lang=id&x=IMCfgsmember','https://secure.instaforex.org/open-account?lang=id&x=IMCfgsmember',14000,14500,50000,1,1,0),(3,'HotForex','https://www.hfmarkets.com/?refid=146521','https://www.hfmarkets.com/?refid=146521',14100,14600,70000,0,0,0),(4,'XM ','http://clicks.pipaffiliates.com/afs/come.php?cid=65890&ctgid=16&atype=1&brandid=3','http://clicks.pipaffiliates.com/afs/come.php?cid=65934&ctgid=0&atype=2&brandid=1',0,0,0,0,0,0),(5,'Orbex','https://www.orbex.com/id_ID/partnership-introducer?ref_id=102013','https://www.orbex.com/id_ID/open-real-account?ref_id=102013',0,0,0,0,0,0);
 
 /*Table structure for table `changer` */
 
@@ -52,7 +54,11 @@ CREATE TABLE `changer` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `approved` tinyint(4) NOT NULL DEFAULT '0',
   `approve_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id_changer`)
+  PRIMARY KEY (`id_changer`),
+  KEY `id_member` (`id_member`),
+  KEY `id_broker` (`id_broker`),
+  CONSTRAINT `changer_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `member` (`id_member`) ON DELETE CASCADE,
+  CONSTRAINT `changer_ibfk_2` FOREIGN KEY (`id_broker`) REFERENCES `broker` (`id_broker`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `changer` */
@@ -82,8 +88,8 @@ CREATE TABLE `log` (
   `query` text NOT NULL,
   `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_log`),
-  KEY `id_member` (`id_member`),
-  CONSTRAINT `log_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `member` (`id_member`)
+  KEY `log_ibfk_1` (`id_member`),
+  CONSTRAINT `log_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `member` (`id_member`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `log` */
@@ -117,6 +123,8 @@ CREATE TABLE `member` (
   `fb_username` varchar(100) DEFAULT NULL,
   `fb_link` varchar(200) DEFAULT NULL,
   `valid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=profile, 1=broker, 2=admin valid, 3=valid',
+  `id_broker` int(11) DEFAULT NULL,
+  `nominal_deposit` double DEFAULT NULL,
   `register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `last_update` timestamp NULL DEFAULT NULL,
@@ -125,8 +133,8 @@ CREATE TABLE `member` (
   PRIMARY KEY (`id_member`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
-  KEY `id_refferer` (`id_refferer`),
-  CONSTRAINT `member_ibfk_1` FOREIGN KEY (`id_refferer`) REFERENCES `member` (`id_member`)
+  KEY `member_ibfk_1` (`id_refferer`),
+  CONSTRAINT `member_ibfk_1` FOREIGN KEY (`id_refferer`) REFERENCES `member` (`id_member`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `member` */
@@ -142,7 +150,10 @@ CREATE TABLE `member_broker` (
   `link_client` varchar(300) DEFAULT NULL,
   `broker_username` varchar(300) NOT NULL,
   `real_account` varchar(300) NOT NULL,
-  PRIMARY KEY (`id_member`,`id_broker`)
+  PRIMARY KEY (`id_member`,`id_broker`),
+  KEY `id_broker` (`id_broker`),
+  CONSTRAINT `member_broker_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `member` (`id_member`) ON DELETE CASCADE,
+  CONSTRAINT `member_broker_ibfk_2` FOREIGN KEY (`id_broker`) REFERENCES `broker` (`id_broker`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `member_broker` */
@@ -160,10 +171,10 @@ CREATE TABLE `message` (
   `delete_from` tinyint(1) NOT NULL DEFAULT '0',
   `delete_to` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_message`),
-  KEY `id_member_from` (`id_member_from`),
-  KEY `id_member_to` (`id_member_to`),
-  CONSTRAINT `message_ibfk_1` FOREIGN KEY (`id_member_from`) REFERENCES `member` (`id_member`),
-  CONSTRAINT `message_ibfk_2` FOREIGN KEY (`id_member_to`) REFERENCES `member` (`id_member`)
+  KEY `message_ibfk_1` (`id_member_from`),
+  KEY `message_ibfk_2` (`id_member_to`),
+  CONSTRAINT `message_ibfk_1` FOREIGN KEY (`id_member_from`) REFERENCES `member` (`id_member`) ON DELETE CASCADE,
+  CONSTRAINT `message_ibfk_2` FOREIGN KEY (`id_member_to`) REFERENCES `member` (`id_member`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `message` */
@@ -179,8 +190,8 @@ CREATE TABLE `news` (
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `delete` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_news`),
-  KEY `id_member` (`id_member`),
-  CONSTRAINT `news_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `member` (`id_member`)
+  KEY `news_ibfk_1` (`id_member`),
+  CONSTRAINT `news_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `member` (`id_member`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `news` */
@@ -196,7 +207,11 @@ CREATE TABLE `wall_comment` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `content` text NOT NULL,
   `deleted` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_comment`)
+  PRIMARY KEY (`id_comment`),
+  KEY `wall_comment_ibfk_1` (`id_wall_post`),
+  KEY `wall_comment_ibfk_2` (`id_member`),
+  CONSTRAINT `wall_comment_ibfk_1` FOREIGN KEY (`id_wall_post`) REFERENCES `wall_post` (`id_wall_post`) ON DELETE CASCADE,
+  CONSTRAINT `wall_comment_ibfk_2` FOREIGN KEY (`id_member`) REFERENCES `member` (`id_member`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `wall_comment` */
@@ -211,7 +226,9 @@ CREATE TABLE `wall_post` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `content` text NOT NULL,
   `deleted` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_wall_post`)
+  PRIMARY KEY (`id_wall_post`),
+  KEY `wall_post_ibfk_1` (`id_member`),
+  CONSTRAINT `wall_post_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `member` (`id_member`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `wall_post` */
@@ -281,6 +298,8 @@ DROP TABLE IF EXISTS `vw_member`;
  `fb_username` varchar(100) ,
  `fb_link` varchar(200) ,
  `valid` tinyint(1) ,
+ `id_broker` int(11) ,
+ `broker_name` varchar(200) ,
  `register_date` timestamp ,
  `deleted` tinyint(1) ,
  `last_update` timestamp ,
@@ -305,6 +324,8 @@ DROP TABLE IF EXISTS `vw_member_broker`;
  `link_client` varchar(300) ,
  `broker_username` varchar(300) ,
  `real_account` varchar(300) ,
+ `absolute_ib` tinyint(4) ,
+ `absolute_client` tinyint(4) ,
  `deleted_broker` tinyint(1) ,
  `id_refferer` int(11) ,
  `username` varchar(500) ,
@@ -385,14 +406,14 @@ DROP TABLE IF EXISTS `vw_wall_post`;
 /*!50001 DROP TABLE IF EXISTS `vw_member` */;
 /*!50001 DROP VIEW IF EXISTS `vw_member` */;
 
-/*!50001 CREATE VIEW `vw_member` AS (select `m`.`id_refferer` AS `id_refferer`,`m2`.`username` AS `refferer_username`,`m2`.`first_name` AS `refferer_first_name`,`m2`.`last_name` AS `refferer_last_name`,`m`.`id_member` AS `id_member`,`m`.`username` AS `username`,`m`.`email` AS `email`,`m`.`password` AS `password`,`m`.`pin` AS `pin`,`m`.`flag` AS `flag`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`m`.`country` AS `country`,`m`.`province` AS `province`,`m`.`city` AS `city`,`m`.`address` AS `address`,`m`.`postal` AS `postal`,`m`.`id_card_number` AS `id_card_number`,`m`.`phone` AS `phone`,`m`.`bank_name` AS `bank_name`,`m`.`bank_branch` AS `bank_branch`,`m`.`bank_acc_name` AS `bank_acc_name`,`m`.`bank_acc_num` AS `bank_acc_num`,`m`.`im` AS `im`,`m`.`fb_username` AS `fb_username`,`m`.`fb_link` AS `fb_link`,`m`.`valid` AS `valid`,`m`.`register_date` AS `register_date`,`m`.`deleted` AS `deleted`,`m`.`last_update` AS `last_update`,`m`.`valid_date` AS `valid_date`,`m`.`level_status` AS `level_status` from (`member` `m` left join `member` `m2` on((`m`.`id_refferer` = `m2`.`id_member`)))) */;
+/*!50001 CREATE VIEW `vw_member` AS (select `m`.`id_refferer` AS `id_refferer`,`m2`.`username` AS `refferer_username`,`m2`.`first_name` AS `refferer_first_name`,`m2`.`last_name` AS `refferer_last_name`,`m`.`id_member` AS `id_member`,`m`.`username` AS `username`,`m`.`email` AS `email`,`m`.`password` AS `password`,`m`.`pin` AS `pin`,`m`.`flag` AS `flag`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`m`.`country` AS `country`,`m`.`province` AS `province`,`m`.`city` AS `city`,`m`.`address` AS `address`,`m`.`postal` AS `postal`,`m`.`id_card_number` AS `id_card_number`,`m`.`phone` AS `phone`,`m`.`bank_name` AS `bank_name`,`m`.`bank_branch` AS `bank_branch`,`m`.`bank_acc_name` AS `bank_acc_name`,`m`.`bank_acc_num` AS `bank_acc_num`,`m`.`im` AS `im`,`m`.`fb_username` AS `fb_username`,`m`.`fb_link` AS `fb_link`,`m`.`valid` AS `valid`,`m`.`id_broker` AS `id_broker`,`b`.`name` AS `broker_name`,`m`.`register_date` AS `register_date`,`m`.`deleted` AS `deleted`,`m`.`last_update` AS `last_update`,`m`.`valid_date` AS `valid_date`,`m`.`level_status` AS `level_status` from ((`member` `m` left join `member` `m2` on((`m`.`id_refferer` = `m2`.`id_member`))) left join `broker` `b` on((`b`.`id_broker` = `m`.`id_broker`)))) */;
 
 /*View structure for view vw_member_broker */
 
 /*!50001 DROP TABLE IF EXISTS `vw_member_broker` */;
 /*!50001 DROP VIEW IF EXISTS `vw_member_broker` */;
 
-/*!50001 CREATE VIEW `vw_member_broker` AS (select `b`.`name` AS `name`,`b`.`link_ib` AS `link_ib_main`,`b`.`link_client` AS `link_client_main`,`mb`.`id_member` AS `id_member`,`mb`.`id_broker` AS `id_broker`,`mb`.`link_ib` AS `link_ib`,`mb`.`link_client` AS `link_client`,`mb`.`broker_username` AS `broker_username`,`mb`.`real_account` AS `real_account`,`b`.`deleted` AS `deleted_broker`,`m`.`id_refferer` AS `id_refferer`,`m`.`username` AS `username`,`m`.`email` AS `email`,`m`.`password` AS `password`,`m`.`pin` AS `pin`,`m`.`flag` AS `flag`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`m`.`country` AS `country`,`m`.`province` AS `province`,`m`.`city` AS `city`,`m`.`address` AS `address`,`m`.`postal` AS `postal`,`m`.`id_card_number` AS `id_card_number`,`m`.`phone` AS `phone`,`m`.`bank_name` AS `bank_name`,`m`.`bank_branch` AS `bank_branch`,`m`.`bank_acc_name` AS `bank_acc_name`,`m`.`bank_acc_num` AS `bank_acc_num`,`m`.`im` AS `im`,`m`.`fb_username` AS `fb_username`,`m`.`fb_link` AS `fb_link`,`m`.`valid` AS `valid`,`m`.`register_date` AS `register_date`,`m`.`deleted` AS `deleted`,`m`.`last_update` AS `last_update`,`m`.`valid_date` AS `valid_date`,`m`.`level_status` AS `level_status` from ((`broker` `b` left join `member_broker` `mb` on(((`b`.`id_broker` = `mb`.`id_broker`) and (`b`.`deleted` = 0)))) left join `member` `m` on((`mb`.`id_member` = `m`.`id_member`)))) */;
+/*!50001 CREATE VIEW `vw_member_broker` AS (select `b`.`name` AS `name`,`b`.`link_ib` AS `link_ib_main`,`b`.`link_client` AS `link_client_main`,`mb`.`id_member` AS `id_member`,`mb`.`id_broker` AS `id_broker`,`mb`.`link_ib` AS `link_ib`,`mb`.`link_client` AS `link_client`,`mb`.`broker_username` AS `broker_username`,`mb`.`real_account` AS `real_account`,`b`.`absolute_ib` AS `absolute_ib`,`b`.`absolute_client` AS `absolute_client`,`b`.`deleted` AS `deleted_broker`,`m`.`id_refferer` AS `id_refferer`,`m`.`username` AS `username`,`m`.`email` AS `email`,`m`.`password` AS `password`,`m`.`pin` AS `pin`,`m`.`flag` AS `flag`,`m`.`first_name` AS `first_name`,`m`.`last_name` AS `last_name`,`m`.`country` AS `country`,`m`.`province` AS `province`,`m`.`city` AS `city`,`m`.`address` AS `address`,`m`.`postal` AS `postal`,`m`.`id_card_number` AS `id_card_number`,`m`.`phone` AS `phone`,`m`.`bank_name` AS `bank_name`,`m`.`bank_branch` AS `bank_branch`,`m`.`bank_acc_name` AS `bank_acc_name`,`m`.`bank_acc_num` AS `bank_acc_num`,`m`.`im` AS `im`,`m`.`fb_username` AS `fb_username`,`m`.`fb_link` AS `fb_link`,`m`.`valid` AS `valid`,`m`.`register_date` AS `register_date`,`m`.`deleted` AS `deleted`,`m`.`last_update` AS `last_update`,`m`.`valid_date` AS `valid_date`,`m`.`level_status` AS `level_status` from ((`broker` `b` left join `member_broker` `mb` on(((`b`.`id_broker` = `mb`.`id_broker`) and (`b`.`deleted` = 0)))) left join `member` `m` on((`mb`.`id_member` = `m`.`id_member`)))) */;
 
 /*View structure for view vw_wall_comment */
 

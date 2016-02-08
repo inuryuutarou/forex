@@ -202,7 +202,7 @@
                                                 <p><?=$row->timestamp?></p>
                                                 </td>
                                                 <td style="width:102px">
-                                                <p><?=($row->jenis_transaksi==0)?"BELI":"JUAL"?></p>
+                                                <p><?=$row->name?><br><?=($row->jenis_transaksi==0)?"BELI":"JUAL"?></p>
                                                 </td>
                                                 <td style="width:120px">
                                                 <p>Rp <?=number_format($row->nilai)?></p>
