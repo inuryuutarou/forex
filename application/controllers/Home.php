@@ -166,7 +166,7 @@ class Home extends CI_Controller {
 				
 				$send = mail($to, $subject, $message, $headers);
 				if($send)
-				{$this->session->set_flashdata('msg',"Message sent");}
+				{$this->session->set_flashdata('message',"Message sent");}
 				delete_cookie("id_referral");
 				redirect('member/account_verification');
 			} else {
@@ -226,7 +226,7 @@ class Home extends CI_Controller {
 		$message = "Dear, ".$user->first_name." ".$user->last_name." \n";
 		$message.= "Akun anda di forexglobalservice.com dengan username ".$user->username." telah melakukan permintaan untuk reset password \n";
 		$message.= "Silahkan klik pada link berikut untuk melakukan reset password pada akun forexglobalservice.com anda \n\n";
-		$message.= "<a href='".site_url("home/reset_password/".$data['forgot_token'])."'>".site_url("home/reset_password/".$data['forgot_token'])."</a> \n\n";
+		$message.= site_url("home/reset_form/".$data['forgot_token'])." \n\n";
 		$message.= "Jika anda tidak merasa melakukan permintaan ini silahkan abaikan/hapus email ini \n";
 		$message.= "Permintaan ini dilakukan melalui IP address : ".$this->input->ip_address()." \n";
 		$message.= "\n \n \n";
@@ -235,7 +235,7 @@ class Home extends CI_Controller {
 		
 		$send = mail($to, $subject, $message, $headers);
 		if($send)
-			$this->session->set_flashdata('msg',"Pesan terkirim, silahkan periksa email anda.");
+			$this->session->set_flashdata('message',"Email reset password terkirim, silahkan periksa email anda.");
 		delete_cookie("id_referral");
 		redirect('home');
 	}
@@ -300,18 +300,4 @@ class Home extends CI_Controller {
 		$this->input->set_cookie($cookie);
 		redirect('home');
 	}	
-	
-	public function forgot_password()
-	{
-		if($this->session->userdata('forex_login') == TRUE)
-			redirect('member');
-		if($this->session->userdata('admin_forex_login') == TRUE)
-			redirect('admin');
-
-		$data['header']='comp/header';
-		$data['footer']='comp/footer';
-		$data['content']='main/forgot_password';
-		$data['active']='home';
-		$this->load->view('main/template',$data);
-	}
 }
