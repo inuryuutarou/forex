@@ -4,8 +4,8 @@
     
 		
       <div class="login_form">		
-			<form id="sky-form" class="sky-form" action="<?=site_url('home/sign_in');?>" method="post">
-				<header>Login form</header>
+			<form id="sky-form" class="sky-form" action="<?=site_url('home/forgot_process');?>" method="post">
+				<header>Request reset password form</header>
 				
 				<fieldset>					
 					<section>
@@ -14,7 +14,7 @@
 							<div class="col col-8">
 								<label class="input">
 									<i class="icon-append icon-user"></i>
-									<input type="email" name="username">
+									<input type="email" name="email">
 								</label>
 							</div>
 						</div>
@@ -22,30 +22,23 @@
 					
 					<section>
 						<div class="row">
-							<label class="label col col-4">Password</label>
-							<div class="col col-8">
-								<label class="input">
-									<i class="icon-append icon-lock"></i>
-									<input type="password" name="password">
-								</label>
-								<div class="note"><a href="<?=site_url("home/forgot_password")?>">Forgot password?</a></div>
-							</div>
+							<section class="col col-6">
+                                <label class="input">
+                                    <?php $img_capt=$this->session->userdata('captcha');?>
+                                    <img src="<?=$img_capt['image_src']?>" title="captcha" style="width:137px; height:45px; background-color:#F4AF4B; border-radius:5px;">
+                                </label>
+                            </section>
+                            <section class="col col-6">
+                                <label class="input">
+                                    <input type="text" name="captcha" placeholder="Captcha" required>
+                                </label>
+                            </section>
 						</div>
 					</section>
-					
-					<!--<section>
-						<div class="row">
-							<div class="col col-4"></div>
-							<div class="col col-8">
-								<label class="checkbox"><input type="checkbox" name="remember" checked><i></i>Keep me logged in</label>
-							</div>
-						</div>
-					</section>-->
 				</fieldset>
 				<footer>
 					<div class="fright">
-                    <a href="<?=site_url()?>/home/register" class="button button-secondary">Register</a>
-                    <button type="submit" class="button">Log in</button>
+                    <button type="submit" class="button">Request reset password</button>
                     </div>
 					
 				</footer>
@@ -73,16 +66,10 @@
 			// Rules for form validation
 			rules:
 			{
-				username:
+				email:
 				{
 					required: true,
 					email: true
-				},
-				password:
-				{
-					required: true,
-					minlength: 3,
-					maxlength: 20
 				}
 			},
 								
@@ -93,10 +80,6 @@
 				{
 					required: 'Please enter your email address',
 					email: 'Please enter a VALID email address'
-				},
-				password:
-				{
-					required: 'Please enter your password'
 				}
 			},					
 			

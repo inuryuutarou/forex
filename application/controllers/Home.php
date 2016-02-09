@@ -6,6 +6,7 @@ class Home extends CI_Controller {
 	function __construct() 
     {
         parent::__construct();
+		date_default_timezone_set('Asia/Makassar');
 		$this->load->model('m_home');
     }
 
@@ -177,6 +178,118 @@ class Home extends CI_Controller {
 		redirect('home/register');
 	}
 
+	public function forgot_password(){
+		if($this->session->userdata('forex_login') == TRUE)
+			redirect('member');
+		if($this->session->userdata('admin_forex_login') == TRUE)
+			redirect('admin');
+			
+		$this->load->model('m_captcha');
+		$this->session->set_userdata('captcha',$this->m_captcha->simple_php_captcha());
+		$data['header']='comp/header';
+		$data['footer']='comp/footer';
+		$data['content']='main/forgot_password';
+		$data['active']='home';
+		$this->load->view('main/template',$data);	
+	}
+
+	public function forgot_process(){
+		extract($_POST);
+		$answer = strtoupper($captcha);
+		$code=$this->session->userdata('captcha');
+		$word = strtoupper($code['code']);
+		if($word!=$answer){
+			$this->session->set_flashdata('message','Captcha salah');
+			redirect('home/forgot_password');
+			exit;
+		}
+		
+		$user=$this->db->where('email',$email)->get('member');
+		if($user->num_rows()==0){
+			redirect('home/reset_success/forgot');
+			exit;
+		}
+		$user=$user->row();
+		$data=array(
+				"forgot_time"=>date('Y-m-d H:i:s'),
+				"forgot_token"=>md5($user->id_member.date('Y-m-d H:i:s').$user->username),
+			);
+		$this->db->where('email',$email)->update('member',$data);
+		
+		$to = $user->email;
+		$sender_name = "no-reply@forexglobalservice.com";		
+		$subject = 'Forgot Password';		
+		$from = "no-reply@forexglobalservice.com";		
+		$headers = 'To: <'.$to.'>' . "\r\n";		
+		$headers .= 'From: '.$sender_name."\r\n";		
+		
+		$message = "Dear, ".$user->first_name." ".$user->last_name." \n";
+		$message.= "Akun anda di forexglobalservice.com dengan username ".$user->username." telah melakukan permintaan untuk reset password \n";
+		$message.= "Silahkan klik pada link berikut untuk melakukan reset password pada akun forexglobalservice.com anda \n\n";
+		$message.= "<a href='".site_url("home/reset_password/".$data['forgot_token'])."'>".site_url("home/reset_password/".$data['forgot_token'])."</a> \n\n";
+		$message.= "Jika anda tidak merasa melakukan permintaan ini silahkan abaikan/hapus email ini \n";
+		$message.= "Permintaan ini dilakukan melalui IP address : ".$this->input->ip_address()." \n";
+		$message.= "\n \n \n";
+		$message.= "Team FGS, \n forexglobalservice.com";
+		$message = str_replace("\n.", "\n..", $message);
+		
+		$send = mail($to, $subject, $message, $headers);
+		if($send)
+			$this->session->set_flashdata('msg',"Pesan terkirim, silahkan periksa email anda.");
+		delete_cookie("id_referral");
+		redirect('home');
+	}
+	
+	public function reset_form($token){
+		$acc=$this->db->where("forgot_token",$token)->where('DATE(forgot_time)',date('Y-m-d'))->get('member');
+		if($acc->num_rows()==0)
+			$data['valid']='expired';
+		else
+			$acc=$acc->row();
+			
+		if($this->session->userdata('forex_login') == TRUE)
+			redirect('member');
+		if($this->session->userdata('admin_forex_login') == TRUE)
+			redirect('admin');
+			
+		$this->load->model('m_captcha');
+		$this->session->set_userdata('captcha',$this->m_captcha->simple_php_captcha());
+		$data['user']=$acc;
+		$data['header']='comp/header';
+		$data['footer']='comp/footer';
+		$data['content']='main/reset_form';
+		$data['active']='home';
+		$this->load->view('main/template',$data);	
+	}
+	
+	public function reset_process(){
+		extract($_POST);
+		$answer = strtoupper($captcha);
+		$code=$this->session->userdata('captcha');
+		$word = strtoupper($code['code']);
+		if($word!=$answer){
+			$this->session->set_flashdata('message','Captcha salah');
+			redirect("home/reset_form/$token");
+			exit;
+		}
+		$data=array(
+				"forgot_time"=>"",
+				"forgot_token"=>"",
+				"password"=>md5($password),
+			);
+		$this->db->where('email',$email)->update('member',$data);
+		$this->session->set_flashdata('message','Password updated, Silahkan login memakai password baru anda.');
+		redirect("home/reset_success");
+	}
+	public function reset_success($type='reset'){
+		$data['type']=$type;
+		$data['header']='comp/header';
+		$data['footer']='comp/footer';
+		$data['content']='main/reset_success';
+		$data['active']='home';
+		$this->load->view('main/template',$data);	
+	}
+	
 	public function referral($id_referral=-1) {
 		$cookie = array(
 			'name'   => 'id_referral',
