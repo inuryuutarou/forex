@@ -28,7 +28,7 @@
 									<i class="icon-append icon-lock"></i>
 									<input type="password" name="password">
 								</label>
-								<div class="note"><a href="<?=site_url("home/forgot_password")?>">Forgot password?</a></div>
+								<div class="note"><a href="<?=site_url("home/forgot_password")?>" class="modal-opener">Forgot password?</a></div>
 							</div>
 						</div>
 					</section>

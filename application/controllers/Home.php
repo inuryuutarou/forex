@@ -300,4 +300,18 @@ class Home extends CI_Controller {
 		$this->input->set_cookie($cookie);
 		redirect('home');
 	}	
+	
+	public function forgot_password()
+	{
+		if($this->session->userdata('forex_login') == TRUE)
+			redirect('member');
+		if($this->session->userdata('admin_forex_login') == TRUE)
+			redirect('admin');
+
+		$data['header']='comp/header';
+		$data['footer']='comp/footer';
+		$data['content']='main/forgot_password';
+		$data['active']='home';
+		$this->load->view('main/template',$data);
+	}
 }

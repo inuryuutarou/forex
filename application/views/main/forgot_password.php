@@ -4,14 +4,14 @@
     
 		
       <div class="login_form">		
-			<form id="sky-form" class="sky-form" action="<?=site_url('home/forgot_process');?>" method="post">
-				<header>Request reset password form</header>
-				
+            <form id="sky-form" class="sky-form" action="<?=site_url('home/forgot_process');?>" method="post">
+				<header>Lupa Password Form</header>
+				<p style="text-align:center">Masukkan alamat email anda</p>
 				<fieldset>					
 					<section>
 						<div class="row">
-							<label class="label col col-4">E-mail</label>
-							<div class="col col-8">
+							<label class="label col col-3">E-mail</label>
+							<div class="col col-9">
 								<label class="input">
 									<i class="icon-append icon-user"></i>
 									<input type="email" name="email">
@@ -19,7 +19,7 @@
 							</div>
 						</div>
 					</section>
-					
+
 					<section>
 						<div class="row">
 							<section class="col col-6">
@@ -76,7 +76,7 @@
 			// Messages for form validation
 			messages:
 			{
-				username:
+				email:
 				{
 					required: 'Please enter your email address',
 					email: 'Please enter a VALID email address'

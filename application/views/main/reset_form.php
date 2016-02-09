@@ -6,7 +6,7 @@
       <div class="login_form">
       	<?php if(isset($valid)){
         	if($valid=='expired'){?>
-            	Link Expired
+            	<p style="text-align:center">Link Expired</p>
         <?php }}else{?>
 			<form id="sky-form" class="sky-form" action="<?=site_url('home/reset_process');?>" method="post">
 				<header>Reset password form</header>
@@ -14,7 +14,7 @@
 				<fieldset>					
 					<section>
 						<div class="row">
-							<label class="label col col-4">New Password</label>
+							<label class="label col col-4">Password Baru</label>
 							<div class="col col-8">
 								<label class="input">
 									<i class="icon-append icon-user"></i>
@@ -26,7 +26,7 @@
 					
 					<section>
 						<div class="row">
-							<label class="label col col-4">Repeat New Password</label>
+							<label class="label col col-4">Konfirmasi Password</label>
 							<div class="col col-8">
 								<label class="input">
 									<i class="icon-append icon-lock"></i>
