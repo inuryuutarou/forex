@@ -116,6 +116,9 @@
 				<?php if($this->session->flashdata('message')){?>
 					alert("<?=$this->session->flashdata('message')?>");
 				<?php }?>
+				<?php if($this->session->flashdata('error')){?>
+					alert("<?=$this->session->flashdata('error')?>");
+				<?php }?>
         });
         
     })(jQuery);

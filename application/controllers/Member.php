@@ -96,6 +96,7 @@ class Member extends Secure_area {
 		if($this->input->post('pin')!='')
 			$data["pin"] =  md5($this->input->post('pin'));	
 		if(isset($_POST['verify']) and $_FILES['ktp_file']['tmp_name']==''){
+			$this->m_member->update_member($this->session->userdata('id_member'),$data);
 			$this->session->set_flashdata('error',"KTP harus di upload untuk proses verifikasi");
 			redirect("member/account_verification");
 		}
