@@ -241,7 +241,7 @@ class Home extends CI_Controller {
 	}
 	
 	public function reset_form($token){
-		$acc=$this->db->where("forgot_token",$token)->where('DATE(forgot_time)',date('Y-m-d'))->get('member');
+		$acc=$this->db->where("forgot_token",$token)->where('forgot_time >=',date('Y-m-d H:i:s',strtotime("-6 hours")))->get('member');
 		if($acc->num_rows()==0)
 			$data['valid']='expired';
 		else
