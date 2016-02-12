@@ -38,6 +38,15 @@ class Member extends Secure_area {
 	}
 	public function my_profile(){
 		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
+		//if($data['member']->valid==3){
+		//	redirect('member');
+		//}
+		if($data['member']->id_refferer!='')
+			$broker=$this->m_member->get_broker_refferal($data['member']->id_refferer);
+		else
+			$broker=$this->m_member->get_broker();
+		$data['broker'] = $broker;
+		//$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
 		$data['active']='my_profile';
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
