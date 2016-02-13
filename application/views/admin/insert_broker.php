@@ -29,6 +29,11 @@
                       <label><input type="radio" name="absolute_client" style="vertical-align: top" value="0" checked> Tidak</label>&nbsp; | &nbsp;
                       <label><input type="radio" name="absolute_client" style="vertical-align: top" value="1" > Ya</label>
                     </div>
+                     <div class="form-group">
+                      <label>Wajib diisi untuk konfirm member?</label><br>
+                      <label><input type="radio" name="required" style="vertical-align: top" value="0"> Tidak</label>&nbsp; | &nbsp;
+                      <label><input type="radio" name="required" style="vertical-align: top" value="1" checked> Ya</label>
+                    </div>
                    <div class="form-group">
                         <div class="row">
                             <div class="col-xs-4">

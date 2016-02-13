@@ -128,7 +128,8 @@ class Admin extends Admin_secure_area {
 			"beli" => $this->input->post('beli'),
 			"stock" => $this->input->post('stock'),
 			"absolute_ib" => $this->input->post('absolute_ib'),
-			"absolute_client" => $this->input->post('absolute_client')
+			"absolute_client" => $this->input->post('absolute_client'),
+			"required" => $this->input->post('required')
 		);
 		
 		if($id_broker == -1) {
