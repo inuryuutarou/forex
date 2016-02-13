@@ -40,6 +40,7 @@ class M_member extends CI_Model
 		if($id_broker!=NULL)
 			$this->db->where('id_broker',$id_broker);
 		return $this->db->where('id_member',$id_member)
+						->where('required',1)
 						->where('deleted_broker',0)
 						->get('vw_member_broker');
 	}

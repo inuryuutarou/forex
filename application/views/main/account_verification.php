@@ -244,6 +244,7 @@
                             	<div class="col-sm-12" align="center">
                                 	<button type="submit" class="btn btn-primary" id="finish">Submit</button>
                                     <input type="hidden" name="id_broker" value="<?=$row->id_broker?>">
+                                    <input type="hidden" name="verify" value="<?=$member->id_member?>">
                                 </div>
                             </div>
                             </form>
@@ -276,6 +277,7 @@
                             <div class="form-group">
                             	<div class="col-sm-12" align="center">
                                 	<button type="submit" class="btn btn-primary" id="finish">Submit</button>
+                                    <input type="hidden" name="verify" value="<?=$member->id_member?>">
                                 </div>
                             </div>
                             </form>

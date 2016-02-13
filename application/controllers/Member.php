@@ -38,15 +38,12 @@ class Member extends Secure_area {
 	}
 	public function my_profile(){
 		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
-		//if($data['member']->valid==3){
-		//	redirect('member');
-		//}
+
 		if($data['member']->id_refferer!='')
 			$broker=$this->m_member->get_broker_refferal($data['member']->id_refferer);
 		else
 			$broker=$this->m_member->get_broker();
 		$data['broker'] = $broker;
-		//$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
 		$data['active']='my_profile';
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
@@ -139,7 +136,10 @@ class Member extends Secure_area {
 			"last_update" => date('Y-m-d H:i:s')
 			);
 		$this->m_member->update_member($this->session->userdata('id_member'),$data);
-		redirect("member/account_verification");
+		if(!isset($_POST['verify']))
+			redirect("member/my_profile");
+		else
+			redirect("member/account_verification");
 	}
 	
 	public function account_verification(){
@@ -177,14 +177,23 @@ class Member extends Secure_area {
 			$this->m_member->update_broker($data);
 		//update member status	
 		$member=$this->m_member->get_ib($this->session->userdata('id_member'))->row();
-		if($member->id_refferer!='')
+		if($member->id_refferer!=''){
+			$this->db->where('required',1);
 			$broker=$this->m_member->get_broker_refferal($member->id_refferer);
-		else
+		}
+		else{
+			$this->db->where('required',1);
 			$broker=$this->m_member->get_broker();
-		$chk=$this->m_member->check_broker($this->session->userdata('id_member'));
-		if($broker->num_rows()==$chk->num_rows() and $member->valid==1 and $member->id_broker!='')
-			$this->m_member->update_member($this->session->userdata('id_member'),array('valid'=>2));
-		redirect("member/account_verification");
+		}
+			
+		if(!isset($_POST['verify']))
+			redirect("member/my_profile");
+		else{
+			$chk=$this->m_member->check_broker($this->session->userdata('id_member'));
+			if($broker->num_rows()==$chk->num_rows() and $member->valid==1 and $member->id_broker!='')
+				$this->m_member->update_member($this->session->userdata('id_member'),array('valid'=>2));
+			redirect("member/account_verification");
+		}
 	}
 	
 	public function webinar(){
