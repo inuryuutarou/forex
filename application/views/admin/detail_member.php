@@ -72,9 +72,33 @@
                     </div>
                     <div class="form-group">
                       <label>Refferer</label>
-                      <input type="text" class="form-control" value="<?=$member->refferer_first_name.' '.$member->refferer_last_name;?>" disabled/>
+                      <input type="text" class="form-control" value="<?=$member->refferer_first_name.' '.$member->refferer_last_name;?>" 
+                      disabled/>
                     </div>
-                </div>
+                    <div class="form-group">
+                      <label>Broker</label>
+                      <div>
+                      <?php
+					  if($member_broker->num_rows() > 0) {
+						 $data_broker = $member_broker->row();
+						 echo $data_broker->member_broker; 
+					  } else {
+						 echo '-'; 
+					  }
+					  ?>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Kartu Identitas</label>
+                      <div>
+						  <?php
+                          if(is_file("media/img/member_id/id_card_".$member->id_member.".jpg"))
+                          echo img(array("src"=>"media/img/member_id/id_card_".$member->id_member.".jpg","width"=>"400"));
+                          else
+                          echo 'not uploaded';
+                          ?>
+                      </div>
+                    </div>
             </div>
         </div>
     </div>

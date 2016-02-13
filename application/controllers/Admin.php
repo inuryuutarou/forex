@@ -74,7 +74,7 @@ class Admin extends Admin_secure_area {
 		$this->db->like('first_name',$this->input->post('search_member'))->or_like('last_name',$this->input->post('search_member'));
 		$this->db->limit($this->per_page,$offset);
 		$this->db->order_by('first_name','asc');
-		$data['member'] = $this->m_admin->get_data('*','vw_member','level_status = 0');
+		$data['member'] = $this->m_admin->get_data('*','vw_member');
 		
 		$data['search_member'] = ($this->input->post('search_member')) ? $this->input->post('search_member') : '';
 		$data['view']='admin/member';
@@ -87,6 +87,8 @@ class Admin extends Admin_secure_area {
 	
 	public function detail_member($id_member=-1){
 		$get_member = $this->m_admin->get_data('*','vw_member',"id_member = $id_member AND deleted = '0'");
+		$data['member_broker'] = $this->m_admin->get_data("GROUP_CONCAT(`name`) AS member_broker",
+			"vw_member_broker","id_member = $id_member AND deleted = '0'");
 		if($get_member->num_rows() == 0)
 		exit('Member tidak ditemukan');
 		$data['member'] = $get_member->row();
