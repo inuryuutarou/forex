@@ -136,12 +136,12 @@
                                 <div class="form-group">
                                   <div class="col-sm-2"> </div>
                                   <div class="col-sm-7">
-                                    <img src="<?=base_url("media/img/member_id/id_card_".$member->id_member.".jpg")?>" class="col-xs-10">
+                                    <img src="<?=base_url("media/img/member_id/id_card_".$member->id_member.".jpg?ver=".md5($member->last_update))?>" class="col-xs-10">
                                   </div>
                                 </div>
                                 <?php }?>
                                 <div class="form-group">
-                                  <label class="col-sm-2 control-label">ID Card (KTP) File*</label>
+                                  <label class="col-sm-2 control-label">ID Card (KTP) File* (ukuran file max 2 MB, dengan tipe file jgp/png)</label>
                                   <div class="col-sm-7">
                                     <input type="file" class="form-control" id="ktp_file" name="ktp_file" placeholder="ID Card (KTP) File">
                                   </div>

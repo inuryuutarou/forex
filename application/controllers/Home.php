@@ -206,6 +206,7 @@ class Home extends CI_Controller {
 		
 		$user=$this->db->where('email',$email)->get('member');
 		if($user->num_rows()==0){
+			$this->session->set_flashdata('message','Email tidak terdaftar');
 			redirect('home/reset_success/forgot');
 			exit;
 		}

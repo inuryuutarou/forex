@@ -38,6 +38,15 @@ class Member extends Secure_area {
 	}
 	public function my_profile(){
 		$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
+		//if($data['member']->valid==3){
+		//	redirect('member');
+		//}
+		if($data['member']->id_refferer!='')
+			$broker=$this->m_member->get_broker_refferal($data['member']->id_refferer);
+		else
+			$broker=$this->m_member->get_broker();
+		$data['broker'] = $broker;
+		//$data['member'] = $this->m_member->get_ib($this->session->userdata('id_member'))->row();
 		$data['active']='my_profile';
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
@@ -95,10 +104,12 @@ class Member extends Secure_area {
 			);
 		if($this->input->post('pin')!='')
 			$data["pin"] =  md5($this->input->post('pin'));	
-		if(isset($_POST['verify']) and $_FILES['ktp_file']['tmp_name']==''){
-			$this->m_member->update_member($this->session->userdata('id_member'),$data);
-			$this->session->set_flashdata('error',"KTP harus di upload untuk proses verifikasi");
-			redirect("member/account_verification");
+		if(isset($_POST['verify']) and $_FILES['ktp_file']['tmp_name']=='' ){
+			if(!is_file("media/img/member_id/id_card_".$this->session->userdata('id_member').".jpg")){
+				$this->m_member->update_member($this->session->userdata('id_member'),$data);
+				$this->session->set_flashdata('error',"KTP harus di upload untuk proses verifikasi");
+				redirect("member/account_verification");
+			}
 		}
 		if(isset($_POST['verify'])){
 			$data["valid"]=1;
