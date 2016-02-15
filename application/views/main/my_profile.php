@@ -190,7 +190,7 @@
                         <!--=======================================================-->
                         <!--Tab untuk form-->
                         <?php $i=1;foreach($broker->result() as $row){$i++;
-								$chk=$this->m_member->check_broker($this->session->userdata('id_member'),$row->id_broker);
+								$chk=$this->m_member->check_broker($this->session->userdata('id_member'),$row->id_broker,NULL);
 								$chk_dta=($chk->num_rows()!=0)?$chk->row():'';
 						?>
                         <div class="tab-pane fade" id="tab<?=$i?>default">
