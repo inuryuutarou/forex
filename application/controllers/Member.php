@@ -108,9 +108,7 @@ class Member extends Secure_area {
 				redirect("member/account_verification");
 			}
 		}
-		if(isset($_POST['verify'])){
-			$data["valid"]=1;
-		}
+		$this->m_member->update_member($this->session->userdata('id_member'),$data);
 		if($_FILES['ktp_file']['tmp_name']!=''){
 			$path="media/img/member_id/";
 			$tmp = $_FILES['ktp_file']['tmp_name'];
@@ -123,11 +121,12 @@ class Member extends Secure_area {
 			$image->save($path.$img_name);
 		}
 		
-		$this->m_member->update_member($this->session->userdata('id_member'),$data);
 		if(!isset($_POST['verify']))
 			redirect("member/my_profile");
-		else
+		else{
+			$this->_is_valid();
 			redirect("member/account_verification");
+		}
 	}
 	public function depo_awal(){
 		$data=array(
@@ -138,8 +137,10 @@ class Member extends Secure_area {
 		$this->m_member->update_member($this->session->userdata('id_member'),$data);
 		if(!isset($_POST['verify']))
 			redirect("member/my_profile");
-		else
+		else{
+			$this->_is_valid();
 			redirect("member/account_verification");
+		}
 	}
 	
 	public function account_verification(){
@@ -170,13 +171,32 @@ class Member extends Secure_area {
 					'broker_username'=>$broker_username,
 					'real_account'=>$real_account,
 				);
-		$chk=$this->m_member->check_broker($this->session->userdata('id_member'),$id_broker);
+		$chk=$this->m_member->check_broker($this->session->userdata('id_member'),$id_broker,NULL);
 		if($chk->num_rows()==0)
 			$this->m_member->insert_broker($data);
 		else
 			$this->m_member->update_broker($data);
 		//update member status	
 		$member=$this->m_member->get_ib($this->session->userdata('id_member'))->row();
+			
+		if(!isset($_POST['verify']))
+			redirect("member/my_profile");
+		else{
+			$this->_is_valid();
+			redirect("member/account_verification");
+		}
+	}
+	public function _is_valid(){
+		$member=$this->m_member->get_ib($this->session->userdata('id_member'))->row();
+		//check profile
+		if($member->pin=='' or $member->first_name=='' or $member->last_name=='' or $member->country=='' or $member->province=='' or $member->city=='' or $member->phone==''  or $member->id_card_number==''  or $member->bank_name==''  or $member->bank_branch==''  or $member->bank_acc_name==''  or $member->bank_acc_num=='' or !is_file("media/img/member_id/id_card_".$this->session->userdata('id_member').".jpg")){
+			//$this->session->set_flashdata('error','mohon lengkapi field yang wajib diisi pada profil anda');
+			return false;
+		}
+		else{
+			$this->m_member->update_member($this->session->userdata('id_member'),array('valid'=>1));
+		}
+		//check broker n depo
 		if($member->id_refferer!=''){
 			$this->db->where('required',1);
 			$broker=$this->m_member->get_broker_refferal($member->id_refferer);
@@ -185,17 +205,11 @@ class Member extends Secure_area {
 			$this->db->where('required',1);
 			$broker=$this->m_member->get_broker();
 		}
-			
-		if(!isset($_POST['verify']))
-			redirect("member/my_profile");
-		else{
-			$chk=$this->m_member->check_broker($this->session->userdata('id_member'));
-			if($broker->num_rows()==$chk->num_rows() and $member->valid==1 and $member->id_broker!='')
-				$this->m_member->update_member($this->session->userdata('id_member'),array('valid'=>2));
-			redirect("member/account_verification");
-		}
+		$chk=$this->m_member->check_broker($this->session->userdata('id_member'));
+		if($broker->num_rows()==$chk->num_rows() and $member->id_broker!='')
+			$this->m_member->update_member($this->session->userdata('id_member'),array('valid'=>2));
+		return true;
 	}
-	
 	public function webinar(){
 		$data['header']='comp/header';
 		$data['footer']='comp/footer';
