@@ -54,7 +54,8 @@
                                     <th>STOCK</th>
                                 </thead>
                                 <tbody style="margin-top:20px">
-                                <?php foreach($broker as $br){?>
+                                <?php foreach($broker as $br){
+									if($br->stock!=0){ ?>
                                 	<tr>
                                     	<td>
                                         	<!--<a href="<?=site_url("member/exchange_form/$br->id_broker")?>">-->
@@ -73,7 +74,7 @@
                                         </td>
                                         <td>$ <?=number_format($br->stock,2)?></td>
                                     </tr>
-                                 <?php }?>
+                                 <?php }}?>
                                 </tbody>
                             </table>
                         </div>
