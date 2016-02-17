@@ -80,4 +80,7 @@ class M_member extends CI_Model
 	public function insert_exchange($data){
 		return $this->db->insert('changer',$data);
 	}
+	public function update_exchange($id_changer,$data){
+		return $this->db->where("id_changer",$id_changer)->update('changer',$data);
+	}
 }

@@ -253,6 +253,7 @@ class Member extends Secure_area {
 		}
 		$broker = $this->m_member->get_broker($id_broker)->row();
 		$nil_tukar=($jenis_transaksi==0)?$broker->beli:$broker->jual;
+		$status_exchange=($jenis_transaksi==0)?2:0;
 		$data=array(
 					'id_member'=>$this->session->userdata('id_member'),
 					'id_broker'=>$id_broker,
@@ -266,8 +267,13 @@ class Member extends Secure_area {
 					'nama_rek'=>$nama_rek,
 					'notes'=>$notes,
 					'timestamp'=>date("Y-m-d H:i:s"),
+					"approved"=>$status_exchange
 				);
 		$this->m_member->insert_exchange($data);
+		redirect("member/exchanger");
+	}
+	public function confirm_trnf($id_changer){
+		$this->m_member->update_exchange($id_changer,array("approved"=>0));
 		redirect("member/exchanger");
 	}
 	public function dhuafa(){

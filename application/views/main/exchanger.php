@@ -198,7 +198,13 @@
                                             <p style="font-size:11px">$ <?=number_format($row->nilai/$row->nilai_tukar,2)?></p>
                                             </td>
                                             <td style="width:96px; padding:0">
-                                            <p style="font-size:11px"><?=($row->approved==0)?"Pending":"Approved"?></p>
+                                            <p style="font-size:11px">
+												<?php 
+												if($row->approved==0){echo "Pending";}
+												else if($row->approved==1){echo "Approved";}
+												else if($row->approved==2){echo '<a class="btn btn-warning" href="'.site_url("member/confirm_trnf/$row->id_changer").'">Konfirm Transfer</a>';}
+												?>
+                                            </p>
                                             </td>
                                         </tr>
                                         <?php }?>

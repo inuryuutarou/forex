@@ -23,6 +23,7 @@
             <tr>
               <th>Name</th>
               <th>Tipe</th>
+              <th>Status</th>
               <th>Jumlah</th>
               <th>Nilai Tukar</th>
               <th>Total $</th>
@@ -37,18 +38,18 @@
             <tr>
                 <td><?=$row->first_name;?> <?=$row->last_name;?></td>
                 <td><?=($row->jenis_transaksi==1)?"Jual":"Beli";?></td>
+                <td><?=($row->approved == '0')?"Pending":(($row->approved == '1')?"Approved":"Waiting transfer")?></td>
                 <td><?=number_format($row->nilai);?></td>
                 <td><?=number_format($row->nilai_tukar);?></td>
                 <td><?=number_format(($row->nilai/$row->nilai_tukar),2);?></td>
                 <td align="left">
-                <a href="<?=site_url()?>/admin/detail_changer/<?=$row->id_changer;?>" class="link-detail-changer" data-toggle="modal" data-target="#modal_changer"><span><i class="glyphicon glyphicon-eye-open"></i></span> Detail</a>&nbsp;&nbsp;
-                <!--<a href="<?=site_url()?>/admin/delete_changer/<?=$row->id_changer;?>" class="link-delete-changer" onclick="return confirm('Yakin akan menghapus broker ini ?')"><span><i class="glyphicon glyphicon-trash"></i></span> Delete</a>-->
-                <?php
-				if($row->approved == '0') { ?>
-                &nbsp;&nbsp;
-                <a href="<?=site_url()?>/admin/approve_changer/<?=$row->id_changer;?>" class="link-approve-changer" onclick="return confirm('Approve changer ini ?')"><span><i class="glyphicon glyphicon-check"></i></span> Approve</a></td>
-                <?php
-				} ?>
+                    <a href="<?=site_url()?>/admin/detail_changer/<?=$row->id_changer;?>" class="link-detail-changer" data-toggle="modal" data-target="#modal_changer"><span><i class="glyphicon glyphicon-eye-open"></i></span> Detail</a>&nbsp;&nbsp;
+                    <!--<a href="<?=site_url()?>/admin/delete_changer/<?=$row->id_changer;?>" class="link-delete-changer" onclick="return confirm('Yakin akan menghapus broker ini ?')"><span><i class="glyphicon glyphicon-trash"></i></span> Delete</a>-->
+                    <?php if($row->approved == '0') { ?>
+                    &nbsp;&nbsp;
+                    <a href="<?=site_url()?>/admin/approve_changer/<?=$row->id_changer;?>" class="link-approve-changer" onclick="return confirm('Approve changer ini ?')"><span><i class="glyphicon glyphicon-check"></i></span> Approve</a>
+                    <?php } ?>
+                </td>
             </tr>
             <?php
 			  }
