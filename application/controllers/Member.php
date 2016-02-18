@@ -273,7 +273,9 @@ class Member extends Secure_area {
 		redirect("member/exchanger");
 	}
 	public function confirm_trnf($id_changer){
-		$this->m_member->update_exchange($id_changer,array("approved"=>0));
+		$ex=$this->m_member->get_exchange($this->session->userdata('id_member'),$id_changer)->row();
+		if($ex->approved==2 and $ex->jenis_transaksi==0)
+			$this->m_member->update_exchange($id_changer,array("approved"=>0));
 		redirect("member/exchanger");
 	}
 	public function dhuafa(){
