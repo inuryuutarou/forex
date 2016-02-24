@@ -64,6 +64,9 @@ class M_member extends CI_Model
 						->order_by('id_wall_post','desc')
 						->get('vw_wall_post');
 	}
+	public function get_wall_comment($id_wall_post,$start=NULL,$offset=NULL,$id_wall_comment=NULL){
+		
+	}
 	public function insert_wall($data){
 		return $this->db->insert('wall_post',$data);
 	}
