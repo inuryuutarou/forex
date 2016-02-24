@@ -36,7 +36,7 @@
               <th>Name</th>
               <th>ID Member</th>
               <th>Status</th>
-              <th>Action</th>
+              <th style="text-align:right">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -58,11 +58,17 @@
                 <td><?=$row->first_name.' '.$row->last_name;?></td>
                 <td><?=$row->id_member;?></td>
                 <td><?=$valid;?></td>
-                <td align="right">
+                <td align="right" id="td_action">
                 <?php if($row->valid == '2') { $disabled = ''; } ?>
+                <?php
+				if($row->valid < 3) { ?>
                 <a href="<?=site_url()?>/admin/approve/<?=$row->id_member;?>" class="link-approve <?=$disabled;?>" style="margin-right: 10px">
                 	<button <?=$disabled;?> class="btn btn-primary btn-md btn-par">Approve</button></a>
-                <a href="<?=site_url()?>/admin/detail_member/<?=$row->id_member;?>" data-toggle="modal" data-target="#detail_member"><span><i class="glyphicon glyphicon-list-alt"></i></span> Lihat Detail</a>
+                <?php
+				} ?>
+                <a href="<?=site_url()?>/admin/detail_member/<?=$row->id_member;?>" data-toggle="modal" data-target="#detail_member"><span><i class="glyphicon glyphicon-list-alt" title="detail member"></i></span></a>&nbsp; &nbsp;
+                <a href="<?=site_url()?>/admin/member_broker_detail/<?=$row->id_member;?>" data-toggle="modal" data-target="#detail_member"><span><i class="glyphicon glyphicon-user" title="broker detail"></i></span></a>&nbsp; &nbsp;
+                <a href="<?=site_url()?>/admin/delete_member/<?=$row->id_member;?>" class="link-delete-member"><span><i class="glyphicon glyphicon-trash" title="hapus"></i></span></a>
             </tr></td><?php
 			  }
 		  } ?>
@@ -76,7 +82,7 @@
 </section><!-- /.content -->
 
 <div class="modal fade" id="detail_member" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="width: 70%">
     <div class="modal-content">
     </div>
   </div>
@@ -88,7 +94,7 @@
 
 <script type="text/javascript">
   
-  $(document).ready(function(){   
+  $(document).ready(function(){
 	 $('#detail_member').on('hidden.bs.modal', function() {  
 		  $(this).removeData('bs.modal');  
 	 });
@@ -104,6 +110,15 @@
 		  $.post(url,function(){
 			  document.location.reload();
 		  });
+	 });
+	 $(".link-delete-member").click(function(event){
+		 event.preventDefault();
+		 var confirmDelete = confirm('Apakah anda yakin akan mengahapus member ini?');
+		 if(confirmDelete) {
+			 var url = $(this).attr("href");
+			 $.post(url);
+			 $(this).parent().parent().remove();
+		 }
 	 });
   });		 
 </script>

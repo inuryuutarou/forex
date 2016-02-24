@@ -1,5 +1,5 @@
 <div class="modal-body">
-	<div class="row">
+	<div class="row" id="box-form-detail-member">
     	<div class="col-xs-12">
         	<div class="box">
                 <div class="box-header with-border" align="center">
@@ -18,10 +18,10 @@
                       <label>Nama</label>
                       <input type="text" class="form-control" value="<?=$member->first_name.' '.$member->last_name;?>" disabled/>
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                       <label>ID Member</label>
                       <input type="text" class="form-control" value="<?=$member->id_member;?>" disabled/>
-                    </div>
+                    </div>-->
                     <div class="form-group">
                       <label>Nomor Identitas</label>
                       <input type="text" class="form-control" value="<?=$member->id_card_number;?>" disabled/>
@@ -99,7 +99,20 @@
                           ?>
                       </div>
                     </div>
+                    <div class="form-group">
+                    	<button type="button" id="button-edit-member" class="btn btn-primary btn-md">Edit</button>
+                        <button type="button" id="button-update-member" class="btn btn-primary btn-md" disabled>Save</button>
+                    </div>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+$(function(){
+	$("#button-edit-member").click(function(){
+		$("#box-form-detail-member input, #box-form-detail-member textarea").attr("disabled",false);
+		$("#button-update-member").attr("disabled",false);
+	});
+});
+</script>

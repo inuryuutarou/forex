@@ -18,7 +18,6 @@ class Admin extends Admin_secure_area {
 		$this->load->view('admin/template',$data);
 	}
 	
-	
 	public function suggest_member(){
 		$data = array(
 						'error' => 'no',
@@ -63,6 +62,7 @@ class Admin extends Admin_secure_area {
 		
 		if($this->input->post('search_member'))
 		$this->db->like('first_name',$this->input->post('search_member'))->or_like('last_name',$this->input->post('search_member'));
+		$this->db->where('deleted','0');
 		$config['total_rows'] = $this->m_admin->get_data('*','vw_member','level_status = 0')->num_rows();
 		
 		$config['per_page'] = $this->per_page;
@@ -73,7 +73,9 @@ class Admin extends Admin_secure_area {
 		if($this->input->post('search_member'))
 		$this->db->like('first_name',$this->input->post('search_member'))->or_like('last_name',$this->input->post('search_member'));
 		$this->db->limit($this->per_page,$offset);
+		$this->db->order_by('valid','desc');
 		$this->db->order_by('first_name','asc');
+		$this->db->where('deleted','0');
 		$data['member'] = $this->m_admin->get_data('*','vw_member');
 		
 		$data['search_member'] = ($this->input->post('search_member')) ? $this->input->post('search_member') : '';
@@ -93,6 +95,11 @@ class Admin extends Admin_secure_area {
 		exit('Member tidak ditemukan');
 		$data['member'] = $get_member->row();
 		$this->load->view('admin/detail_member',$data);
+	}
+	
+	public function delete_member($id_member=-1) {
+		$this->load->model('m_member');
+		$this->m_member->update_member($id_member,array('deleted'=>'1'));
 	}
 	
 	public function broker(){
@@ -199,5 +206,10 @@ class Admin extends Admin_secure_area {
 		$this->session->set_userdata($session_data);
 		$this->session->sess_destroy();
 		redirect('login');
+	}
+	
+	public function member_broker_detail($id_member=-1) {
+		$data['get_broker_detail'] = $this->m_admin->get_data('*','member_broker',"id_member = $id_member");
+		$this->load->view('admin/member_broker_detail',$data);
 	}
 }
