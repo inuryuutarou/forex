@@ -17,14 +17,18 @@
   <div class="box">
       <div class="box-header">
         <h3 class="box-title">Daftar Member</h3>
-        <div class="box-tools">
+        <div class="form-inline" style="float: right">
         <?=form_open('admin/member');?>
-          <div class="input-group" style="width: 200px;">
-            <input type="text" name="search_member" class="form-control input-sm pull-right" value="<?=$search_member;?>" placeholder="search name">
-            <div class="input-group-btn">
-              <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-            </div>
-          </div>
+            <button type="submit" class="btn btn-primary btn-sm pull-right"><i class="fa fa-fw fa-search"></i> search</button>
+            <input type="text" name="search_member" class="form-control input-sm pull-right" value="<?=$search_member;?>" placeholder="search name" 
+            	style="margin-right: 5px">
+                <select name="filter_status" id="filter_status" class="form-control input-sm pull-right" style="margin-right: 5px">
+                    <option value="">-filter status-</option>
+                    <option value="3">Valid</option>
+                    <option value="2">Admin Valid</option>
+                    <option value="1">Update Broker</option>
+                    <option value="0">New</option>
+                </select>
           <?=form_close();?>
         </div>
       </div><!-- /.box-header -->
@@ -47,9 +51,9 @@
 			  if($row->valid == '0')
 			  $valid = "New";
 			  if($row->valid == '1')
-			  $valid = "Update Profile";
-			  if($row->valid == '2')
 			  $valid = "Update Broker";
+			  if($row->valid == '2')
+			  $valid = "Admin Valid";
 			  if($row->valid == '3')
 			  $valid = "Valid";
 			  ?>
@@ -120,5 +124,13 @@
 			 $(this).parent().parent().remove();
 		 }
 	 });
+	 
+	 <?php if($filter_status != "" || $filter_status !== FALSE) { ?>
+	
+	$("#filter_status").val('<?=$filter_status;?>');
+	
+		 <?php
+	 } ?>
+	 
   });		 
 </script>

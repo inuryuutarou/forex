@@ -4,7 +4,7 @@ include_once("Admin_secure_area.php");
 
 class Admin extends Admin_secure_area {
 	
-	var $per_page = 20;
+	var $per_page = 40;
 	
 	function __construct() 
     {
@@ -49,6 +49,15 @@ class Admin extends Admin_secure_area {
 	
 	public function member(){
 		$this->load->library('pagination');
+		$where = ( $this->input->post('filter_status') != "" ) ? "`valid` = '".$this->input->post('filter_status')."'" : "";
+		if( $this->input->get('filter_status') ) {
+			$where = "`valid` = '".$this->input->get('filter_status');
+		}
+		
+		$filter_status_uri = ( $this->input->post('filter_status') != "" ) ? "?filter_status=".$this->input->post('filter_status') : "";
+		if( $this->input->get('filter_status') != "" ) {
+			$filter_status_uri = "?filter_status=".$this->input->get('filter_status');
+		}
 		
 		$page = ($this->input->get('per_page')) ? $this->input->get('per_page') : '1';
 		// Pagination Settings
@@ -57,13 +66,17 @@ class Admin extends Admin_secure_area {
 		$config['full_tag_open'] = '<div class="ci_pagination">';
 		$config['full_tag_close'] = '</div>';
 		$config['num_links'] = 5;
-		$config['base_url'] = site_url("admin/member");
+		$config['base_url'] = site_url("admin/member".$filter_status_uri);
 		
 		
 		if($this->input->post('search_member'))
 		$this->db->like('first_name',$this->input->post('search_member'))->or_like('last_name',$this->input->post('search_member'));
 		$this->db->where('deleted','0');
-		$config['total_rows'] = $this->m_admin->get_data('*','vw_member','level_status = 0')->num_rows();
+		
+		if($where != "")
+		$this->db->where($where);
+		
+		$config['total_rows'] = $this->m_admin->get_data('*','vw_member')->num_rows();
 		
 		$config['per_page'] = $this->per_page;
 		$this->pagination->initialize($config);
@@ -76,10 +89,15 @@ class Admin extends Admin_secure_area {
 		$this->db->order_by('valid','desc');
 		$this->db->order_by('first_name','asc');
 		$this->db->where('deleted','0');
+		
+		if($where != "")
+		$this->db->where($where);
+		
 		$data['member'] = $this->m_admin->get_data('*','vw_member');
 		
 		$data['search_member'] = ($this->input->post('search_member')) ? $this->input->post('search_member') : '';
 		$data['view']='admin/member';
+		$data['filter_status'] = ( $this->input->post('filter_status') != "" ) ? $this->input->post('filter_status') : $this->input->get('filter_status');
 		$this->load->view('admin/template',$data);
 	}
 	
