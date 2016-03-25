@@ -93,7 +93,7 @@
                       <div>
 						  <?php
                           if(is_file("media/img/member_id/id_card_".$member->id_member.".jpg"))
-                          echo img(array("src"=>"media/img/member_id/id_card_".$member->id_member.".jpg","width"=>"400"));
+                          echo img(array("src"=>site_url("admin/file_get/".$member->id_member).".jpg","width"=>"400"));
                           else
                           echo 'not uploaded';
                           ?>

@@ -230,4 +230,13 @@ class Admin extends Admin_secure_area {
 		$data['get_broker_detail'] = $this->m_admin->get_data('*','member_broker',"id_member = $id_member");
 		$this->load->view('admin/member_broker_detail',$data);
 	}
+	public function file_get($file_name){
+		$file = 'media/img/member_id/id_card_'.$file_name.".jpg";
+		if (is_file($file)){ // check the file is existing 
+			$this->load->helper('file');
+			header('Content-Type: '.get_mime_by_extension($file));
+			readfile($file);
+		}else 
+			echo "error file";
+	}
 }

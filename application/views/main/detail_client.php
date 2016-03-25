@@ -63,7 +63,7 @@
                             </div>
                             <?php if(is_file("media/img/member_id/id_card_".$member->id_member.".jpg")){?>
                             <div class="form-group">
-                                <img src="<?=base_url("media/img/member_id/id_card_".$member->id_member.".jpg")?>" class="col-xs-10">
+                                <img src="<?=site_url("member/file_get/".$member->id_member)?>" alt="KTP" class="col-xs-10">
                             </div>
                             <?php }?>
                         </div>

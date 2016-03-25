@@ -138,7 +138,7 @@
                                 <div class="form-group">
                                   <div class="col-sm-2"> </div>
                                   <div class="col-sm-7">
-                                    <img src="<?=base_url("media/img/member_id/id_card_".$member->id_member.".jpg?ver=".md5($member->last_update))?>" class="col-xs-10">
+                                    <img src="<?=site_url("member/file_get/".$member->id_member)?>" alt="KTP" class="col-xs-10">
                                   </div>
                                 </div>
                                 <?php }?>
