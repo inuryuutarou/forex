@@ -296,9 +296,9 @@ class Member extends Secure_area {
 	}
 	public function file_get($file_name){
 		$IB_id=$this->session->userdata('id_member');
-		$client=$this->m_member->get_ib($file_name)->row();
-		$granchild=$this->m_member->get_ib($client->id_refferer)->row();
-		if($IB_id==$file_name or $client->id_refferer==$IB_id or $granchild->id_refferer==$IB_id){  // login check
+		//$client=$this->m_member->get_ib($file_name)->row();
+		//$granchild=$this->m_member->get_ib($client->id_refferer)->row();
+		if($IB_id==$file_name /*or $client->id_refferer==$IB_id or $granchild->id_refferer==$IB_id*/){  // login check
 			$file = 'media/img/member_id/id_card_'.$file_name.".jpg";
 			if (is_file($file)){ // check the file is existing 
 				$this->load->helper('file');

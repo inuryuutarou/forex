@@ -61,7 +61,9 @@
                               <label>Instant Messenger</label>
                                 <input type="text" class="form-control" value="<?=$member->im?>" disabled>
                             </div>
-                            <?php if(is_file("media/img/member_id/id_card_".$member->id_member.".jpg")){?>
+                            <?php 
+							if(isset($false)){
+							//if(is_file("media/img/member_id/id_card_".$member->id_member.".jpg")){?>
                             <div class="form-group">
                                 <img src="<?=site_url("member/file_get/".$member->id_member)?>" alt="KTP" class="col-xs-10">
                             </div>
